@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NAND and NOR</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #66bfbf;
+      }
+
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #11999e;
+        color: white;
+      }
+    </style>
+
+    <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="Aim.html">Aim</a>
+      <a href="Theory.html">Theory</a>
+      <a href="Pretest.html" style="color: rgb(245, 210, 94);">Pretest</a>
+      <a href="Procedure.html">Procedure</a>
+      <a href="Simulation-1.html">Simulation</a>
+      <a href="Postest.html">Posttest</a>
+      <a href="Reference.html">Reference</a>
+    </div>
+    <p class="first_para">Pretest</p>
+    <div class="adjust">
+      <div id='q1' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">1. Which one of the following is a Universal gate?</h2>
+      </div>
+      <div id='q2' style="text-align: left; padding-left: 100px">
+        <h2  style="font-size: 17px;">
+          2. Which one of the following is a characteristic of the Stuck at
+          Fault?
+        </h2>
+      </div>
+      <div id='q3' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">3. When is the output of the NAND gate low?</h2>
+      </div>
+      <div id='q4' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">4. When is the output of the NOR gate high?</h2>
+      </div>
+      <div id='q5' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          5. If one of the inputs of the two input NAND gate high then the out
+          put is always?
+        </h2>
+      </div>
+
+      <div id='q6' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">6. The boolean expression of a NAND gate is?</h2>
+      </div>
+
+      <div id='q7' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">7. The boolean expression of a NOR gate is?</h2>
+      </div>
+
+      <div id='q8' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          8. If a 3-input NOR gate has eight input possibilities, how many of
+          those possibilities will result in a HIGH output?
+        </h2>
+      </div>
+
+      <div id='q9' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          9. If a 3-input NAND gate has eight input possibilities, how many of
+          those possibilities will result in a HIGH output?
+        </h2>
+      </div>
+
+      <div id='q10' style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          10. What does the small bubble on the output of the NAND and NOR gate
+          logic symbol mean?
+        </h2>
+      </div>
+      <br />
+      <button
+        type="button"
+        id="myBtn"
+        class="btn btn-primary btn-block"
+        style="background-color: #76c2af; text-align: center"
+        onclick="displayAnswer1()"
+      >
+        Submit
+      </button>
+      <br />
+      <p id="result" style="text-align: center"></p>
+      <br />
+      <br />
+      <br />
+    </div>
+    <div class="bottom_container">
+      <p class="Signature" style="height: 10px"></p>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        load();
+      });
+
+      function load() {
+        q1 = ["NAND gate", "OR gate", "AND", "None of these"];
+        q2 = [
+          "Fauty logic gates give multiple outputs at a time.",
+          "A Wire is stuck at logic 1 or 0.",
+          "Faulty gates give different outputs for same inputs.",
+          "None of these",
+        ];
+        q3 = [
+          "Both the inputs are high.",
+          "At least one of the inputs is high.",
+          "At least one of the inputs is low.",
+          "None of these",
+        ];
+        q4 = [
+          "if both the inputs are low.",
+          "if at least one of the inputs is high.",
+          "if at least one of the inputs is low.",
+          "None of these",
+        ];
+        q5 = [
+          "Always low.",
+          "Always high.",
+          "No output is obtained.",
+          "None of these",
+        ];
+        q6 = ["A'+B'", "(A.B)'", "Both a and b", "None of these"];
+        q7 = ["A'+B'", "(A+B)'", "A'.B'", "Both b and c "];
+        q8 = ["1", "2", "7", "8"];
+        q9 = ["1", "2", "7", "8"];
+        q10 = [
+          "Open collector output",
+          "Tristate",
+          "The output is inverted",
+          "None of the above",
+        ];
+        opt = q1.concat(q2, q3, q4, q5, q6, q7, q8, q9, q10);
+
+        for (var j = 0; j <= 9; j++) {
+          for (var i = 1; i <= 4; i++) {
+            var k = i + 4 * j;
+            var option = opt[k - 1];
+            document.getElementById("q" + (j + 1)).innerHTML +=
+              "<div id='block-" +
+              k +
+              "' style='width: 600px;'>" +
+              "<label for='option-" +
+              k +
+              "'>" +
+              "<input type='radio' name='option-" +
+              (j + 1) +
+              "' id='option-" +
+              k +
+              "'/>" +
+              option +
+              "</label>" +
+              "<span id='result-" +
+              k +
+              "'></span>" +
+              "</div>";
+          }
+        }
+      }
+      function displayAnswer1() {
+                var result=0;
+                for (let j = 1; j <= 40; j++) {
+                  document.getElementById('block-'+j).style.border = 'white';
+                }
+
+                for (let j = 1; j <= 40; j++) {
+                  document.getElementById('result-'+j).innerHTML = '';
+                }
+
+        document.getElementById("result").innerHTML = "";
+
+        var ans = [1, 6, 9, 13, 20, 23, 28, 29, 35, 39];
+        var j;
+        for (j = 1; j <= 40; j++) {
+          if (ans.includes(j)) {
+            if (document.getElementById("option-" + j).checked) {
+              document.getElementById("block-" + j).style.border =
+                "3px solid limegreen";
+              document.getElementById("result-" + j).style.color = "limegreen";
+              document.getElementById("result-" + j).innerHTML = " Correct!";
+              result++;
+            }
+          } else {
+            if (document.getElementById("option-" + j).checked) {
+              document.getElementById("block-" + j).style.border =
+                "3px solid red";
+              document.getElementById("result-" + j).style.color = "red";
+              document.getElementById("result-" + j).innerHTML = " Incorrect!";
+            }
+          }
+        }
+
+        document.getElementById("result").innerHTML =
+          "Your score is " + result + " of 10.";
+      }
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NAND and NOR</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #66bfbf;
+      }
+
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #11999e;
+        color: white;
+      }
+    </style>
+
+    <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="Aim.html">Aim</a>
+      <a href="Theory.html">Theory</a>
+      <a href="Pretest.html">Pretest</a>
+      <a href="Procedure.html">Procedure</a>
+      <a href="Simulation-1.html">Simulation</a>
+      <a href="Postest.html"  style="color: rgb(245, 210, 94);">Posttest</a>
+      <a href="Reference.html">Reference</a>
+    </div>
+    <p class="first_para">Posttest</p>
+    <div class="adjust">
+      <div id="q1" style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          1. If one of the input of the NAND gate is logic low, then the output
+          is always?
+        </h2>
+      </div>
+      <div id="q2" style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          2. If one of the input of the NOR gate is logic high, then the output
+          is always?
+        </h2>
+      </div>
+      <div id="q3" style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          3. If the AND gate is always giving a low output, then which among the
+          following stuck at fault is?
+        </h2>
+      </div>
+      <div id="q4" style="text-align: left; padding-left: 100px">
+        <h2 style="font-size: 17px;">
+          4. If the OR gate is always giving a low output, then which among the
+          following stuck at fault is?
+        </h2>
+      </div>
+      <div id="q5" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          5. How many stuck at faults are possible for 2 input NAND gate if the
+          gate always gives high output considering, that more than one stuck at
+          fault is possible?
+        </h2>
+      </div>
+      <div id="q6" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          6.For a 2 input NAND gate, given that both the inputs are stuck-at
+          logic 1 and if there is no fault in the output wire, then regardless
+          of the applied input values, the output is always?
+        </h2>
+      </div>
+
+      <div id="q7" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          7. For a 2 input NOR gate, given that both the inputs are stuck-at
+          logic 0 and if there is no fault in the output wire, then regardless
+          of the applied input values, the output is always?
+        </h2>
+      </div>
+
+      <div id="q8" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          8.If A and B are the two inputs of a 2 input NAND gate, then which of
+          the following stuck-at fault combinations could be responsible for
+          making the detected output as logic 0?
+        </h2>
+      </div>
+
+      <div id="q9" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          9.If A and B are the two inputs of a 2 input NOR gate, then which of
+          the following stuck-at fault combinations could be responsible for
+          making the detected output as logic 1?
+        </h2>
+      </div>
+
+      <div id="q10" style="text-align: left; padding-left: 100px">
+        <h2 style="padding-right: 200px; font-size: 17px;">
+          10.If all the wires of a two input NAND gate are stuck-at logic 0,
+          then the output is always?
+        </h2>
+      </div>
+
+      <br />
+      <button
+        type="button"
+        id="myBtn"
+        class="btn btn-primary btn-block"
+        style="background-color: #76c2af; text-align: center"
+        onclick="displayAnswer1()"
+      >
+        Submit
+      </button>
+      <br />
+      <p id="result" style="text-align: center"></p>
+      <br />
+      <br />
+      <br />
+    </div>
+    <div class="bottom_container">
+      <p class="Signature" style="height: 10px"></p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        load();
+      });
+
+      function load() {
+        q1 = ["1", "0", "1 or 0", "None of these"];
+        q2 = ["1", "0", "1 or 0", "None of these"];
+        q3 = [
+          "One of the inputs is stuck at logic 0.",
+          "One of the inputs is stuck at logic 1.",
+          "Both the inputs are stuck at 1.",
+          "None of these",
+        ];
+        q4 = [
+          "One of the inputs is stuck at logic 0.",
+          "One of the inputs is stuck at logic 1.",
+          "Both the inputs are stuck at 0.",
+          "None of these",
+        ];
+        q5 = ["13", "10", "9", "11"];
+        q6 = ["1", "0", "1 or 0", "None of these"]; 
+        q7 = ["1", "0", "1 or 0", "None of these"]; 
+        q8 = [
+          "A is stuck-at logic 0, with no faults in the other wires",
+          "B is stuck-at logic 0, with no faults in the other wires",
+          "A and B are both stuck-at logic 1, with no fault in the output wire",
+          "The output wire is stuck at logic 1",
+        ];
+        q9 = [
+          "A is stuck-at logic 1, with no faults in the other wires",
+          "B is stuck-at logic 1, with no faults in the other wires",
+          "A and B are both stuck-at logic 0, with no fault in the output wire",
+          "The output wire is stuck at logic 0",
+        ];
+        // Answer- c- A and B are both stuck-at logic 0, with no fault in the output wire];
+        q10 = ["1", "0", "1 or 0", "None of these"]; //0
+        opt = q1.concat(q2, q3, q4, q5, q6, q7, q8, q9, q10);
+
+        for (var j = 0; j <= 9; j++) {
+          for (var i = 1; i <= 4; i++) {
+            var k = i + 4 * j;
+            var option = opt[k - 1];
+            document.getElementById("q" + (j + 1)).innerHTML +=
+              "<div id='block-" +
+              k +
+              "' style='width: 600px;'>" +
+              "<label for='option-" +
+              k +
+              "'>" +
+              "<input type='radio' name='option-" +
+              (j + 1) +
+              "' id='option-" +
+              k +
+              "'/>" +
+              option +
+              "</label>" +
+              "<span id='result-" +
+              k +
+              "'></span>" +
+              "</div>";
+          }
+        }
+      }
+      function displayAnswer1() {
+        var result = 0;
+
+                for (let j = 1; j <= 40; j++) {
+                  document.getElementById('block-'+j).style.border = 'white';
+                }
+
+                for (let j = 1; j <= 40; j++) {
+                  document.getElementById('result-'+j).innerHTML = '';
+                }
+                
+        document.getElementById("result").innerHTML = "";
+
+        var ans = [1, 6, 9, 15, 20, 22, 25, 31, 35, 38];
+        var j;
+        for (j = 1; j <= 40; j++) {
+          if (ans.includes(j)) {
+            if (document.getElementById("option-" + j).checked) {
+              document.getElementById("block-" + j).style.border =
+                "3px solid limegreen";
+              document.getElementById("result-" + j).style.color = "limegreen";
+              document.getElementById("result-" + j).innerHTML = " Correct!";
+              result++;
+            }
+          } else {
+            if (document.getElementById("option-" + j).checked) {
+              document.getElementById("block-" + j).style.border =
+                "3px solid red";
+              document.getElementById("result-" + j).style.color = "red";
+              document.getElementById("result-" + j).innerHTML = " Incorrect!";
+            }
+          }
+        }
+
+        document.getElementById("result").innerHTML =
+          "Your score is " + result + " of 10.";
+      }
+    </script>
+  </body>
+</html>
+
+
+

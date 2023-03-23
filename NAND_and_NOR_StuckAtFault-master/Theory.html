@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NAND and NOR</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #66bfbf;
+      }
+
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #11999e;
+        color: white;
+      }
+    </style>
+
+    <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+            <a href="Aim.html">Aim</a>
+            <a href="Theory.html" style="color: rgb(245, 210, 94);">Theory</a>
+            <a href="Pretest.html">Pretest</a>
+            <a href="Procedure.html">Procedure</a>
+            <a href="Simulation-1.html">Simulation</a>
+            <a href="Postest.html">Posttest</a>
+            <a href="Reference.html">Reference</a>
+    </div>
+
+    <p class="first_para">Theory</p>
+    <h1>Universal Gates</h1>
+    <p class="information">
+      Universal gates are those logic gates using which we can implement any
+      Boolean function without using any other type of logic gates. NOR gate and
+      NAND gate are universal gates i.e. we can implement any Boolean expression
+      using only NAND gates or only NOR gates.
+    </p>
+
+    <h2>NAND GATES</h2>
+    <p class="information">
+      NAND gate is equivalent to an AND gate followed by a NOT gate.The output
+      of a NAND gate is low if and only if all of the inputs are high. The
+      symbol to represent a NAND gate is an AND gate with a small circle on the
+      output representing inversion.
+    </p>
+    <img src="Images/NANDpic.png" alt="" class="gate" />
+    <h2>NOR GATES</h2>
+    <p class="information">
+      NOR gate is equivalent to an OR gate followed by a NOT gate.The output of
+      a NOR gates is high if and only if all of the inputs are low. The symbol
+      to represent a NOR gate is an OR gate with a small circle on the output
+      representing inversion.
+    </p>
+    <img src="Images/NORpic.png" alt="" class="gate" />
+    <h1>STUCK AT FAULTS</h1>
+    <p class="information">
+      A stuck-at fault is a kind of fault model maily used by fault simulators
+      and automatic test pattern generation (ATPG) tools to mimic certain
+      manufacturing defect which can arise in integrated circuits. The procedure
+      is simple - individual signals and their corresponding pins are assumed to
+      be stuck at Logical '1' or '0'. For example, the input could be tied to a
+      logical '0' to model the behavior of a defective circuit that cannot
+      switch its pin to logic '1'. But yes not all faults can be analyzed using
+      the stuck-at fault model. For example, redundant circuits cannot be tested
+      using this model, since by design there is no change in any output as a
+      result of a single fault.
+    </p>
+
+    <h2>NOR S@ Fault Coverage of Tests</h2>
+
+    <div class="fault_table">
+      <div>A</div>
+      <div>B</div>
+      <div>OUT(expected)</div>
+      <div>OUT(detected)</div>
+      <div class="errorcol">Faults possible</div>
+      <div>0</div>
+      <div>0</div>
+      <div>1</div>
+      <div>0</div>
+      <!---->
+      <div class="errorcol">(A-S@1, B-S@1, Y-S@0)</div>
+      <div>0</div>
+      <div>1</div>
+      <div>0</div>
+      <div>1</div>
+      <!---->
+      <div class="errorcol">(Y-S@1, B-S@0)</div>
+      <div>1</div>
+      <div>0</div>
+      <div>0</div>
+      <div>1</div>
+      <!---->
+      <div class="errorcol">(A-S@0, Y-S@1)</div>
+      <div>1</div>
+      <div>1</div>
+      <div>0</div>
+      <div>1</div>
+      <!---->
+      <div class="errorcol">(Y-S@1)</div>
+    </div>
+
+    <h2>NAND S@ Fault Coverage of Tests</h2>
+
+    <div class="fault_table">
+      <div>A</div>
+      <div>B</div>
+      <div>OUT(expected)</div>
+      <div>OUT(detected)</div>
+      <div class="errorcol">Faults possible</div>
+      <div>0</div>
+      <div>0</div>
+      <div>1</div>
+      <div>0</div>
+      <!---->
+      <div class="errorcol">(Y-S@0)</div>
+      <div>0</div>
+      <div>1</div>
+      <div>1</div>
+      <div>0</div>
+      <!---->
+      <div class="errorcol">(A-S@1, Y-S@0)</div>
+      <div>1</div>
+      <div>0</div>
+      <div>1</div>
+      <div>0</div>
+      <!---->
+      <div class="errorcol">(Y-S@0, B-S@1)</div>
+      <div>1</div>
+      <div>1</div>
+      <div>0</div>
+      <div>1</div>
+      <!---->
+      <div class="errorcol">(A-S@0, B-S@0, Y-S@1)</div>
+    </div>
+
+    <div class="blank"></div>
+
+    <div class="bottom_container">
+      <p class="Signature" style="height: 10px"></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+div.bottom_container
+{
+    background-color: #66BFBF;
+    padding: 0px;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+p.first_para
+{
+    color: black;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.tab {
+    tab-size: 2;
+}
+
+h2,h1
+{
+    color: black;
+    margin-bottom: 10px;
+    font-style:normal;
+    font-family: 'Times New Roman', Times, serif;
+}    
+
+span
+{
+    color: black;
+}
+div.top_container
+{
+    text-align: center;
+    font-family:"Times New Roman", Times, serif;
+    background-color:#EAF6F6;
+}
+
+body
+{
+    text-align: center;
+    line-height: 2;
+    min-height: 100vh;
+    position: relative;
+}
+
+ a:hover
+ {
+     color: thistle;
+ }
+
+ button
+ {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+}
+
+label
+{
+    color: black;
+    font-size: 17px;
+}
+input {
+    width: 400px;
+    /* padding: 0 20px; */
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 17px;
+    line-height: 3;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.Signature
+{
+    font-family: 'Times New Roman', Times, serif;
+    color:white;
+    margin: 0;
+}
+
+input
+{
+    width: 50px;
+    height: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+table
+{
+    margin: auto;
+}
+
+#tables, th
+{
+    border: 1px solid black;
+}
+
+th, td
+{
+    padding: 15px;
+}
+
+.para
+{
+    color: black;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.information
+{
+    color: black;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+
+.adjust{
+    padding: 10px;
+    height: 439px;
+}
+
+.gate{
+    display: block;
+    margin: auto;
+    width: 400px;
+}
+
+.refer li{
+    text-align: left;    
+    font-size: 17px;
+    color: black;
+}
+
+.fault_table{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #2196F3;
+    margin: 0px 130px;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.fault_table > div{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    font-size: 17px;
+}
+
+
+.blank{
+    height: 60px;
+}
+
+.errorcol{
+    text-align: left;
+}
+
+.container
+{
+    position: relative;
+}
+
+#containers-out
+{
+    top: 8px;
+    right: -35px;
+    position: absolute;
+}
+
+#containers-text-out
+{
+    top: 8px;
+    right: 30px;
+    position: absolute;
+}
+
+#containers-A
+{
+    top: -35px;
+    left: -113px;
+    position: absolute;
+}
+
+#containers-text-A
+{
+    top: -35px;
+    left: -175px;
+    position: absolute;
+}
+
+#containers-B
+{
+    bottom: -25px;
+    left: -113px;
+    position: absolute;
+}
+
+#containers-text-B
+{
+    bottom: -25px;
+    left: -175px;
+    position: absolute;
+}
+
+

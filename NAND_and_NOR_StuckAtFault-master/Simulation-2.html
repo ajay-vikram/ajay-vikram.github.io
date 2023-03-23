@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title>NAND and NOR</title>
+     <link rel="stylesheet" href="css/styles.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>  
+        <style>
+            body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            .topnav {
+            overflow: hidden;
+            background-color: #66BFBF;
+            }
+            
+            .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            }
+            
+            .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+            }
+            
+            .topnav a.active {
+            background-color: #11999E;
+            color: white;
+            }
+        </style>
+
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="Aim.html">Aim</a>
+            <a href="Theory.html">Theory</a>
+            <a href="Pretest.html">Pretest</a>
+            <a href="Procedure.html">Procedure</a>
+            <a href="Simulation-1.html" style="color: rgb(245, 210, 94);">Simulation</a>
+            <a href="Postest.html">Posttest</a>
+            <a href="Reference.html">Reference</a>
+        </div>
+        <button onclick="window.location.href='Simulation-1.html'" class="btn btn-primary btn-block" style="background-color: #66BFBF; display: block; position: absolute; top:70px;">Simulator-1</button>
+        <button onclick="window.location.href='Simulation-2.html'" class="btn btn-primary btn-block" style="background-color: #359999; display: block; position: absolute; margin-left: 160px;top:70px;">Simulator-2</button>
+        <p class="first_para">Simulation-2</p>
+        <p style="color: red;">NOTE:The "RED" colour indicates generated result doesnt match with expected result</p>    
+        <br>
+        <table>
+            <tr>
+                <td style="vertical-align: top;">
+                    <table>
+                        <tr>
+                        <td style="width: 125px;"><label>A: </label><input type="number" min="0" max="1"></input><br><br><label>B: </label><input type="number" min="0" max="1"></input></td>
+                        <td>
+                            <div class="container">
+                                <label id="containers-text-A">Stuck A: </label>
+                                <input id="containers-A" type="number" class="form-control" name="SAA" min="0" max="1">
+                                <label id="containers-text-B">Stuck B: </label>
+                                <input id="containers-B" type="number" class="form-control" name="SAB" min="0" max="1">
+                                <label id="containers-text-out">Fault at output: </label>
+                                <input id="containers-out"type="number" name="SAO" min="0" max="1">
+                                <img src="Images/NOR.png">
+                            </div>  
+                        </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="padding-left: 100px;vertical-align: top; margin-top: 0px;">
+                    <button type="submit" id="myBtn" class="btn btn-primary btn-block" style="background-color: #76C2AF; display: block; position: absolute;">Run</button>
+                    <button type="submit" id="myReset" class="btn btn-primary btn-block" style="background-color: #76C2AF; margin-left:100px; display: block; position: absolute;">Reset</button>
+                    <br><br>
+
+                    <table id="tables">
+                        <tr>
+                        <th>A</th>
+                        <!-- <th>stuckAtA</th> -->
+                        <th>B</th>
+                        <!-- <th>stuckAtB</th> -->
+                        <th>Output</th>
+                        <!-- <th>stuckAtOut</th> -->
+                        <th>Expected Output</th>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+        <script>
+            var limit=0;
+            var x = document.getElementById("myBtn");
+            if (x.addEventListener) {
+            x.addEventListener("click", myFunction);
+            } else if (x.attachEvent) {
+            x.attachEvent("onclick", myFunction);
+            }
+            
+            function myFunction() 
+            {
+                var stuckAtA=-1;
+                var stuckAtB=-1;
+                var A=-1;
+                var B=-1;
+                var tempA;
+                var tempB;
+                var stuckAtOut=-1;
+                var result;
+                var inputs=document.querySelectorAll('input');
+
+                if(inputs[0].value.length==0||inputs[1].value.length==0||inputs[0].value<0||inputs[1].value>1
+                ||inputs[1].value<0||inputs[1].value>1)
+                {
+                    alert("Enter correct inputs");
+                    inputs[0].value='';
+                    inputs[1].value='';
+                    return;
+                }
+
+                
+                limit++;
+                if(limit>=6)
+                {    
+                    alert("Reset to enter more values into the table");
+                    return;
+                }
+
+                A=inputs[0].value;
+                B=inputs[1].value;
+
+                tempA=A;
+                tempB=B;
+
+                if(inputs[2].value.length!=0)
+                {
+                    stuckAtA=inputs[2].value;
+                }
+
+                if(inputs[3].value.length!=0)
+                {
+                    stuckAtB=inputs[3].value;
+                }
+
+                if(inputs[4].value.length!=0)
+                {
+                    stuckAtOut=inputs[4].value;
+                }
+
+                if(stuckAtA!=-1)
+                {
+                    A=stuckAtA;
+                }
+                if(stuckAtB!=-1)
+                {
+                    B=stuckAtB;
+                }
+
+                if(stuckAtOut==-1)
+                {
+                    if((!Number(A+B))==false)
+                    {
+                        result=0;
+                    }
+                    else
+                    {
+                        result=1;
+                    }
+                }
+                else
+                {
+                    result=stuckAtOut;
+                }
+                
+                rows=document.getElementById('tables').innerHTML;
+                var actual=!(Number(tempB+tempA))==true?1:0;
+                if(actual!=result){
+                    rows=rows+"<tr style='background-color:#f65353'><td id='tables'>"+tempA+
+                    "</td><td id='tables'>"+tempB+
+                    "</td><td id='tables'>"+result+"</td>"+"<td id='tables'>"+actual+
+                    "</td>"+"</tr>";
+                    document.getElementById('tables').innerHTML=rows;
+                }
+                else{
+                    rows=rows+"<tr><td id='tables'>"+tempA+
+                    "</td><td id='tables'>"+tempB+
+                    "</td><td id='tables'>"+result+"</td>"+"<td id='tables'>"+actual+
+                    "</td>"+"</tr>";
+                    document.getElementById('tables').innerHTML=rows;
+                }
+            }
+            var y = document.getElementById("myReset");
+            if (y.addEventListener) {
+            y.addEventListener("click", myReset);
+            } else if (y.attachEvent) {
+            y.attachEvent("onclick", myReset);
+            }
+            
+            function myReset() 
+            {
+                rows=document.getElementById('tables').innerHTML='<tr><th>A</th><th>B</th><th>Output</th><th>Expected Output</th></tr>';
+                limit=0;
+            }
+        </script>
+        <br><br>
+        <div class="bottom_container">
+            <p class="Signature" style="height: 10px;"></p>
+        </div>
+</body>
+ 
+</html>
