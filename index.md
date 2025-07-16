@@ -26,5 +26,8 @@ ML Research Intern, Indian Institute of Science \
 2024.05 - 2025.07 \
 Advisor: [Chetan Singh Thakur](https://labs.dese.iisc.ac.in/neuronics/people/)
 
+ML Intern, Lamarr\
+2024.03 - 2024.04
+
 Software Intern, Qualcomm\
 2023.05 - 2023.07 
