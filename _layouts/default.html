@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/academicons.min.css"/>
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% include head-custom.html %}
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 style="text-align:center"><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
+        {% if site.logo %}
+          <img src="{{site.logo | relative_url}}" alt="Shuyan Zhou" align="center" style="margin-left: 2em; margin-bottom: 0em; width: 80%; border-radius: 50%;" />
+        {% endif %}
+
+        <div style="margin-top: 2em; margin-bottom: 0em; text-align: center">
+          <a href="https://github.com/shuyanzhou"><i class='fa fa-github'></i> github</a> | <a href="https://twitter.com/shuyanzhxyc"><i class='fa fa-twitter'></i> twitter</a> | <a href="https://www.linkedin.com/in/shuyan-zhou-701927126/"><i class='fa fa-linkedin'></i> linkedin</a>
+          <br/>
+          <a href="https://scholar.google.com/citations?user=t6YzEpgAAAAJ"><i class="ai ai-google-scholar"></i> google scholar</a>
+        </div>
+
+       <div style="margin-top: 2em; margin-bottom: 2em; text-align: center">
+        <a href="#about-me">About Me</a>
+        <br/>
+        <a href="#publications">Publications</a>
+        <br/>
+        <a href="#experience">Experience</a>
+        <br/>
+        <a href="/ShuyanZhou_CV.pdf" target="_blank">CV</a>
+        <br/>
+       </div>
+
+      </header>
+      <section>
+
+      {{ content }}
+
+      </section>
+      <footer>
+        {% if site.github.is_project_page %}
+        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+        {% endif %}
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </body>
+</html>
