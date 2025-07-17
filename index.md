@@ -18,7 +18,6 @@ Atanu Chatterjee\*, **Ajay Vikram P**\*, Aniketh Narayan Bellala\*, T Naga Tarun
 
 ------------
 
-
 ## Experience
 
 ML Research Intern, Indian Institute of Science \
@@ -30,3 +29,40 @@ ML Intern, Lamarr\
 
 Software Intern, Qualcomm\
 2023.05 - 2023.07 
+
+------------
+
+## Projects
+
+<table>
+  <tr>
+    <td style="width: 150px;">
+      <a href="/ViTFuser/">
+        <img src="/assets/img/ViTFuser/carla.png" alt="BCI Project" style="width: 15   0px; border-radius: 10px;">
+      </a>
+    </td>
+    <td style="vertical-align: middle; padding-left: 15px;">
+      <a href="/ViTFuser/" style="text-decoration: none; font-size: 18px; font-weight: bold;">
+        ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <td style="width: 150px;">
+      <a href="/BCI/">
+        <img src="/assets/img/BCI/BCI.png" alt="BCI Project" style="width: 15   0px; border-radius: 10px;">
+      </a>
+    </td>
+    <td style="vertical-align: middle; padding-left: 15px;">
+      <a href="/BCI/" style="text-decoration: none; font-size: 18px; font-weight: bold;">
+        Decoding Hand Kinematics in Brain-Computer Interfaces with State-Space Models
+      </a>
+    </td>
+  </tr>
+</table>
+
+
