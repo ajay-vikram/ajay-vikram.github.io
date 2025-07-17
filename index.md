@@ -38,7 +38,7 @@ Software Intern, Qualcomm\
   <tr>
     <td style="width: 150px;">
       <a href="/ViTFuser/">
-        <img src="/assets/img/ViTFuser/carla.png" alt="ViTFuser" style="width: 15   0px; border-radius: 10px;">
+        <img src="/assets/img/carla.png" alt="ViTFuser" style="width: 15   0px; border-radius: 10px;">
       </a>
     </td>
     <td style="vertical-align: middle; padding-left: 15px;">
@@ -54,7 +54,7 @@ Software Intern, Qualcomm\
   <tr>
     <td style="width: 150px;">
       <a href="/BCI/">
-        <img src="/assets/img/BCI/BCI.png" alt="BCI Project" style="width: 15   0px; border-radius: 10px;">
+        <img src="/assets/img/BCI.png" alt="BCI Project" style="width: 15   0px; border-radius: 10px;">
       </a>
     </td>
     <td style="vertical-align: middle; padding-left: 15px;">

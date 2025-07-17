@@ -13,7 +13,7 @@ ViTFuser is an attention-based deep learning architecture designed to improve de
 The project outperforms comparative existing models on CARLA simulation benchmarks, achieving higher Driving Scores (DS) and lower traffic infractions.
 
 <a href="/ViTFuser/">
-    <img src="/assets/img/ViTFuser/high_level.png" alt="High Level Overview" style="width: 15   0px; border-radius: 10px;">
+    <img src="/assets/img/high_level.png" alt="High Level Overview" style="width: 15   0px; border-radius: 10px;">
 </a>
 
 ---
@@ -28,7 +28,7 @@ ViTFuser was evaluated on the CARLA 0.9.10 simulator, using data recorded at 2 F
 - **Output**: 4 future waypoints for the ego vehicle
 
 <a href="/ViTFuser/">
-    <img src="/assets/img/ViTFuser/input_modality.png" alt="Input Modality" style="width: 15   0px; border-radius: 10px;">
+    <img src="/assets/img/input_modality.png" alt="Input Modality" style="width: 15   0px; border-radius: 10px;">
 </a>
 
 The goal is to predict waypoints accurately while minimizing infractions during navigation.
@@ -46,7 +46,7 @@ The model consists of two main components:
 - Uses Feature Pyramid Network (FPN) for multi-scale feature extraction, boosting object detection accuracy
 
 <a href="/ViTFuser/">
-    <img src="/assets/img/ViTFuser/encoder.png" alt="Encoder" style="width: 15   0px; border-radius: 10px;">
+    <img src="/assets/img/encoder.png" alt="Encoder" style="width: 15   0px; border-radius: 10px;">
 </a>
 
 ### 2. **Decision Module (Decoder)**
