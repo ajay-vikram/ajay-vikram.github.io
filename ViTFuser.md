@@ -1,5 +1,7 @@
 ---
 layout: project
+title: "ViTFuser"
+permalink: /ViTFuser/
 ---
 
 # ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles

@@ -1,5 +1,7 @@
 ---
 layout: project
+title: "BCI"
+permalink: /BCI/
 ---
 
 # Decoding Hand Kinematics in Brain-Computer Interfaces with State-Space Models
