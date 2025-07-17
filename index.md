@@ -2,9 +2,8 @@
 layout: default
 ---
 
-<!-- ## About Me -->
 <a id="about-me"></a>
-Hi! I’m an incoming Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/) starting fall 2025. My field of interest lies in deep neural networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
+Hi! I’m an incoming Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/) starting fall 2025. My interest lies in deep neural networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
 
 I am best reached by email at [ajayvikramp@gmail.com](mailto:ajayvikramp@gmail.com).
 
@@ -15,7 +14,7 @@ I am best reached by email at [ajayvikramp@gmail.com](mailto:ajayvikramp@gmail.c
 
 **ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles** \
 Atanu Chatterjee\*, **Ajay Vikram P**\*, Aniketh Narayan Bellala\*, T Naga Tarun\*, Basavaraj Talawar, Vani M, and Jeny Rajan \
-*6th International Conference on Machine Learning, Image Processing, Network Security and Data Sciences(MIND 2024)* 
+*6th International Conference on Machine Learning, Image Processing, Network Security and Data Sciences (MIND 2024)* 
 
 ------------
 
