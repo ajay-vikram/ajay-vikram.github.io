@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<a id="about-me"></a>
-Hi! I’m an incoming Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/) starting fall 2025. My interest lies in deep neural networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
+## About Me
+cHi! I’m an incoming Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/) starting fall 2025. My interest lies in deep neural networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
 
 I am best reached by email at [ajayvikramp@gmail.com](mailto:ajayvikramp@gmail.com).
 
