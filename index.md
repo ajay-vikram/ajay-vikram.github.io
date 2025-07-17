@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Ajay Vikram P"
-permalink: /index/
+permalink: /
 ---
 
 ## About Me
