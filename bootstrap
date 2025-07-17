@@ -5264,4 +5264,61 @@ More info and automated migrator: https://sass-lang.com/d/import
   Server running... press ctrl-c to stop.
 ^C[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004h[?2004l
 [1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004h[?2004l
-[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hc
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hccke c cear  c clear[?2004l
+[3J[H[2J[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hclearbundle exec jekyll serve
+[K[K[A[52Cclear                   [1B[K[A[57Cgit pull[8Dclear   git pull[8Dclear   bundle exec jekyll serve[1B[K[K[A[52Cclear                   [1B[K[A[57Cgit pull[8Dclear   git push origin main[1B[K[K[A[52Cclear               [1B[K[A[57Cgit commit -m "modified content"[28Dadd .                       [23D[9Dclear    bundle exec jekyll build[1B[K[K[?2004l
+Configuration file: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_config.yml
+ Theme Config file: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_config.yml
+            Source: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io
+       Destination: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"jekyll-theme-minimal"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"fonts"[0m;
+[34m  │[0m [31m        ^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 1:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m2 │[0m @import [31m"rouge-github"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 2:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+                    done in 0.093 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hcclear[?2004l
+[3J[H[2J[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit add .[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit commit -m "modified content"[?2004l
+[main 72c5c2c] modified content
+ 2 files changed, 83 insertions(+), 1 deletion(-)
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hcclear[?2004l
+[3J[H[2J[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit push origin main[?2004l
+Enumerating objects: 7, done.
+Counting objects:  14% (1/7)Counting objects:  28% (2/7)Counting objects:  42% (3/7)Counting objects:  57% (4/7)Counting objects:  71% (5/7)Counting objects:  85% (6/7)Counting objects: 100% (7/7)Counting objects: 100% (7/7), done.
+Delta compression using up to 11 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 1.64 KiB | 1.64 MiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/ajay-vikram/ajay-vikram.github.io.git
+   9d27ebb..72c5c2c  main -> main
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hcclear[?2004l
+[3J[H[2J[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004h
