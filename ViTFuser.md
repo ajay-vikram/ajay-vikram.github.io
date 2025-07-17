@@ -96,4 +96,4 @@ ViTFuser was benchmarked on **Longest6** and **Town05** datasets from CARLA.
 DS - Driving Score, RC - Route Completion, IS - Infraction Score
 
 
-[Back](/index/)
+[Back](/)
