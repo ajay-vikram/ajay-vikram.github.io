@@ -6081,4 +6081,74 @@ More info and automated migrator: https://sass-lang.com/d/import
 
 [34m  ╷[0m
 [34m1 │[0m @import [31m"fonts"[0m;
-[34m  │[0m [31m        ^^^
+[34m  │[0m [31m        ^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 1:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m2 │[0m @import [31m"rouge-github"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 2:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+                    ...done in 0.027335 seconds.
+                    
+^C^C^C[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hcclear[?2004l
+[3J[H[2J[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hclearbundle exec jekyll serve
+[K[K[A[76C[1C     build[?2004l[1B
+Configuration file: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_config.yml
+ Theme Config file: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_config.yml
+            Source: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io
+       Destination: /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"jekyll-theme-minimal"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"fonts"[0m;
+[34m  │[0m [31m        ^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 1:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+[33m[1mDeprecation Warning[0m [[34mimport[0m]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m2 │[0m @import [31m"rouge-github"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    jekyll-theme-minimal.scss 2:9                                                 @import
+    /Users/ajayvikram/Desktop/ML/ajay-vikram.github.io/assets/css/style.scss 1:9  root stylesheet
+                    done in 0.067 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit add .[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit p commit -m "layout change            headers modified"[?2004l
+[main 253b6fb] headers modified
+ 2 files changed, 218 insertions(+), 3 deletions(-)
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004hggit push origin main[?2004l
+Enumerating objects: 7, done.
+Counting objects:  14% (1/7)Counting objects:  28% (2/7)Counting objects:  42% (3/7)Counting objects:  57% (4/7)Counting objects:  71% (5/7)Counting objects:  85% (6/7)Counting objects: 100% (7/7)Counting objects: 100% (7/7), done.
+Delta compression using up to 11 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 762 bytes | 762.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/ajay-vikram/ajay-vikram.github.io.git
+   80cd7f9..253b6fb  main -> main
+[1m[7m%[27m[1m[0m                                                                                                                                   [0m[27m[24m[J(base) ajayvikram@Ajays-Mac ajay-vikram.github.io % [K[?2004h
