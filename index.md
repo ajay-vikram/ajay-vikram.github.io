@@ -12,24 +12,27 @@ I am best reached by email at [ajayvikramp@gmail.com](mailto:ajayvikramp@gmail.c
 ------------
 
 ## Publications
-*\* indicates equal contribution*
 
 **ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles** \
-Atanu Chatterjee\*, **Ajay Vikram P**\*, Aniketh Narayan Bellala\*, T Naga Tarun\*, Basavaraj Talawar, Vani M, and Jeny Rajan \
-*6th International Conference on Machine Learning, Image Processing, Network Security and Data Sciences (MIND 2024)* 
+*6th International Conference on Machine Learning, Image Processing, Network Security and Data Sciences (MIND 2024)* \
+Atanu Chatterjee, **Ajay Vikram P**, Aniketh Narayan Bellala, T Naga Tarun, Basavaraj Talawar, Vani M, and Jeny Rajan
+
 
 ------------
 
 ## Experience
 
-ML Research Intern, Indian Institute of Science \
-2024.05 - 2025.07 \
-Advisor: [Chetan Singh Thakur](https://labs.dese.iisc.ac.in/neuronics/people/)
+Machine Learning Research Intern \
+*Indian Institute of Science, Bengaluru* \
+Advisor: [Chetan Singh Thakur](https://labs.dese.iisc.ac.in/neuronics/people/) \
+2024.05 - 2025.07 
 
-ML Intern, Lamarr\
+Machine Learning Intern \
+*Lamarr, Remote* \
 2024.03 - 2024.04
 
-Software Intern, Qualcomm\
+Software Intern \
+*Qualcomm, Hyderabad* \
 2023.05 - 2023.07 
 
 ------------
