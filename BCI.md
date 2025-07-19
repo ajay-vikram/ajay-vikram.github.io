@@ -29,6 +29,8 @@ We trained 2 State-Space Models on this dataset:
 1. [Legendre Memory Units (LMUs)](https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf)
 2. [Structured State Space Sequence Models (S4)](https://arxiv.org/pdf/2111.00396)
 
+Refer to my [blog post](https://medium.com/@ajayvikramp/ssms-for-efficient-long-range-memory-d6a78226c738) on State-Space Models if you are new to the topic.
+
 ---
 
 ## Model Architecture
@@ -52,7 +54,7 @@ We trained 2 State-Space Models on this dataset:
 | **S4**      | **70K**    | **0.75**      |
 
 
-*The results shown above are for the 3rd sessions of Monkey 1
+*The results shown above are for the 3rd session of Monkey 1
 
 
 [Back](/)
