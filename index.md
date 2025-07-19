@@ -69,3 +69,31 @@ Software Intern \
 </table>
 
 
+## Skills
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    Python
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    PyTorch
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    Deep Learning
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    CNNs
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    RNNs
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    Transformers
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    State-Space Models
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    Large Language Models
+  </button>
+</div>
