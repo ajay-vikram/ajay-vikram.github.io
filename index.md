@@ -56,6 +56,21 @@ Software Intern \
 <table>
   <tr>
     <td style="width: 150px;">
+      <a href="/HAR/">
+        <img src="/assets/img/har.png" alt="HAR Project" style="width: 15   0px; border-radius: 10px;">
+      </a>
+    </td>
+    <td style="vertical-align: middle; padding-left: 15px;">
+      <a href="/HAR/" style="text-decoration: none; font-size: 18px; font-weight: bold;">
+        Ternarizing CNNs for Human Activity Recognition
+      </a>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td style="width: 150px;">
       <a href="/BCI/">
         <img src="/assets/img/BCI.png" alt="BCI Project" style="width: 15   0px; border-radius: 10px;">
       </a>
@@ -95,5 +110,8 @@ Software Intern \
   </button>
   <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
     Large Language Models
+  </button>
+  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
+    Quantization  
   </button>
 </div>
