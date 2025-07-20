@@ -22,7 +22,7 @@ The model is trained on a private dataset, using spectrogram representations of 
 
 The CNN architecture is lightweight, consisting of:
 - A 2D convolution layer
-- Depthwise and pointwise convolutions for spatial-temporal filtering
+- Two depthwise separable convolutions for spatial-temporal filtering
 - Fully connected output layer with 5 class logits
 
 <a href="/HAR/">
