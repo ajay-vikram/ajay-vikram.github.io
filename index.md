@@ -5,7 +5,7 @@ permalink: /
 ---
 
 ## About Me
-Hi! I’m an incoming Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/) starting fall 2025. My interest lies in deep neural networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
+Hi! I’m a Master’s student in Computer Science at [Duke CS](https://cs.duke.edu/). My interest lies in Deep Neural Networks, particularly convolutional and transformer-based architectures, as well as State-Space Models (SSMs) like S4 and Mamba.
 
 ------------
 
