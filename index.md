@@ -59,6 +59,21 @@ National Institute of Technology Karnataka (NITK) \
 <table>
   <tr>
     <td style="width: 150px;">
+      <a href="/SkillBlenderLC/">
+        <img src="/assets/img/robot.png" alt="SkillBlenderLC" style="width: 15   0px; border-radius: 10px;">
+      </a>
+    </td>
+    <td style="vertical-align: middle; padding-left: 15px;" >
+      <a href="/SkillBlenderLC/" style="text-decoration: none; font-size: 18px; font-weight: bold;">
+        SkillBlenderLC: Self-Evolving Meta-Skill Learning for Humanoid Robots
+      </a>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td style="width: 150px;">
       <a href="/ViTFuser/">
         <img src="/assets/img/carla.png" alt="ViTFuser" style="width: 15   0px; border-radius: 10px;">
       </a>
