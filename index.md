@@ -6,7 +6,7 @@ permalink: /
 
 ## About Me
 <div style="text-align: justify;">
-Hi! I’m a Master’s student in Computer Science at <a href="https://cs.duke.edu/" target="_blank">Duke CS</a>, driven by a deep fascination with how intelligence can emerge from computation. My journey in machine learning has taken me across diverse frontiers — from designing CNN-transformer backbones for autonomous driving, and decoding neural signals from the brain in non-human primates using State Space Models, to compressing models through quantization and ternarization for human activity recognition. I’m exploring more of what’s possible with machine learning and love collaborating with others who share that curiosity.
+Computer Science Master’s student at Duke University focused on machine learning research in deep learning and efficient model design. Experienced in developing ML pipelines for autonomous driving, neuromorphic tracking and recognition, fMRI analysis, and model optimization, with demonstrated impact in both academic and industry settings.
 </div><br/>
 
 ------------
@@ -117,35 +117,41 @@ National Institute of Technology Karnataka (NITK) \
   </tr>
 </table>
 
-
 ## Skills
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Python
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    C/C++
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    PyTorch
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Deep Learning
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Computer Vision
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Natural Language Processing
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Neuromorphic Vision
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    Quantization  
-  </button>
-  <button style="background-color: #267CB9; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: default;">
-    MLOps  
-  </button>
+<div style="
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+">
+  <span class="skill-pill">Python</span>
+  <span class="skill-pill">C/C++</span>
+  <span class="skill-pill">PyTorch</span>
+  <span class="skill-pill">TensorFlow</span>
+  <span class="skill-pill">Deep Learning</span>
+  <span class="skill-pill">CV</span>
+  <span class="skill-pill">NLP</span>
+  <span class="skill-pill">Neuromorphic Vision</span>
+  <span class="skill-pill">Quantization</span>
+  <span class="skill-pill">MLOps</span>
+  <span class="skill-pill">Docker</span>
+  <span class="skill-pill">Kubernetes</span>
+  <span class="skill-pill">Jenkins</span>
+  <span class="skill-pill">MLflow</span>
+  <span class="skill-pill">MySQL</span>
+  <span class="skill-pill">ROS2</span>
+  <span class="skill-pill">HTML/CSS</span>
 </div>
 
+<style>
+  .skill-pill {
+    background-color: #2b6cb0;          /* softer blue */
+    color: #ffffff;
+    font-size: 13px;                     /* smaller text */
+    padding: 4px 10px;                   /* smaller box */
+    border-radius: 999px;                /* pill shape */
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+</style>
