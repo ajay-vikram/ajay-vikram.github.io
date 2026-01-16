@@ -88,8 +88,6 @@ Key Improvements:
 - Smart Notifications: Automated email delivery of memory reports, including direct links to the web analysis page.
 
 Key Tools: ReactJS, Node.js, Express, MongoDB, Jenkins, Docker, Kubernetes.
-
-![System Workflow](/assets/img/workflow.png)
         `
       },
       {
