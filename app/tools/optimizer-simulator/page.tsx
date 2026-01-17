@@ -194,7 +194,7 @@ export default function OptimizerSimulatorPage() {
       x: x,
       y: y,
       type: 'contour',
-      colorscale: selectedFunction === 'Saddle' ? 'RdBu' : 'Viridis',
+      colorscale: 'Viridis',
       contours: {
         coloring: 'heatmap',
         showlabels: true,
