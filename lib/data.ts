@@ -126,6 +126,11 @@ export const skills = [
 
 export const publications = [
   {
+    title: "Asynchronous High-Speed Tracking of Astronomical Objects using Neuromorphic Camera for Edge Computing",
+    conference: "2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2026)",
+    authors: "Satyapreet Singh Yadav, Ajay Vikram P, Adithya M D, Chandra Sekhar Seelamantula, Chetan Singh Thakur"
+  },
+  {
     title: "HOMI: Ultra-Fast EdgeAI platform for Event Cameras",
     conference: "Preprint",
     authors: "Shankaranarayanan H, Satyapreet Singh Yadav, Adithya Krishna, Ajay Vikram P, Mahesh Mehendale, Chetan Singh Thakur",
