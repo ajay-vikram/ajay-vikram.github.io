@@ -19,7 +19,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <article className="container py-10 px-4 md:px-6 max-w-4xl mx-auto">
+    <article className="container py-10 px-4 md:px-6 max-w-4xl mx-auto pt-24">
       <Link 
         href="/#projects" 
         className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-8 transition-colors"
