@@ -21,12 +21,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   return (
     <article className="container py-10 px-4 md:px-6 max-w-4xl mx-auto pt-24">
       <Link 
-        href="/#projects" 
-        className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-8 transition-colors"
-      >
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Projects
-      </Link>
+        href="/projects" 
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Projects
+        </Link>
       
       <div className="prose prose-slate dark:prose-invert max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-headings:scroll-mt-20">
         <ReactMarkdown 

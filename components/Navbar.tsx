@@ -5,14 +5,14 @@ import { motion } from "framer-motion"
 
 export function Navbar() {
   const navs = [
-    { name: "About", href: "/#about" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Publications", href: "/#publications" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Tools", href: "/#tools" },
-    { name: "Skills", href: "/#skills" },
+    { name: "About", href: "/" },
+    { name: "Experience", href: "/experience" },
+    { name: "Publications", href: "/publications" },
+    { name: "Projects", href: "/projects" },
+    { name: "Tools", href: "/tools" },
+    { name: "Skills", href: "/skills" },
     { name: "Resume", href: "/Resume.pdf" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ]
 
   return (

@@ -115,8 +115,8 @@ export default function PositionalEncodingPage() {
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-amber-900/50 selection:text-amber-100 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-10">
         <Link 
-          href="/#tools" 
-          className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors w-fit"
+          href="/tools"
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Tools

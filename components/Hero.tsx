@@ -3,6 +3,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { personalInfo } from "@/lib/data"
 import { FaGithub, FaLinkedin, FaMedium, FaFileAlt } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 
 export function Hero() {
@@ -67,6 +68,7 @@ export function Hero() {
           >
             <SocialLink href={personalInfo.github} icon={<FaGithub className="w-5 h-5" />} label="GitHub" />
             <SocialLink href={personalInfo.linkedin} icon={<FaLinkedin className="w-5 h-5" />} label="LinkedIn" />
+            <SocialLink href={personalInfo.twitter} icon={<FaXTwitter className="w-5 h-5" />} label="X" />
             <SocialLink href={personalInfo.medium} icon={<FaMedium className="w-5 h-5" />} label="Medium" />
             <SocialLink href={`mailto:${personalInfo.email}`} icon={<MdEmail className="w-5 h-5" />} label="Email" />
             <SocialLink href="/Resume.pdf" icon={<FaFileAlt className="w-5 h-5" />} label="Resume" />

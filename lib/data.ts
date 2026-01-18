@@ -7,6 +7,7 @@ export const personalInfo = {
   github: "https://github.com/ajay-vikram",
   linkedin: "https://www.linkedin.com/in/ajay-vikram777/",
   medium: "https://medium.com/@ajayvikramp",
+  twitter: "https://x.com/AjayVikram1622",
   image: "/assets/img/main.jpg",
   formspreeId: "xjvnaeeq"
 };
@@ -119,9 +120,11 @@ export const education = [
 ];
 
 export const skills = [
-  "Python", "C/C++", "PyTorch", "TensorFlow", "Deep Learning", "CV", "NLP",
-  "Neuromorphic Vision", "Quantization", "MLOps", "Docker", "Kubernetes",
-  "Jenkins", "MLflow", "MySQL", "ROS2", "HTML/CSS", "Git"
+  "Python", "PyTorch", "TensorFlow", "Deep Learning", "CV", "NLP",
+  "Scikit-learn", "OpenCV", "Hugging Face", "LangChain", "Finetuning",
+  "Neuromorphic Vision", "Quantization", "C/C++", "MLOps",
+  "Docker", "Kubernetes", "Jenkins", "MLflow", "ROS2",
+  "Git", "MySQL", "HTML/CSS", "React"
 ];
 
 export const publications = [

@@ -256,8 +256,8 @@ export default function CNNVisualizerPage() {
         
         {/* Navigation */}
         <Link 
-          href="/#tools" 
-          className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors w-fit"
+          href="/tools"
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Tools

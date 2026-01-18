@@ -1,6 +1,7 @@
 "use client"
 import { personalInfo } from "@/lib/data"
 import { FaGithub, FaLinkedin, FaMedium } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 
 export function Footer() {
   return (
@@ -12,6 +13,7 @@ export function Footer() {
         <div className="flex gap-4 items-center">
             <SocialLink href={personalInfo.github} icon={<FaGithub className="w-3.5 h-3.5" />} label="GitHub" />
             <SocialLink href={personalInfo.linkedin} icon={<FaLinkedin className="w-3.5 h-3.5" />} label="LinkedIn" />
+            <SocialLink href={personalInfo.twitter} icon={<FaXTwitter className="w-3.5 h-3.5" />} label="X" />
             <SocialLink href={personalInfo.medium} icon={<FaMedium className="w-3.5 h-3.5" />} label="Medium" />
         </div>
       </div>

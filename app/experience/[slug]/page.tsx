@@ -36,8 +36,8 @@ export default function ExperiencePage({ params }: { params: { slug: string } })
     <div className="min-h-screen bg-background">
       <article className="container pt-28 pb-16 px-4 md:px-6 max-w-4xl mx-auto">
         <Link 
-          href="/#experience" 
-          className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-10 transition-colors"
+          href="/experience" 
+          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Experience

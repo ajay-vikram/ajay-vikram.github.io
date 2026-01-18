@@ -266,13 +266,12 @@ export default function OptimizerSimulatorPage() {
     <div className="min-h-screen bg-background text-foreground font-sans pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
         <Link 
-          href="/#tools" 
-          className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors w-fit"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Tools
-        </Link>
-        
+                    href="/tools"
+                    className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+                  >
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Back to Tools
+                  </Link>        
         {/* Header */}
         <header className="text-center space-y-4">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-600 pb-2">
