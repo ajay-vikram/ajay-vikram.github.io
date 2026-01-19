@@ -17,44 +17,60 @@ export default function QuantizationVisualizerPage() {
   // Specific value to quantize
   const [currentVal, setCurrentVal] = useState(2.5);
 
-  // Constants for Int4
-  const Q_MIN = -8;
-  const Q_MAX = 7;
-  const Q_RANGE = 15;
-
   // --- Calculations ---
 
-  const { scale, zeroPoint } = useMemo(() => {
-    let s = 1;
-    let z = 0;
+  // Determine Q params based on scheme
+  const { qMin, qMax, qRange, scale, zeroPoint } = useMemo(() => {
+    let qMin, qMax, qRange, s, z;
 
     if (scheme === "symmetric") {
-      // Symmetric Int4: Max magnitude maps to 7 (Q_MAX)
-      // Range is effectively [-maxAbs, maxAbs] -> [-7, 7] (or clamped to -8)
-      // We force Z = 0
+      // Symmetric: Signed Int4 [-8, 7]
+      // Formula: s = max(|r_min|, |r_max|) / q_max
+      // z = 0
+      qMin = -8;
+      qMax = 7;
+      qRange = 15; // Not used for scale calc in symmetric, but for grid
+
       const maxAbs = Math.max(Math.abs(minVal), Math.abs(maxVal));
-      s = maxAbs / 7; 
-      // Protect against divide by zero
+      s = maxAbs / qMax; // Maps max value to 7
       if (s === 0) s = 0.0001;
       z = 0;
+
     } else {
-      // Asymmetric: min -> Q_MIN, max -> Q_MAX
-      // S = (max - min) / (Q_MAX - Q_MIN)
-      // Z = round(Q_MIN - min / S)
-      s = (maxVal - minVal) / Q_RANGE;
-      if (s === 0) s = 0.0001; 
+      // Asymmetric: Unsigned Int4 [0, 15]
+      // Formula: s = (r_max - r_min) / (q_max - q_min)
+      // z = round(q_min - r_min / s)
+      qMin = 0;
+      qMax = 15;
+      qRange = 15;
+
+      s = (maxVal - minVal) / (qMax - qMin);
+      if (s === 0) s = 0.0001;
       
-      z = Math.round(Q_MIN - minVal / s);
+      z = Math.round(qMin - minVal / s);
+      
+      // Standard clipping of Z to ensure it fits in range is good practice, 
+      // though mathematically z corresponds to real 0.
+      z = Math.max(qMin, Math.min(qMax, z));
     }
-    return { scale: s, zeroPoint: z };
+
+    return { qMin, qMax, qRange, scale: s, zeroPoint: z };
   }, [minVal, maxVal, scheme]);
 
   const quantize = (val: number) => {
-    const q = Math.round(val / scale + zeroPoint);
-    return Math.max(Q_MIN, Math.min(Q_MAX, q));
+    // q = round(x / s) + z
+    // symmetric: z is 0, so round(x/s)
+    // asymmetric: round(x/s) + z  (equivalent to round(x/s + z) if z is integer)
+    
+    // Note: The prompt formula for Asymmetric is q = round(x/s) + z
+    // For Symmetric it's q = round(x/s)
+    // Since z=0 for symmetric, we can use the unified formula:
+    const q = Math.round(val / scale) + zeroPoint;
+    return Math.max(qMin, Math.min(qMax, q));
   };
 
   const dequantize = (q: number) => {
+    // x = (q - z) * s
     return (q - zeroPoint) * scale;
   };
 
@@ -66,13 +82,12 @@ export default function QuantizationVisualizerPage() {
   
   const gridPoints = useMemo(() => {
     const points = [];
-    // Plot all points for Int4 since there are only 16
-    for (let q = Q_MIN; q <= Q_MAX; q++) { 
+    for (let q = qMin; q <= qMax; q++) { 
        const r = dequantize(q);
        points.push({ q, r });
     }
     return points;
-  }, [scale, zeroPoint]);
+  }, [scale, zeroPoint, qMin, qMax]);
 
 
   return (
@@ -124,6 +139,9 @@ export default function QuantizationVisualizerPage() {
                     </button>
                   ))}
                 </div>
+                 <p className="text-[10px] text-muted-foreground mt-2">
+                  {scheme === "symmetric" ? "Signed Int4 [-8, 7]" : "Unsigned Int4 [0, 15]"}
+                </p>
               </div>
 
               {/* Range Inputs */}
@@ -167,11 +185,11 @@ export default function QuantizationVisualizerPage() {
               
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between items-center p-3 bg-muted/30 rounded border border-border/50">
-                  <span className="text-muted-foreground font-medium">Scale (S)</span>
+                  <span className="text-muted-foreground font-medium">Scale (s)</span>
                   <span className="font-mono text-blue-400 font-bold">{scale.toExponential(4)}</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-muted/30 rounded border border-border/50">
-                  <span className="text-muted-foreground font-medium">Zero Point (Z)</span>
+                  <span className="text-muted-foreground font-medium">Zero Point (z)</span>
                   <span className="font-mono text-purple-400 font-bold">{zeroPoint}</span>
                 </div>
               </div>
@@ -179,33 +197,33 @@ export default function QuantizationVisualizerPage() {
               <div className="pt-2 space-y-2">
                  {/* Main Formula */}
                  <div className="bg-neutral-950/50 p-3 rounded-md border border-neutral-800 text-sm text-center font-mono text-muted-foreground">
-                     <span className="text-foreground">q</span> = clamp(round(x/S + Z), -8, 7)
+                     <span className="text-foreground">q</span> = clamp(round(x/s) + z, {qMin}, {qMax})
                  </div>
 
                  {/* Derivation Formulas */}
                  <div className="p-3 rounded-md border border-border/50 text-xs space-y-2 bg-muted/10">
-                     <p className="font-semibold text-muted-foreground uppercase tracking-wide mb-1">Derivation</p>
+                     <p className="font-semibold text-muted-foreground uppercase tracking-wide mb-1">Derivation ({scheme})</p>
                      
                      {scheme === "asymmetric" ? (
                         <>
                           <div className="flex items-center gap-2">
-                              <span className="font-mono text-blue-400 font-bold">S</span> 
-                              <span className="font-mono">= (x_max - x_min) / 15</span>
+                              <span className="font-mono text-blue-400 font-bold">s</span> 
+                              <span className="font-mono">= (r_max - r_min) / (15 - 0)</span>
                           </div>
                           <div className="flex items-center gap-2">
-                              <span className="font-mono text-purple-400 font-bold">Z</span>
-                              <span className="font-mono">= round(-8 - x_min / S)</span>
+                              <span className="font-mono text-purple-400 font-bold">z</span>
+                              <span className="font-mono">= round(0 - r_min / s)</span>
                           </div>
                         </>
                      ) : (
                         <>
                            <div className="flex items-center gap-2">
-                              <span className="font-mono text-blue-400 font-bold">S</span> 
-                              <span className="font-mono">= max(|x_max|, |x_min|) / 7</span>
+                              <span className="font-mono text-blue-400 font-bold">s</span> 
+                              <span className="font-mono">= max(|r_min|, |r_max|) / 7</span>
                           </div>
                           <div className="flex items-center gap-2">
-                              <span className="font-mono text-purple-400 font-bold">Z</span>
-                              <span className="font-mono">= 0 (Forced)</span>
+                              <span className="font-mono text-purple-400 font-bold">z</span>
+                              <span className="font-mono">= 0</span>
                           </div>
                         </>
                      )}
@@ -234,7 +252,9 @@ export default function QuantizationVisualizerPage() {
                         />
                       </div>
                       <div className="text-right">
-                         <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Int4 Value</div>
+                         <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
+                            {scheme === "symmetric" ? "Signed Int4" : "Unsigned Int4"}
+                         </div>
                          <div className="text-3xl font-mono font-bold text-green-400">{quantizedInt}</div>
                       </div>
                    </div>
@@ -277,17 +297,22 @@ export default function QuantizationVisualizerPage() {
                     <div className="bg-muted/30 rounded-lg p-4 border border-border/50 flex flex-col items-center text-center">
                         <span className="text-xs text-muted-foreground mb-2">1. Scale & Shift</span>
                         <div className="font-mono text-sm mb-1 text-foreground/80">
-                             {currentVal.toFixed(2)} / {scale.toPrecision(3)} + {zeroPoint}
+                             {scheme === "asymmetric" 
+                               ? `${currentVal.toFixed(2)} / ${scale.toPrecision(3)} + ${zeroPoint}`
+                               : `${currentVal.toFixed(2)} / ${scale.toPrecision(3)}`
+                             }
                         </div>
                         <div className="text-xl font-bold text-foreground mt-auto">
-                            = {(currentVal / scale + zeroPoint).toFixed(2)}
+                            = {(currentVal / scale + (scheme === "asymmetric" ? zeroPoint : 0)).toFixed(2)}
                         </div>
                     </div>
 
                     <div className="bg-muted/30 rounded-lg p-4 border border-border/50 flex flex-col items-center text-center relative">
                         <ArrowLeft className="hidden md:block absolute -left-5 top-1/2 -translate-y-1/2 text-muted-foreground rotate-180" />
                         <span className="text-xs text-muted-foreground mb-2">2. Round & Clamp</span>
-                        <div className="font-mono text-sm mb-1 text-foreground/80">round(...)</div>
+                        <div className="font-mono text-sm mb-1 text-foreground/80">
+                            round(...)
+                        </div>
                         <div className="text-xl font-bold text-green-400 mt-auto">
                             {quantizedInt} <span className="text-xs font-normal text-muted-foreground">(int4)</span>
                         </div>
@@ -341,6 +366,10 @@ export default function QuantizationVisualizerPage() {
                             }}
                         ></div>
                     </div>
+                    <div className="flex justify-between text-[10px] text-muted-foreground mt-1 font-mono">
+                         <span>{minVal.toFixed(1)}</span>
+                         <span>{maxVal.toFixed(1)}</span>
+                    </div>
                 </div>
 
                 {/* Error Metrics */}
@@ -362,8 +391,8 @@ export default function QuantizationVisualizerPage() {
                   </p>
                   <p>
                     {scheme === "symmetric" 
-                        ? "Symmetric: Zero is exactly zero. Good for weights." 
-                        : "Asymmetric: Shifts zero point to fit data. Good for activations."}
+                        ? "Symmetric: Zero is exactly zero. Uses signed integers [-8, 7]." 
+                        : "Asymmetric: Zero point shifts to fit data. Uses unsigned integers [0, 15]."}
                   </p>
                </div>
              </div>
