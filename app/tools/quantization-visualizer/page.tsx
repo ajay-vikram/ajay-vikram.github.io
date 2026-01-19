@@ -366,10 +366,6 @@ export default function QuantizationVisualizerPage() {
                             }}
                         ></div>
                     </div>
-                    <div className="flex justify-between text-[10px] text-muted-foreground mt-1 font-mono">
-                         <span>{minVal.toFixed(1)}</span>
-                         <span>{maxVal.toFixed(1)}</span>
-                    </div>
                 </div>
 
                 {/* Error Metrics */}
@@ -381,20 +377,6 @@ export default function QuantizationVisualizerPage() {
                         </div>
                     </div>
                 </div>
-             </div>
-
-             <div className="bg-muted/20 rounded-lg p-4 border border-border/50 text-sm text-muted-foreground leading-relaxed flex gap-3">
-               <Info className="shrink-0 mt-0.5 text-blue-400" size={18}/>
-               <div>
-                  <p className="mb-2">
-                    <strong className="text-foreground">Scale & Precision:</strong> Larger ranges increase the step size (S), reducing precision.
-                  </p>
-                  <p>
-                    {scheme === "symmetric" 
-                        ? "Symmetric: Zero is exactly zero. Uses signed integers [-8, 7]." 
-                        : "Asymmetric: Zero point shifts to fit data. Uses unsigned integers [0, 15]."}
-                  </p>
-               </div>
              </div>
 
           </div>
