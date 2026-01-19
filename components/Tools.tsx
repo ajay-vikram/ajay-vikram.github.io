@@ -157,7 +157,7 @@ export function Tools() {
                   </h3>
                    <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Interactive Demo</p>
                   <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
-                    Interactive visualization of FP32 to Int8 quantization. Explore symmetric vs asymmetric schemes and how large dynamic ranges affect precision.
+                    Interactive visualization of FP32 to Int4 quantization. Explore symmetric vs asymmetric schemes and how dynamic ranges affect precision.
                   </p>
                   <div className="mt-auto flex items-center text-xs font-medium text-foreground opacity-70 transition-opacity">
                     Try Tool <ArrowRight className="ml-1 h-3 w-3" />
