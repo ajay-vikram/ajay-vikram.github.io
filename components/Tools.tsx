@@ -44,7 +44,6 @@ export function Tools() {
                   <h3 className="font-semibold text-sm tracking-tight text-foreground line-clamp-1 mb-0.5">
                     Positional Encoding
                   </h3>
-                   <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Visualization</p>
                   <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
                     Interactive visualization of sinusoidal positional encodings used in Transformer models. Explore how d_model and sequence length affect the waves.
                   </p>
@@ -81,7 +80,6 @@ export function Tools() {
                   <h3 className="font-semibold text-sm tracking-tight text-foreground line-clamp-1 mb-0.5">
                     Optimizer Simulator
                   </h3>
-                   <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Simulation</p>
                   <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
                     Compare how SGD, Momentum, RMSProp, and Adam navigate loss landscapes. Visualize convergence, oscillations, and saddle points in real-time.
                   </p>
@@ -118,7 +116,6 @@ export function Tools() {
                   <h3 className="font-semibold text-sm tracking-tight text-foreground line-clamp-1 mb-0.5">
                     CNN Visualizer
                   </h3>
-                   <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Interactive Demo</p>
                   <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
                     Interactive convolution demonstration. Adjust stride, padding, and dilation to see how they transform the input feature map in real-time.
                   </p>
@@ -155,7 +152,6 @@ export function Tools() {
                   <h3 className="font-semibold text-sm tracking-tight text-foreground line-clamp-1 mb-0.5">
                     Quantization Visualizer
                   </h3>
-                   <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Interactive Demo</p>
                   <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
                     Interactive visualization of FP32 to Int4 quantization. Explore symmetric vs asymmetric schemes and how dynamic ranges affect precision.
                   </p>
