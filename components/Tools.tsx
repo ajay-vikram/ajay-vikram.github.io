@@ -144,7 +144,7 @@ export function Tools() {
                 {/* Visual Placeholder */}
                 <div className="aspect-[3/2] relative overflow-hidden bg-muted border-b border-border">
                   <Image
-                    src="/assets/img/QAT.png"
+                    src="/assets/img/quantization.png"
                     alt="Quantization Visualizer"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
