@@ -128,6 +128,43 @@ export function Tools() {
                 </div>
               </Card>
             </motion.div>
+
+          <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="h-full"
+            >
+              <Card className="flex flex-col h-full group">
+                <Link href="/tools/quantization-visualizer" className="absolute inset-0 z-10">
+                  <span className="sr-only">View Quantization Visualizer</span>
+                </Link>
+                
+                {/* Visual Placeholder */}
+                <div className="aspect-[3/2] relative overflow-hidden bg-muted border-b border-border">
+                  <Image
+                    src="/assets/img/QAT.png"
+                    alt="Quantization Visualizer"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                
+                <div className="flex flex-col flex-1 p-3">
+                  <h3 className="font-semibold text-sm tracking-tight text-foreground line-clamp-1 mb-0.5">
+                    Quantization Visualizer
+                  </h3>
+                   <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase tracking-wide">Interactive Demo</p>
+                  <p className="text-xs text-muted-foreground line-clamp-3 mb-3 text-left leading-relaxed">
+                    Interactive visualization of FP32 to Int8 quantization. Explore symmetric vs asymmetric schemes and how large dynamic ranges affect precision.
+                  </p>
+                  <div className="mt-auto flex items-center text-xs font-medium text-foreground opacity-70 transition-opacity">
+                    Try Tool <ArrowRight className="ml-1 h-3 w-3" />
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
         </div>
       </div>
     </section>
