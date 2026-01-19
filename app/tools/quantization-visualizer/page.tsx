@@ -4,7 +4,6 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { ArrowLeft, Settings2, Info, Calculator, Ruler } from "lucide-react";
 import 'katex/dist/katex.min.css';
-import Latex from 'react-latex-next';
 
 type Scheme = "symmetric" | "asymmetric";
 
@@ -30,14 +29,18 @@ export default function QuantizationVisualizerPage() {
     let z = 0;
 
     if (scheme === "symmetric") {
-      // Symmetric Int4: [-7, 7] often used to keep 0 centered perfectly, or [-8, 7].
-      // Standard approach for [-8, 7] symmetric is often scale = max(|min|, |max|) / 7
-      // so that the max value maps to 7.
+      // Symmetric Int4: Max magnitude maps to 7 (Q_MAX)
+      // Range is effectively [-maxAbs, maxAbs] -> [-7, 7] (or clamped to -8)
+      // We force Z = 0
       const maxAbs = Math.max(Math.abs(minVal), Math.abs(maxVal));
       s = maxAbs / 7; 
+      // Protect against divide by zero
+      if (s === 0) s = 0.0001;
       z = 0;
     } else {
-      // Asymmetric: affine mapping
+      // Asymmetric: min -> Q_MIN, max -> Q_MAX
+      // S = (max - min) / (Q_MAX - Q_MIN)
+      // Z = round(Q_MIN - min / S)
       s = (maxVal - minVal) / Q_RANGE;
       if (s === 0) s = 0.0001; 
       
@@ -173,9 +176,39 @@ export default function QuantizationVisualizerPage() {
                 </div>
               </div>
 
-              <div className="pt-2">
-                 <div className="bg-neutral-950/50 p-4 rounded-md border border-neutral-800 text-sm text-center font-mono">
-                     <p>q = clamp(round(x/S + Z), -8, 7)</p>
+              <div className="pt-2 space-y-2">
+                 {/* Main Formula */}
+                 <div className="bg-neutral-950/50 p-3 rounded-md border border-neutral-800 text-sm text-center font-mono text-muted-foreground">
+                     <span className="text-foreground">q</span> = clamp(round(x/S + Z), -8, 7)
+                 </div>
+
+                 {/* Derivation Formulas */}
+                 <div className="p-3 rounded-md border border-border/50 text-xs space-y-2 bg-muted/10">
+                     <p className="font-semibold text-muted-foreground uppercase tracking-wide mb-1">Derivation</p>
+                     
+                     {scheme === "asymmetric" ? (
+                        <>
+                          <div className="flex items-center gap-2">
+                              <span className="font-mono text-blue-400 font-bold">S</span> 
+                              <span className="font-mono">= (x_max - x_min) / 15</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                              <span className="font-mono text-purple-400 font-bold">Z</span>
+                              <span className="font-mono">= round(-8 - x_min / S)</span>
+                          </div>
+                        </>
+                     ) : (
+                        <>
+                           <div className="flex items-center gap-2">
+                              <span className="font-mono text-blue-400 font-bold">S</span> 
+                              <span className="font-mono">= max(|x_max|, |x_min|) / 7</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                              <span className="font-mono text-purple-400 font-bold">Z</span>
+                              <span className="font-mono">= 0 (Forced)</span>
+                          </div>
+                        </>
+                     )}
                  </div>
               </div>
             </div>
