@@ -142,7 +142,8 @@ export const publications = [
   {
     title: "ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles",
     conference: "6th International Conference on Machine Learning, Image Processing, Network Security and Data Sciences (MIND 2024)",
-    authors: "Atanu Chatterjee, Ajay Vikram P, Aniketh Narayan Bellala, T Naga Tarun, Basavaraj Talawar, Vani M, and Jeny Rajan"
+    authors: "Atanu Chatterjee, Ajay Vikram P, Aniketh Narayan Bellala, T Naga Tarun, Basavaraj Talawar, Vani M, and Jeny Rajan",
+    link: "https://link.springer.com/chapter/10.1007/978-3-032-14531-4_11"
   }
 ];
 
