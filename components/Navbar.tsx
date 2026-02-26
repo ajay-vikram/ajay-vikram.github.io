@@ -9,7 +9,6 @@ export function Navbar() {
     { name: "Experience", href: "/experience" },
     { name: "Publications", href: "/publications" },
     { name: "Projects", href: "/projects" },
-    { name: "Tools", href: "/tools" },
     { name: "Skills", href: "/skills" },
     { name: "Resume", href: "/Resume.pdf" },
     { name: "Contact", href: "/contact" },
