@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hand Kinematics in BCI | Ajay Vikram P</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="backlink"><a href="../index.html">← Back to home</a></div>
+      <h1 class="project-page-title">Hand Kinematics in BCI</h1>
+      <div class="project-page-subtitle">State-Space Models (S4, LMU) for Decoding</div>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          This project focused on decoding continuous hand movements from brain activity. While
+          most BCI models classify discrete movement intentions, we tackled the more complex task
+          of predicting <strong>continuous hand trajectories</strong>, essential for fine motor
+          control in real-world applications.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Dataset and Task</h2>
+        <p>
+          We used the
+          <a href="https://zenodo.org/records/583331" target="_blank" rel="noreferrer">Nonhuman Primate Reaching with Multichannel Sensorimotor Cortex Electrophysiology</a>
+          dataset, which contains spike recordings from two macaques (Indy and Loco) reaching for
+          targets arranged in an 8×8 grid.
+        </p>
+        <ul class="detail-list">
+          <li>96–192 channels from motor and somatosensory cortices</li>
+          <li>No pre-movement delay; free-paced reaching</li>
+          <li>Predict 2D hand position using only the last 50 timesteps of spiking activity</li>
+        </ul>
+        <p><em>Note: The above link is for reference, the actual loading and processing are done using the <a href="https://github.com/NeuroBench/neurobench" target="_blank" rel="noreferrer">neurobench</a> code harness</em></p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Models Trained</h2>
+        <p>We trained 2 State-Space Models on this dataset:</p>
+        <ol class="detail-ordered">
+          <li><a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf" target="_blank" rel="noreferrer">Legendre Memory Units (LMUs)</a></li>
+          <li><a href="https://arxiv.org/pdf/2111.00396" target="_blank" rel="noreferrer">Structured State Space Sequence Models (S4)</a></li>
+        </ol>
+        <p>
+          Refer to my <a href="https://medium.com/@ajayvikramp/ssms-for-efficient-long-range-memory-d6a78226c738" target="_blank" rel="noreferrer">blog post</a> on State-Space Models if you are new to the topic.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Model Architecture</h2>
+        <ul class="detail-list">
+          <li>The LMU was trained with hidden size 16 and memory size 32</li>
+          <li>The S4 was trained with hidden size 64 and memory size 64</li>
+        </ul>
+        <p>
+          <em>Note: The models were trained with a sub window binning method on the spikes.</em>
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Results</h2>
+        <table class="data-table">
+          <tr><th>Model</th><th>Parameters</th><th>Test R2 Score</th></tr>
+          <tr><td>ANN 2D</td><td>5K</td><td>0.62</td></tr>
+          <tr><td>ANN 3D</td><td>24K</td><td>0.65</td></tr>
+          <tr><td>LSTM</td><td>44K</td><td>0.58</td></tr>
+          <tr><td>EEGNet</td><td>11K</td><td>0.56</td></tr>
+          <tr><td><strong>LMU</strong></td><td><strong>7K</strong></td><td><strong>0.70</strong></td></tr>
+          <tr><td><strong>S4</strong></td><td><strong>70K</strong></td><td><strong>0.75</strong></td></tr>
+        </table>
+        <p><em>The results shown above are for the 3rd session of Monkey 1</em></p>
+      </div>
+    </div>
+  </body>
+</html>

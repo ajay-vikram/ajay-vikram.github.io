@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ternarizing CNNs | Ajay Vikram P</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="backlink"><a href="../index.html">← Back to home</a></div>
+      <h1 class="project-page-title">Ternarizing CNNs</h1>
+      <div class="project-page-subtitle">Efficient Human Activity Recognition</div>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          This project focuses on compressing a CNN model for human activity recognition using
+          ternarization and quantization techniques. The aim is to significantly reduce model size
+          and computational complexity without sacrificing much accuracy. The baseline model,
+          trained on 64×64 spectrograms derived from radar signals, is ternarized and quantized to
+          allow deployment with integer-only inference on resource-constrained embedded platforms.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Dataset</h2>
+        <p>
+          The model is trained on a private dataset, using spectrogram representations of radar
+          signals, each sized <code>64×64×1</code>. These spectrograms capture temporal-frequency
+          features of radar reflections and are well-suited for classifying fine-grained human
+          activities. The dataset includes 5 distinct activity classes -
+          <code>{jogging, jumping, situp, waving, other}</code>, and training was performed using
+          5-fold cross-validation to ensure robust generalization. The spectrograms look like:
+        </p>
+        <figure class="detail-figure">
+          <img src="../assets/detail/har-spectrograms.png" alt="Input spectrograms">
+          <figcaption>Example radar spectrograms used as inputs for the human activity recognition model.</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Model Architecture</h2>
+        <p>The CNN architecture is lightweight, consisting of:</p>
+        <ul class="detail-list">
+          <li>A 2D convolution layer</li>
+          <li>Two depthwise separable convolutions for spatial-temporal filtering</li>
+          <li>Fully connected output layer with 5 class logits</li>
+        </ul>
+        <figure class="detail-figure">
+          <img src="../assets/detail/har-cnn.png" alt="CNN">
+          <figcaption>Lightweight CNN architecture used for radar-based human activity recognition.</figcaption>
+        </figure>
+        <p>
+          The model had 3029 parameters in total and was designed with efficiency in mind,
+          enabling rapid inference while maintaining high classification accuracy.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-title-long">Ternarization and Quantization</h2>
+        <p>
+          Quantization is the process of reducing the precision of numbers in a model, such as
+          weights, biases and activations, by representing them with fewer bits. This helps make
+          machine learning models smaller, faster, and more efficient for deployment on devices
+          with limited resources. Ternarization uses 2 bits to represent each weight, restricting
+          values to three discrete levels.
+        </p>
+        <p>
+          The weight ternarization step maps full-precision weights to one of three values:
+          {−1, 0, +1}. To ensure the ternary weight networks perform well, it is required to
+          minimize the Euclidian distance between the full precision weights W and the
+          ternary-valued weights W' while including a non-negative scaling factor α. Ternarization
+          reduces the model size by over 16× and enables efficient bitwise operations. A
+          threshold-based approach was used to determine which weights are quantized to -1, 0 and
+          1. In addition, the activations and biases were quantized to 8-bit and 23-bit
+          respectively. Quantization was done using uniform affine mapping with a learned scale and
+          zero-point, allowing real values to be approximated as
+          <code>q = round(r/scale) + zero_point</code>. The images below illustrate the
+          floating-point weights and biases on the left, and their ternarized and quantized
+          counterparts on the right.
+        </p>
+        <div class="media-grid media-grid-two media-grid-compact">
+          <figure class="media-card">
+            <img src="../assets/detail/har-fp32weights.png" alt="Floating point weights">
+            <figcaption>Floating-point weights and biases</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/har-ternaryweights.png" alt="Ternarized integer weights">
+            <figcaption>Ternarized and quantized weights</figcaption>
+          </figure>
+        </div>
+        <p>
+          The model was trained using Quantization-Aware Training (QAT). Unlike post-training
+          quantization, QAT simulates quantization effects during training itself, enabling the
+          network to learn robust representations under low-bit constraints. During training, fake
+          quantization modules simulate low-bit precision, while the actual parameters remain in
+          float for gradient updates. The Straight-Through Estimator (STE) was used to approximate
+          gradients through the non-differentiable <code>torch.round</code> quantization function.
+        </p>
+        <figure class="detail-figure">
+          <img src="../assets/detail/har-qat.png" alt="Quantization aware training">
+          <figcaption>Quantization-aware training setup used to simulate low-bit inference during optimization.</figcaption>
+        </figure>
+        <p>
+          To optimize further for inference, pruning was done to achieve ~45% sparsity and batch
+          normalization layers were folded into the preceding convolutional layers, combining their
+          parameters with the conv weights and biases. This reduced runtime complexity without
+          changing model behavior.
+        </p>
+        <p>
+          Finally, all operations, including convolutions, batch norm, activation, and pooling,
+          were implemented using integer-only arithmetic. Dyadic scaling factors of the form
+          <code>(s = a ⁄ 2ᵇ)</code>, where a and b are integers, were used for efficient scaling via
+          bit-shifts instead of division, allowing deployment on fixed-point hardware with no
+          floating-point support. This full quantization pipeline enabled robust, low-latency
+          inference with minimal accuracy degradation compared to the full-precision baseline.
+        </p>
+        <figure class="detail-figure">
+          <img src="../assets/detail/har-int-inference.png" alt="Integer-only inference">
+          <figcaption>Integer-only inference pipeline used for efficient deployment on constrained hardware.</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Results</h2>
+        <table class="data-table">
+          <tr><th>Fold</th><th>FP32 Accuracy (%)</th><th>Ternarized Accuracy (%)</th></tr>
+          <tr><td>1</td><td>99.27</td><td>98.19</td></tr>
+          <tr><td>2</td><td>100.00</td><td>99.64</td></tr>
+          <tr><td>3</td><td>99.27</td><td>98.91</td></tr>
+          <tr><td>4</td><td>98.55</td><td>97.83</td></tr>
+          <tr><td>5</td><td>100.00</td><td>100.00</td></tr>
+          <tr><td><strong>Avg</strong></td><td><strong>99.42</strong></td><td><strong>98.91</strong></td></tr>
+        </table>
+        <p>
+          Despite ~45% sparsity and ternarized weights, the accuracy remained close to baseline,
+          validating the effectiveness of ternarization and quantization for embedded HAR systems.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

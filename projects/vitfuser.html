@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ViTFuser | Ajay Vikram P</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="backlink"><a href="../index.html">← Back to home</a></div>
+      <h1 class="project-page-title">ViTFuser</h1>
+      <div class="project-page-subtitle">Global Context Understanding for Autonomous Vehicles</div>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          ViTFuser is an attention-based deep learning architecture designed to improve
+          decision-making in autonomous vehicles. It addresses limitations in prior
+          state-of-the-art models (like
+          <a href="https://arxiv.org/pdf/2205.15997" target="_blank" rel="noreferrer">TransFuser</a>)
+          that suffer from loss of global context during feature fusion. ViTFuser introduces
+          multi-stage Vision Transformers (ViTs) and a Feature Pyramid Network (FPN) to better
+          understand the scene and reduce traffic violations.
+        </p>
+        <p>
+          The project outperforms comparative existing models on CARLA simulation benchmarks,
+          achieving higher Driving Scores (DS) and lower traffic infractions.
+        </p>
+        <figure class="detail-figure">
+          <img src="../assets/detail/vitfuser-high-level.png" alt="High-level overview">
+          <figcaption>High-level overview of ViTFuser for multimodal RGB-LiDAR fusion in autonomous driving.</figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Dataset and Task</h2>
+        <p>
+          ViTFuser was evaluated on the CARLA 0.9.10 simulator, using data recorded at 2 FPS
+          across 3,500 driving routes in varying towns and weather conditions.
+        </p>
+        <ul class="detail-list">
+          <li>RGB images from 3 front-facing cameras (stitched into a wide-view image)</li>
+          <li>LiDAR point cloud converted to 2D Bird’s-Eye-View (BEV) grid</li>
+          <li>Output: 4 future waypoints for the ego vehicle</li>
+        </ul>
+        <figure class="detail-figure">
+          <img src="../assets/detail/vitfuser-inputs.png" alt="Input modality">
+          <figcaption>Input setup using three front-facing RGB cameras and a LiDAR bird's-eye-view representation.</figcaption>
+        </figure>
+        <p>
+          The goal is to predict waypoints accurately while minimizing infractions during
+          navigation.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Model Architecture</h2>
+        <h3>1. Perception Module (Encoder)</h3>
+        <ul class="detail-list">
+          <li>Processes RGB and LiDAR inputs using CNNs + multi-resolution Vision Transformers (ViT)</li>
+          <li>RGB and LiDAR branches run in parallel, each extracting hierarchical features</li>
+          <li>Cross-modal attention enables global context fusion</li>
+          <li>Uses Feature Pyramid Network (FPN) for multi-scale feature extraction, boosting object detection accuracy</li>
+        </ul>
+        <figure class="detail-figure">
+          <img src="../assets/detail/vitfuser-encoder.png" alt="Encoder">
+          <figcaption>Encoder design with parallel RGB/LiDAR branches, multi-stage ViTs, and feature pyramid fusion.</figcaption>
+        </figure>
+
+        <h3>2. Decision Module (Decoder)</h3>
+        <p>Predicts vehicle waypoints using a GRU-based network.</p>
+        <p>Handles auxiliary tasks such as:</p>
+        <ul class="detail-list">
+          <li>Semantic segmentation</li>
+          <li>HD map generation</li>
+          <li>Depth estimation</li>
+          <li>Object detection (bounding boxes)</li>
+        </ul>
+        <p>
+          These tasks improve interpretability and overall navigation performance.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Parameters Comparison</h2>
+        <table class="data-table">
+          <tr><th>Model</th><th>Parameters</th></tr>
+          <tr><td>TransFuser</td><td>168 million</td></tr>
+          <tr><td>Swin Transformer</td><td>688 million</td></tr>
+          <tr><td><strong>ViTFuser</strong></td><td><strong>55 million</strong></td></tr>
+        </table>
+        <blockquote class="detail-quote">
+          ViTFuser reduces parameters by <strong>~67%</strong> compared to TransFuser and
+          <strong>~91%</strong> compared to Swin Transformer, making it much more efficient while
+          maintaining strong performance.
+        </blockquote>
+      </div>
+
+      <div class="detail-section">
+        <h2>Results</h2>
+        <p>ViTFuser was benchmarked on <strong>Longest6</strong> and <strong>Town05</strong> datasets from CARLA.</p>
+
+        <h3>Longest6 Benchmark</h3>
+        <table class="data-table">
+          <tr><th>Model</th><th>DS</th><th>RC</th><th>IS</th></tr>
+          <tr><td>TransFuser</td><td>43.48</td><td>77.72</td><td>0.60</td></tr>
+          <tr><td>ViTFuser</td><td>51.96</td><td>80.70</td><td>0.65</td></tr>
+          <tr><td><strong>ViTFuser + FPN</strong></td><td><strong>55.15</strong></td><td><strong>81.43</strong></td><td><strong>0.69</strong></td></tr>
+        </table>
+
+        <h3>Town05 Benchmark</h3>
+        <table class="data-table">
+          <tr><th>Model</th><th>DS (Short)</th><th>RC (Short)</th><th>DS (Long)</th><th>RC (Long)</th></tr>
+          <tr><td>TransFuser</td><td>87.48</td><td>92.78</td><td>67.85</td><td>91.57</td></tr>
+          <tr><td>ViTFuser</td><td>90.04</td><td>94.79</td><td>74.82</td><td>92.40</td></tr>
+          <tr><td><strong>ViTFuser + FPN</strong></td><td><strong>91.07</strong></td><td><strong>94.67</strong></td><td><strong>74.95</strong></td><td><strong>94.90</strong></td></tr>
+        </table>
+
+        <p>DS - Driving Score, RC - Route Completion, IS - Infraction Score</p>
+      </div>
+    </div>
+  </body>
+</html>

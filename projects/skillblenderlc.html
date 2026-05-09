@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SkillBlenderLC | Ajay Vikram P</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="backlink"><a href="../index.html">← Back to home</a></div>
+      <h1 class="project-page-title">SkillBlenderLC</h1>
+      <div class="project-page-subtitle">Self-Evolving Meta-Skill Learning for Humanoid Robots</div>
+
+      <figure class="detail-figure">
+        <img src="../assets/detail/skillblenderlc-plan.png" alt="SkillBlenderLC system overview">
+        <figcaption>System overview of SkillBlenderLC, showing task decomposition, reward generation, and RL-guided reward refinement.</figcaption>
+      </figure>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          SkillBlenderLC is a language-conditioned extension of the
+          <a href="https://github.com/Humanoid-SkillBlender/SkillBlender" target="_blank" rel="noreferrer">SkillBlender</a>
+          framework that enables autonomous skill discovery and reward learning for humanoid
+          robots. The system leverages Large Language Models (LLMs) to decompose long-horizon
+          tasks, identify missing skills, automatically generate reward functions, and iteratively
+          refine them using reinforcement learning feedback.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Motivation</h2>
+        <ul class="detail-list">
+          <li>Long-horizon humanoid tasks require sequencing and composing multiple motion skills.</li>
+          <li>Fixed skill libraries limit scalability and generalization.</li>
+          <li>Manual reward design is brittle, time-consuming, and non-scalable.</li>
+          <li>Existing LLM-based reward methods do not adapt based on downstream RL performance.</li>
+        </ul>
+        <p>
+          SkillBlenderLC addresses these challenges with a self-evolving learning loop that
+          connects language reasoning directly to control learning.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>System Design</h2>
+        <p>
+          SkillBlenderLC augments the original SkillBlender training stack with three core
+          components:
+        </p>
+        <h3>Task Decomposition</h3>
+        <p>
+          An LLM decomposes a natural-language task into ordered subtasks and required skills,
+          proposing new primitive skills when the current library is insufficient.
+        </p>
+        <h3>Automatic Reward Bootstrapping</h3>
+        <p>
+          For missing skills, the system synthesizes executable Python reward functions using:
+        </p>
+        <ul class="detail-list">
+          <li>Existing reward templates</li>
+          <li>Humanoid environment dynamics</li>
+        </ul>
+        <h3>Reward Refinement via RL Feedback</h3>
+        <p>
+          After RL training, performance metrics (stability, convergence, success rate) are fed
+          back to the LLM to refine the reward, enabling iterative improvement and self-evolution.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Experimental Setup</h2>
+        <ul class="detail-list">
+          <li>Simulator: NVIDIA Isaac Gym (PhysX)</li>
+          <li>Robot: Unitree H1 (19-DoF humanoid)</li>
+          <li>RL Algorithm: PPO</li>
+          <li>Parallel environments: 4,096</li>
+          <li>Training: 15,000 episodes per skill</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>LLMs Evaluated</h2>
+        <p>
+          We benchmarked six state-of-the-art LLMs across task decomposition and reward
+          generation:
+        </p>
+        <ul class="detail-list">
+          <li>GPT-4o</li>
+          <li>Claude Sonnet 4.5</li>
+          <li>Gemini 2.5 Flash</li>
+          <li>LLaMA 3.3 70B</li>
+          <li>Mistral Large</li>
+          <li>DeepSeek V3</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>Results</h2>
+        <h3>Skill Selection on Long-Horizon Tasks</h3>
+        <p>
+          Evaluated on the eight long-horizon tasks from SkillBlender:
+        </p>
+        <figure class="detail-figure">
+          <img src="../assets/detail/skillblenderlc-results.png" alt="Skill selection results">
+          <figcaption>Skill selection results across the eight long-horizon tasks from SkillBlender.</figcaption>
+        </figure>
+        <p><strong>Key insight:</strong> LLMs reliably identify primary motion primitives but often miss secondary or contact-rich skills, motivating downstream reward learning.</p>
+
+        <h3>Reward Generation: Primitive Skill - Squatting</h3>
+        <p>
+          Performance of policies trained using LLM-generated rewards for the Squatting primitive:
+        </p>
+        <div class="media-grid">
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-gt.gif" alt="Ground truth squatting motion">
+            <figcaption>Ground Truth policy</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-gpt4o.gif" alt="GPT-4o squatting motion">
+            <figcaption>GPT-4o reward</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-sonnet.gif" alt="Claude 4.5 squatting motion">
+            <figcaption>Claude 4.5 reward</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-gemini.gif" alt="Gemini squatting motion">
+            <figcaption>Gemini reward</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-llama.gif" alt="LLaMA squatting motion">
+            <figcaption>LLaMA reward</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-deepseek.gif" alt="DeepSeek squatting motion">
+            <figcaption>DeepSeek reward</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-squat-mistral.gif" alt="Mistral squatting motion">
+            <figcaption>Mistral reward</figcaption>
+          </figure>
+        </div>
+        <p><strong>Observation:</strong> While most models reproduce reward structure correctly, numerical misspecification often leads to unstable or ineffective policies.</p>
+
+        <h3>Reward Generation: Combined Skill - Button Press</h3>
+        <p>The Button Press task requires composing walking and reaching:</p>
+        <div class="media-grid media-grid-two">
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-buttonpress-gt.gif" alt="Ground truth button press motion">
+            <figcaption>Ground Truth policy</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-buttonpress.gif" alt="LLM-generated button press motion">
+            <figcaption>LLM-generated reward</figcaption>
+          </figure>
+        </div>
+        <p><strong>Result:</strong> Only Claude-generated rewards successfully enable task completion.<br>Most models produce rewards that cause the robot to remain stationary, highlighting the difficulty of multi-stage skill composition.</p>
+
+        <h3>Learning New Skills</h3>
+        <p>The framework can generate and train rewards for previously unseen skills:</p>
+        <div class="media-grid media-grid-three">
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-bend.gif" alt="Bend skill">
+            <figcaption>Learned Bend skill</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-sidestep.gif" alt="Sidestep skill">
+            <figcaption>Learned Sidestep skill</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img src="../assets/detail/skillblenderlc-kick.gif" alt="Kick skill">
+            <figcaption>Learned Kick skill</figcaption>
+          </figure>
+        </div>
+        <p><strong>Insight:</strong> Some skills are successfully learned, while others require iterative refinement, validating the need for a closed-loop reward evolution mechanism.</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Prompt Design</h2>
+        <p>
+          We design explicit, constrained prompts for each stage to ensure consistency,
+          interpretability, and reproducibility.
+        </p>
+
+        <h3>Task Decomposition Prompt</h3>
+        <pre class="detail-code">You are a high-level humanoid motion planner and meta-skill developer.
+
+Your task is to decompose a long-horizon natural-language goal into a sequence of
+short, atomic subtasks. Each subtask must include a concise "subgoal" (one line of natural language)
+and a list of "skills" required to achieve it.
+
+You currently have access to the following SKILL LIBRARY:
+
+{SKILL_LIBRARY}
+
+For every subgoal:
+1. Compare the subgoal against the skills in the current library.
+2. If ALL required abilities exist, reuse them directly.
+3. If the subgoal requires a new ability not in the list, invent a new skill:
+   - Use short (1–2 words), descriptive, physically plausible humanoid actions
+   - Avoid abstract or cognitive terms
+   - Do not use synonyms of existing skills unless functionality differs
+   - If no existing skill fully covers the subgoal, you must create a new primitive skill
+
+The final output must be a valid JSON object of the form:
+
+{
+  "subtasks": [
+    {"subgoal": "&lt;short actionable goal&gt;", "skills": ["Skill1", "Skill2", ...]},
+    ...
+  ]
+}
+
+Guidelines:
+- Ensure subtasks are sequential and fully cover the task
+- Keep skill names capitalized and concise
+- Keep subgoals to one line
+- Return only the JSON with no explanations or comments</pre>
+
+        <h3>Reward Generation Prompt</h3>
+        <pre class="detail-code">You are a code-generation agent designing a new humanoid skill reward function.
+Return only valid Python code defining the reward class.
+Do not include explanations, markdown fences, comments, or introductory text.
+
+Below are the existing primitive skill rewards currently used:
+&lt;existing_rewards&gt;
+{reward_context}
+&lt;/existing_rewards&gt;
+
+Analyze these to understand parameter conventions and scaling.
+
+Below is the humanoid environment definition used for training:
+&lt;environment_context&gt;
+{env_context}
+&lt;/environment_context&gt;
+
+Now, design a NEW reward class for the following subgoal and skill:
+
+Subgoal: {subgoal}
+Skill: {skill_name}
+
+Rules:
+1. Maintain the same Python class structure (class rewards: with nested class scales:)
+2. Reuse ONLY variables, parameters, and scale names already defined
+3. Do NOT invent new variables or physics metrics
+4. Keep numerical scales realistic and consistent with reference rewards
+5. Return only valid Python code, with no explanations or comments</pre>
+
+        <h3>Reward Refinement Prompt</h3>
+        <pre class="detail-code">You are a humanoid reward designer.
+The following reward function was trained in RL but performed poorly.
+
+Subgoal: {subgoal}
+Skill: {skill}
+
+[Generated reward]
+{generated_reward}
+
+[Observed RL feedback metrics]
+{feedback_str}
+
+Based on these feedback metrics, rewrite the reward function to:
+1. Improve stability, convergence, and success rate
+2. Keep structure consistent with existing reward format (class rewards: with nested scales)
+3. Keep parameter names consistent
+4. Adjust only scale magnitudes or add missing shaping terms if necessary
+
+Output only the corrected Python code starting with 'class rewards:'.
+Do NOT include explanations or markdown.</pre>
+      </div>
+    </div>
+  </body>
+</html>
