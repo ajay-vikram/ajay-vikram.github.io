@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Exo 2";
-  src: url("assets/fonts/Exo2-Regular-Latin.woff2") format("woff2");
+  src: url("../fonts/Exo2-Regular-Latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Exo 2";
-  src: url("assets/fonts/Exo2-Italic-Latin.woff2") format("woff2");
+  src: url("../fonts/Exo2-Italic-Latin.woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
@@ -287,15 +287,6 @@ hr {
   text-justify: inter-word;
 }
 
-.subitem-list {
-  margin: 8px 0 0 18px;
-  padding: 0;
-}
-
-.subitem-list li {
-  margin-bottom: 6px;
-}
-
 @media (max-width: 767px) {
   #history .row {
     grid-template-columns: 1fr;
@@ -353,59 +344,6 @@ hr {
   margin-bottom: 96px;
 }
 
-.project {
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #eee;
-}
-
-.project-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.project-link:hover {
-  text-decoration: none;
-}
-
-.project-link:hover .project {
-  background-color: #fafafa;
-}
-
-.pico {
-  float: left;
-  margin-right: 12px;
-}
-
-.pico img {
-  width: 92px;
-  height: 80px;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 5px;
-  border: 1px solid #999;
-  background: white;
-  padding: 4px;
-  box-sizing: border-box;
-}
-
-.pdesc {
-  color: #333;
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-.project-more {
-  margin-top: 8px;
-  color: #1a55b5;
-  font-size: 14px;
-}
-
-.pend {
-  clear: both;
-}
-
 .pub {
   font-size: 14px;
   border-left: 4px solid #aaa;
@@ -429,16 +367,6 @@ hr {
   color: #333;
 }
 
-.misc-list {
-  margin: 0 0 20px 18px;
-  padding: 0;
-  max-width: 760px;
-}
-
-.misc-list li {
-  margin-bottom: 10px;
-}
-
 .backlink {
   margin-top: 24px;
   margin-bottom: 18px;
@@ -455,11 +383,6 @@ hr {
   color: #777;
   margin-bottom: 18px;
   font-style: italic;
-}
-
-.project-page-intro {
-  max-width: 760px;
-  margin-bottom: 24px;
 }
 
 .detail-figure {

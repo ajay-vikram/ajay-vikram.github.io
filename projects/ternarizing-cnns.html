@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ternarizing CNNs | Ajay Vikram P</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
   </head>
   <body>
     <div class="container">
@@ -34,7 +34,7 @@
           5-fold cross-validation to ensure robust generalization. The spectrograms look like:
         </p>
         <figure class="detail-figure">
-          <img src="../assets/detail/har-spectrograms.png" alt="Input spectrograms">
+          <img src="../assets/project-details/har-spectrograms.png" alt="Input spectrograms">
           <figcaption>Example radar spectrograms used as inputs for the human activity recognition model.</figcaption>
         </figure>
       </div>
@@ -48,7 +48,7 @@
           <li>Fully connected output layer with 5 class logits</li>
         </ul>
         <figure class="detail-figure">
-          <img src="../assets/detail/har-cnn.png" alt="CNN">
+          <img src="../assets/project-details/har-cnn.png" alt="CNN">
           <figcaption>Lightweight CNN architecture used for radar-based human activity recognition.</figcaption>
         </figure>
         <p>
@@ -82,11 +82,11 @@
         </p>
         <div class="media-grid media-grid-two media-grid-compact">
           <figure class="media-card">
-            <img src="../assets/detail/har-fp32weights.png" alt="Floating point weights">
+            <img src="../assets/project-details/har-fp32weights.png" alt="Floating point weights">
             <figcaption>Floating-point weights and biases</figcaption>
           </figure>
           <figure class="media-card">
-            <img src="../assets/detail/har-ternaryweights.png" alt="Ternarized integer weights">
+            <img src="../assets/project-details/har-ternaryweights.png" alt="Ternarized integer weights">
             <figcaption>Ternarized and quantized weights</figcaption>
           </figure>
         </div>
@@ -99,7 +99,7 @@
           gradients through the non-differentiable <code>torch.round</code> quantization function.
         </p>
         <figure class="detail-figure">
-          <img src="../assets/detail/har-qat.png" alt="Quantization aware training">
+          <img src="../assets/project-details/har-qat.png" alt="Quantization aware training">
           <figcaption>Quantization-aware training setup used to simulate low-bit inference during optimization.</figcaption>
         </figure>
         <p>
@@ -117,7 +117,7 @@
           inference with minimal accuracy degradation compared to the full-precision baseline.
         </p>
         <figure class="detail-figure">
-          <img src="../assets/detail/har-int-inference.png" alt="Integer-only inference">
+          <img src="../assets/project-details/har-int-inference.png" alt="Integer-only inference">
           <figcaption>Integer-only inference pipeline used for efficient deployment on constrained hardware.</figcaption>
         </figure>
       </div>
