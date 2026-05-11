@@ -4,9 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ternarizing CNNs | Ajay Vikram P</title>
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
     <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
   </head>
   <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-text">Dark</span>
+    </button>
+
     <div class="container">
       <div class="backlink"><a href="../index.html">← Back to home</a></div>
       <h1 class="project-page-title">Ternarizing CNNs</h1>
@@ -139,5 +150,6 @@
         </p>
       </div>
     </div>
+    <script src="../assets/js/theme.js"></script>
   </body>
 </html>

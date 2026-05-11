@@ -4,9 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Ajay Vikram P</title>
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   </head>
   <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-text">Dark</span>
+    </button>
+
     <div id="dhead" class="container">
       <div class="row">
         <div id="dpic">
@@ -239,6 +250,7 @@
       </div>
     </div>
 
+    <script src="assets/js/theme.js"></script>
     <script type="text/javascript">
       const revealButton = document.getElementById("iemail");
       const emailBox = document.getElementById("demail");

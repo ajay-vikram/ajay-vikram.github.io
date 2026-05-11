@@ -14,14 +14,63 @@
   font-display: swap;
 }
 
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #555555;
+  --subtle: #666666;
+  --soft: #777777;
+  --faint: #999999;
+  --extra-faint: #bbbbbb;
+  --link: #1a55b5;
+  --accent: #008800;
+  --border: #dddddd;
+  --border-strong: #aaaaaa;
+  --border-hover: #bbbbbb;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --table-head: #f7f7f7;
+  --timeline: #cfcfcf;
+  --dot-ring: #ffffff;
+  --logo-bg: #ffffff;
+  --rule-color: rgba(0, 0, 0, 0.75);
+  --shadow: rgba(20, 30, 45, 0.08);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101418;
+  --text: #e8e2d8;
+  --muted: #c1b9ad;
+  --subtle: #a9a196;
+  --soft: #9b9388;
+  --faint: #817b73;
+  --extra-faint: #746d65;
+  --link: #8db7ff;
+  --accent: #8bcf78;
+  --border: #303946;
+  --border-strong: #4a5564;
+  --border-hover: #647184;
+  --surface: #151b22;
+  --surface-soft: #1b222b;
+  --table-head: #18212b;
+  --timeline: #3b4654;
+  --dot-ring: #101418;
+  --logo-bg: #f7f3ec;
+  --rule-color: rgba(205, 213, 224, 0.62);
+  --shadow: rgba(0, 0, 0, 0.32);
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: var(--bg);
   font-family: "Exo 2", sans-serif;
   font-size: 16px;
   line-height: 1.4;
-  color: #333;
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 p {
@@ -30,7 +79,7 @@ p {
 }
 
 a {
-  color: #1a55b5;
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -101,7 +150,7 @@ h1 {
 h2 {
   font-weight: normal;
   font-style: italic;
-  color: #999;
+  color: var(--faint);
   font-size: 18px;
   padding: 0;
   margin: 5px 0 10px 0;
@@ -147,10 +196,10 @@ h2 {
 .iico-text {
   width: 40px;
   height: 40px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 20px;
-  background: white;
-  color: #666;
+  background: var(--surface);
+  color: var(--subtle);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -180,8 +229,8 @@ h2 {
 
 .iico-text:hover {
   text-decoration: none;
-  border-color: #bbb;
-  color: #222;
+  border-color: var(--border-hover);
+  color: var(--text);
 }
 
 button.iico-text {
@@ -191,17 +240,18 @@ button.iico-text {
 
 #demail {
   margin-top: 10px;
-  color: #555;
+  color: var(--muted);
   opacity: 0;
   transition: opacity 0.7s;
 }
 
 hr {
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), var(--rule-color), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), var(--rule-color), rgba(0, 0, 0, 0));
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), var(--rule-color), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), var(--rule-color), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--rule-color), rgba(0, 0, 0, 0));
   padding: 0;
   margin: 20px 0 20px 0;
   border: 0;
@@ -212,7 +262,7 @@ hr {
   font-size: 14px;
   text-align: right;
   padding-top: 8px;
-  color: #bbb;
+  color: var(--extra-faint);
   align-self: start;
   white-space: nowrap;
 }
@@ -220,7 +270,7 @@ hr {
 .ico {
   grid-column: auto;
   vertical-align: top;
-  border-left: 2px solid #cfcfcf;
+  border-left: 2px solid var(--timeline);
   position: relative;
   padding-left: 16px;
   padding-bottom: 16px;
@@ -234,8 +284,8 @@ hr {
   height: 76px;
   margin-top: 2px;
   border-radius: 5px;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid var(--border);
+  background: var(--logo-bg);
   object-fit: contain;
   padding: 8px;
   box-sizing: border-box;
@@ -267,8 +317,8 @@ hr {
   width: 10px;
   height: 10px;
   border-radius: 7px;
-  background-color: #cfcfcf;
-  border: 2px solid white;
+  background-color: var(--timeline);
+  border: 2px solid var(--dot-ring);
 }
 
 .entry {
@@ -281,7 +331,7 @@ hr {
 
 .desc-summary {
   margin-top: 8px;
-  color: #555;
+  color: var(--muted);
   line-height: inherit;
   text-align: justify;
   text-justify: inter-word;
@@ -344,19 +394,63 @@ hr {
   margin-bottom: 96px;
 }
 
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 82px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--muted);
+  box-shadow: 0 8px 24px var(--shadow);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+.theme-toggle-mark {
+  width: 13px;
+  height: 13px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  box-shadow: inset -4px -4px 0 0 currentColor;
+  box-sizing: border-box;
+}
+
+:root[data-theme="dark"] .theme-toggle-mark {
+  background: currentColor;
+  box-shadow: 0 0 0 3px var(--border);
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
+}
+
 .news-item {
   display: grid;
   grid-template-columns: 70px minmax(0, 1fr);
   column-gap: 8px;
   font-size: 14px;
-  border-left: 4px solid #aaa;
+  border-left: 4px solid var(--border-strong);
   padding: 2px 0 2px 10px;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--text);
 }
 
 .news-date {
-  color: #090;
+  color: var(--accent);
   white-space: nowrap;
 }
 
@@ -366,25 +460,25 @@ hr {
 
 .pub {
   font-size: 14px;
-  border-left: 4px solid #aaa;
+  border-left: 4px solid var(--border-strong);
   padding: 2px 0 2px 10px;
   margin-bottom: 10px;
 }
 
 .pub-title {
   display: inline;
-  color: #333;
+  color: var(--text);
 }
 
 .pub-venue {
   display: inline;
-  color: #090;
+  color: var(--accent);
   margin-left: 6px;
 }
 
 .pub-authors {
   display: block;
-  color: #333;
+  color: var(--text);
 }
 
 .backlink {
@@ -400,7 +494,7 @@ hr {
 
 .project-page-subtitle {
   font-size: 18px;
-  color: #777;
+  color: var(--soft);
   margin-bottom: 18px;
   font-style: italic;
 }
@@ -415,12 +509,13 @@ hr {
   width: 100%;
   max-width: 100%;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
+  background: var(--logo-bg);
 }
 
 .detail-figure figcaption {
   margin-top: 8px;
-  color: #666;
+  color: var(--subtle);
   font-size: 14px;
 }
 
@@ -461,22 +556,22 @@ hr {
 
 .media-card {
   margin: 0;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px;
-  background: white;
+  background: var(--surface);
 }
 
 .media-card img {
   width: 100%;
   display: block;
   border-radius: 4px;
-  background: #fff;
+  background: var(--logo-bg);
 }
 
 .media-card figcaption {
   margin-top: 8px;
-  color: #555;
+  color: var(--muted);
   font-size: 14px;
   text-align: center;
 }
@@ -489,7 +584,7 @@ hr {
   font-size: 26px;
   margin-bottom: 10px;
   font-style: normal;
-  color: #333;
+  color: var(--text);
 }
 
 .section-title-long {
@@ -510,8 +605,8 @@ hr {
   max-width: 760px;
   margin: 14px 0 0 0;
   padding-left: 14px;
-  border-left: 3px solid #ddd;
-  color: #444;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
   text-align: justify;
   text-justify: inter-word;
 }
@@ -544,9 +639,9 @@ hr {
   max-width: 760px;
   margin: 12px 0 0 0;
   padding: 14px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background: #fafafa;
+  background: var(--surface-soft);
   white-space: pre-wrap;
   overflow-x: auto;
   line-height: 1.45;
@@ -564,14 +659,14 @@ hr {
 
 .data-table th,
 .data-table td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   padding: 8px 10px;
   text-align: left;
   vertical-align: top;
 }
 
 .data-table th {
-  background: #f7f7f7;
+  background: var(--table-head);
   font-weight: normal;
 }
 
