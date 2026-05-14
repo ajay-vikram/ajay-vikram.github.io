@@ -391,7 +391,21 @@ hr {
 }
 
 #publications {
-  margin-bottom: 96px;
+  margin-bottom: 40px;
+}
+
+.site-footer {
+  margin: 52px auto 48px auto;
+  color: var(--soft);
+  font-size: 13px;
+  text-align: center;
+}
+
+.site-footer-rule {
+  width: 160px;
+  height: 1px;
+  margin: 0 auto 16px auto;
+  background: var(--border);
 }
 
 .theme-toggle {

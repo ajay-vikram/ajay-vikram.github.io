@@ -10,7 +10,7 @@
         if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
       } catch (error) {}
     </script>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=2">
   </head>
   <body>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
@@ -266,6 +266,13 @@
         </div>
       </div>
     </div>
+
+    <footer class="container site-footer">
+      <div class="site-footer-rule"></div>
+      <div>
+        Inspired by <a href="https://karpathy.ai/" target="_blank" rel="noreferrer">Andrej Karpathy's homepage</a>.
+      </div>
+    </footer>
 
     <script src="assets/js/theme.js"></script>
     <script type="text/javascript">
