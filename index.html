@@ -10,7 +10,7 @@
         if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
       } catch (error) {}
     </script>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=15">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=18">
   </head>
   <body>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
@@ -300,12 +300,9 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Balatro RL</h3>
-            <div class="project-card-subtitle">
-              Multi-Agent Learning for Long-Horizon Deckbuilding
-            </div>
             <p>
-              A verified Rust simulator and two-policy PPO system that separates tactical hand
-              play from strategic shop decisions.
+              A reinforcement-learning system for Balatro that uses separate PPO policies for hand
+              play and shop decisions, trained in a verified Rust simulator.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
@@ -325,12 +322,9 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">SkillBlenderLC</h3>
-            <div class="project-card-subtitle">
-              Self-Evolving Meta-Skill Learning for Humanoid Robots
-            </div>
             <p>
-              A language-conditioned framework for autonomous skill discovery and
-              LLM-guided reward learning in humanoid robots.
+              An LLM-guided humanoid learning framework that identifies missing skills, generates
+              reward functions, and trains new behaviors with reinforcement learning.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
@@ -350,12 +344,9 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">ViTFuser</h3>
-            <div class="project-card-subtitle">
-              Global Context Understanding for Autonomous Vehicles
-            </div>
             <p>
-              An attention-based RGB-LiDAR fusion architecture using multi-stage
-              Vision Transformers and feature pyramids.
+              An autonomous-driving model that fuses RGB and LiDAR features with multi-stage vision
+              transformers to predict navigation waypoints.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
@@ -375,12 +366,10 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Drone Tracking</h3>
-            <div class="project-card-subtitle">
-              Asynchronous Real-Time Drone Tracking from Neuromorphic Events
-            </div>
             <p>
-              Sparse event clustering and motion association with a buffered, hardware-aware
-              implementation for efficient tracking.
+              An event-camera pipeline that detects and tracks fast-moving drones using sparse
+              clustering and motion association, with a buffered implementation for ARM Cortex
+              edge hardware.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
@@ -400,12 +389,9 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Ternarizing CNNs</h3>
-            <div class="project-card-subtitle">
-              Efficient Human Activity Recognition
-            </div>
             <p>
-              Compressing a radar activity-recognition CNN with ternarized weights,
-              quantized activations, and integer-only inference.
+              A radar-based activity-recognition CNN compressed with ternary weights, quantized
+              activations, and integer-only inference for embedded deployment.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
@@ -425,12 +411,9 @@
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Multi-Task LLM Post-Training</h3>
-            <div class="project-card-subtitle">
-              Data and Reward Alignment Across Capabilities
-            </div>
             <p>
-              Studying how task-aligned SFT and verifier-based reinforcement learning preserve
-              instruction following, mathematical reasoning, and code generation.
+              A post-training study of how supervised fine-tuning and verifier-based reinforcement
+              learning affect instruction following, mathematical reasoning, and code generation.
             </p>
             <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
           </div>
