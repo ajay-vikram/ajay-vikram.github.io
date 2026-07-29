@@ -10,7 +10,7 @@
         if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
       } catch (error) {}
     </script>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=2">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=15">
   </head>
   <body>
     <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
@@ -278,6 +278,167 @@
         </div>
       </div>
     </div>
+
+    <section id="projects">
+      <div class="container">
+        <div class="ctitle">Selected Projects</div>
+      </div>
+
+      <div class="container">
+        <div class="project-grid">
+        <a
+          class="project-card"
+          href="projects/balatro-rl.html"
+          aria-label="View full details for Balatro RL"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="assets/project-thumbnails/balatro.png"
+              alt="Balatro title artwork with an ace of spades"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Balatro RL</h3>
+            <div class="project-card-subtitle">
+              Multi-Agent Learning for Long-Horizon Deckbuilding
+            </div>
+            <p>
+              A verified Rust simulator and two-policy PPO system that separates tactical hand
+              play from strategic shop decisions.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a
+          class="project-card"
+          href="projects/skillblenderlc.html"
+          aria-label="View full details for SkillBlenderLC"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="assets/project-thumbnails/skillblenderlc.webp"
+              alt="Humanoid robot in the SkillBlenderLC simulation"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">SkillBlenderLC</h3>
+            <div class="project-card-subtitle">
+              Self-Evolving Meta-Skill Learning for Humanoid Robots
+            </div>
+            <p>
+              A language-conditioned framework for autonomous skill discovery and
+              LLM-guided reward learning in humanoid robots.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a
+          class="project-card"
+          href="projects/vitfuser.html"
+          aria-label="View full details for ViTFuser"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="assets/project-thumbnails/vitfuser.webp"
+              alt="Autonomous driving scene from the CARLA simulator"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">ViTFuser</h3>
+            <div class="project-card-subtitle">
+              Global Context Understanding for Autonomous Vehicles
+            </div>
+            <p>
+              An attention-based RGB-LiDAR fusion architecture using multi-stage
+              Vision Transformers and feature pyramids.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a
+          class="project-card"
+          href="projects/drone-tracking.html"
+          aria-label="View full details for Drone Tracking"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="assets/project-thumbnails/drone-tracking.webp"
+              alt="Event-camera drone recording beside its reconstructed tracked trajectory"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Drone Tracking</h3>
+            <div class="project-card-subtitle">
+              Efficient Tracking with Neuromorphic Vision
+            </div>
+            <p>
+              Sparse event clustering and motion association with a buffered, hardware-aware
+              implementation for efficient tracking.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a
+          class="project-card"
+          href="projects/ternarizing-cnns.html"
+          aria-label="View full details for Ternarizing CNNs"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="assets/project-thumbnails/ternarizing-cnns.webp"
+              alt="Radar spectrograms used for human activity recognition"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Ternarizing CNNs</h3>
+            <div class="project-card-subtitle">
+              Efficient Human Activity Recognition
+            </div>
+            <p>
+              Compressing a radar activity-recognition CNN with ternarized weights,
+              quantized activations, and integer-only inference.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a
+          class="project-card"
+          href="projects/llm-post-training.html"
+          aria-label="View full details for Multi-Task LLM Post-Training"
+        >
+          <div class="project-thumbnail">
+            <img
+              src="/assets/project-thumbnails/llm.png"
+              alt="Post-training sequence and final instruction, mathematics, and code benchmark scores"
+              loading="lazy"
+            >
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-card-title">Multi-Task LLM Post-Training</h3>
+            <div class="project-card-subtitle">
+              Data and Reward Alignment Across Capabilities
+            </div>
+            <p>
+              Studying how task-aligned SFT and verifier-based reinforcement learning preserve
+              instruction following, mathematical reasoning, and code generation.
+            </p>
+            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+
+        </div>
+      </div>
+    </section>
 
     <footer class="container site-footer">
       <div class="site-footer-rule"></div>

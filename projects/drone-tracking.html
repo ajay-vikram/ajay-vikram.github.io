@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Drone Tracking | Ajay Vikram P</title>
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css?v=11">
+  </head>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-text">Dark</span>
+    </button>
+
+    <div class="container">
+      <div class="backlink"><a href="../index.html">&larr; Back to home</a></div>
+      <h1 class="project-page-title">Event-Based Drone Tracking</h1>
+      <div class="project-page-subtitle">
+        Asynchronous Real-Time Drone Tracking from Neuromorphic Events
+      </div>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          Event cameras record asynchronous brightness changes instead of transmitting every pixel
+          in every frame <a href="#drone-ref-1">[1]</a>. This project asks whether that sparse stream
+          is sufficient to recover coherent drone motion without reconstructing conventional video
+          frames or running a learned object detector.
+        </p>
+        <p>
+          We worked with a 1280 x 720 recording containing 7,139,453 events over 139.65 seconds.
+          The demonstration follows a 10-second flight segment and overlays the trajectory and
+          current velocity direction recovered by the tracker.
+        </p>
+        <figure class="detail-figure">
+          <video
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="../assets/project-details/drone-tracking-demo.png"
+          >
+            <source
+              src="../assets/project-details/drone-tracking-demo.mp4"
+              type="video/mp4"
+            >
+          </video>
+          <figcaption>
+            Event activity in the selected region of interest (left) and the recovered motion
+            trajectory (right). The red arrow indicates the current velocity direction.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Event Camera Primer</h2>
+        <p>
+          Each pixel in an event camera operates independently. When the local change in brightness
+          crosses a contrast threshold, the pixel emits an event rather than waiting for the next
+          image frame. The recording is therefore an ordered stream of four-element tuples:
+        </p>
+        <blockquote class="detail-quote">
+          <code>e_i = (t_i, x_i, y_i, p_i)</code>
+        </blockquote>
+        <p>
+          Here, <code>t_i</code> is the event timestamp, <code>(x_i, y_i)</code> identifies the pixel,
+          and <code>p_i</code> is its binary polarity. An ON event indicates an increase in
+          brightness, while an OFF event indicates a decrease. A single tuple records only that a
+          change occurred at one location; it does not contain a complete image or identify the
+          object that caused the change.
+        </p>
+        <p>
+          We recover spatial structure by accumulating events over short temporal windows. Unlike a
+          conventional frame, these windows contain only pixels that changed, which preserves the
+          sparse input used by the rest of the tracking pipeline.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Why Sparse Events</h2>
+        <p>
+          A small moving target occupies only a fraction of each image, so repeatedly processing the
+          static background is wasteful. Event sensing shifts the input toward the part of the scene
+          that changes and preserves fine temporal information. The stream is not a detection by
+          itself, however: sensor noise, background motion, and unrelated edges can all produce
+          events. The central problem is therefore to turn local activity into a stable identity
+          over time while keeping the computation proportional to that activity.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>From Events to Motion</h2>
+        <p>
+          We first restrict processing to the flight region, x = 400-900 and y = 100-720, and keep
+          positive-polarity, or ON, events. We then collect those events in 50 ms windows. Within each
+          window, nearby points join a spatial group under an L1-distance threshold of 40 pixels;
+          groups with fewer than 10 events are rejected before tracking. This produces a small set of
+          time-local detections without constructing an image frame.
+        </p>
+        <figure class="detail-figure">
+          <a
+            href="../assets/project-details/drone-tracking-event-reduction.png"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="../assets/project-details/drone-tracking-event-reduction.png?v=2"
+              alt="Three-stage view of raw event-camera data, positive-polarity filtering, and accepted spatial groups"
+              loading="lazy"
+            >
+          </a>
+          <figcaption>
+            Polarity filtering reduces 458 raw events to 251 ON events; spatial grouping and the
+            size gate retain 229 events as two detections.
+          </figcaption>
+        </figure>
+
+        <h3>Building a Continuous Track</h3>
+        <p>
+          Clustering gives us possible drone locations in each 50 ms window, but every window is
+          initially independent. We represent each cluster by its <strong>centroid</strong>. A <strong>track</strong> is a running history of these centers together with an
+          estimate of their velocity. The goal is to decide which new center continues each existing
+          track.
+        </p>
+        <p>
+          For each active track, we first estimate where its center should appear 50 ms later by
+          assuming that its current speed and direction remain unchanged over that short interval.
+          We then compare every predicted position with every new cluster center. A one-to-one
+          matching procedure, the Hungarian algorithm, chooses the set of pairings with the smallest
+          total pixel distance. We accept a pairing only when the two positions are within 100 pixels;
+          this distance limit prevents unrelated activity from taking over a track.
+        </p>
+        <p>
+          Once a pair is accepted, the movement between the old and new centers gives a velocity in
+          pixels per second. To reduce jitter, we blend 30% of this new estimate with 70% of the
+          previous velocity. An unmatched detection starts a new candidate track, while an existing
+          track can remain unmatched for up to three windows before it is removed. A candidate must
+          receive detections in three windows before it can be selected, and the stable track
+          supported by the largest current event cluster is treated as the drone.
+        </p>
+        <figure class="detail-figure">
+          <a
+            href="../assets/project-details/drone-tracking-motion-analysis.png"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="../assets/project-details/drone-tracking-motion-analysis.png?v=3"
+              alt="Tracked drone path and smoothed speed across the event-camera sensor over ten seconds"
+              loading="lazy"
+            >
+          </a>
+          <figcaption>
+            The selected drone track is present in 198 of 200 windows after the first two
+            initialization windows. The left plot connects its successive cluster centers; the right
+            plot shows movement across the sensor in pixels per second.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2 class="section-title-nowrap">Keeping the Tracker Lightweight</h2>
+        <p>
+          The tracker reduces work before matching begins. The event camera omits unchanged pixels;
+          we then keep only the flight region and ON events, remove small clusters, and reject
+          detections that are too far from a predicted position. As a result, only a few cluster
+          centers need to be compared in each 50 ms window.
+        </p>
+        <p>
+          We also avoid storing an image representation for every track. A track keeps only its
+          center, velocity, age, missed-window count, and recent path. Old tracks are removed, and
+          visualization is limited to the most recent 50,000 events. This keeps the working data
+          bounded, but it assumes that the drone remains the largest consistent moving cluster.
+          Scenes with several similar moving objects would need a stronger way to distinguish them.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Preparing for Streaming</h2>
+        <p>
+          In the related astronomical-tracking system, the C/C++ event pipeline ran in real time on
+          a Raspberry Pi 4 at 1.5 GHz <a href="#drone-ref-2">[2]</a>. Its Broadcom BCM2711 processor
+          contains four 64-bit Arm Cortex-A72 cores <a href="#drone-ref-3">[3]</a>, giving the
+          streaming work a concrete edge-computing target.
+        </p>
+        <p>
+          We profiled the shared online clustering step on a longer recording of stars and
+          satellites. Although the tracking target is different, the underlying operation is the
+          same: events arrive continuously and must be assigned to nearby clusters. The longer trace
+          let us measure the memory and processing cost of the event processor.
+        </p>
+        <p>
+          The first version kept every point assigned to a cluster. Its memory therefore grew with
+          the recording, and expanding those point arrays repeatedly added processing time. We
+          replaced the point history with running center and velocity updates, used 32-bit timestamps
+          and 16-bit coordinates, and kept memory nearly constant as more events arrived.
+        </p>
+        <p>
+          We then divided the sensor into a 3 x 3 grid so a new event searches nearby clusters instead
+          of every active cluster. For continuous input, one thread loads fixed batches of 500 events
+          while another processes them. 
+        </p>
+        <div class="media-grid media-grid-two media-grid-benchmarks">
+          <figure class="media-card">
+            <img
+              src="../assets/project-details/drone-tracking-ram.png"
+              alt="RAM usage benchmark comparing event clustering with and without per-point allocation"
+              loading="lazy"
+            >
+            <figcaption>
+              Keeping only running cluster statistics held memory near 1.3 MB; storing every event
+              grew toward 7.8 MB.
+            </figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              src="../assets/project-details/drone-tracking-time.png"
+              alt="Per-buffer execution time benchmark with and without repeated point-memory reallocation"
+              loading="lazy"
+            >
+            <figcaption>
+              The compact cluster representation also reduced processing time (microseconds) for each 500-event
+              batch.
+            </figcaption>
+          </figure>
+        </div>
+        <p>
+          These plots measure the shared C event processor. They show
+          that removing the growing point history both bounded memory use and reduced the time needed
+          to process each batch.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>Takeaway</h2>
+        <p>
+          This project shows that a sparse event stream can be converted into a continuous drone path
+          with a compact, non-neural tracker. In the selected 10-second segment, the same track follows
+          the drone through the turn after initialization. The processor also avoids growing cluster
+          memory and unnecessary searches, which are important steps toward streaming on constrained
+          hardware.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>References</h2>
+        <ol class="detail-ordered">
+          <li id="drone-ref-1">
+            G. Gallego et al.,
+            <cite>
+              <a href="https://arxiv.org/abs/1904.08405" target="_blank" rel="noreferrer">
+                Event-based Vision: A Survey
+              </a>
+            </cite>,
+            IEEE TPAMI, 2022.
+          </li>
+          <li id="drone-ref-2">
+            S. S. Yadav, Ajay Vikram P, A. M. D, C. S. Seelamantula, and C. S. Thakur,
+            <cite>
+              <a
+                href="https://ieeexplore.ieee.org/document/11460932"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Asynchronous High-Speed Tracking of Astronomical Objects using Neuromorphic Camera
+                for Edge Computing
+              </a>
+            </cite>,
+            ICASSP 2026.
+          </li>
+          <li id="drone-ref-3">
+            Raspberry Pi Ltd.,
+            <cite>
+              <a
+                href="https://www.raspberrypi.com/documentation/computers/processors.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                BCM2711 processor documentation
+              </a>
+            </cite>.
+          </li>
+        </ol>
+      </div>
+    </div>
+    <script src="../assets/js/theme.js"></script>
+  </body>
+</html>
