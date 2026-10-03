@@ -115,6 +115,31 @@ a:hover {
   margin-top: 20px;
 }
 
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 24px;
+  margin-top: 16px;
+}
+
+.section-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.section-nav a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+:where(#history, #bio, #news, #publications, #projects) {
+  scroll-margin-top: 20px;
+}
+
 #dpic {
   grid-column: span 6;
   text-align: right;
