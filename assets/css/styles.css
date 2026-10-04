@@ -136,7 +136,7 @@ a:hover {
   outline-offset: 2px;
 }
 
-:where(#history, #bio, #news, #publications, #projects) {
+:where(#history, #research, #news, #publications, #projects) {
   scroll-margin-top: 20px;
 }
 
@@ -406,11 +406,11 @@ hr {
   margin-top: 40px;
 }
 
-#bio {
+#research {
   margin-bottom: 10px;
 }
 
-#bio > div:not(.ctitle) {
+#research > div:not(.ctitle) {
   text-align: justify;
   text-justify: inter-word;
 }
