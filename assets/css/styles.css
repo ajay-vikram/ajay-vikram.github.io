@@ -619,24 +619,51 @@ hr {
 
 .pub {
   font-size: 14px;
-  border-left: 4px solid var(--border-strong);
-  padding: 2px 0 2px 10px;
-  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+.ctitle + .pub {
+  padding-top: 0;
+}
+
+.pub:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .pub-title {
-  display: inline;
+  display: block;
+  margin-bottom: 2px;
   color: var(--text);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.pub-title a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
 }
 
 .pub-venue {
-  display: inline;
+  display: block;
+  margin-bottom: 2px;
   color: var(--accent);
-  margin-left: 6px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.pub-status {
+  color: var(--subtle);
+  font-weight: 400;
+  font-style: italic;
 }
 
 .pub-format {
   display: inline-block;
+  margin-left: 4px;
   padding: 2px 6px;
   border-radius: 3px;
   background: var(--accent);
@@ -648,7 +675,13 @@ hr {
 
 .pub-authors {
   display: block;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.pub-author-self {
   color: var(--text);
+  font-weight: 600;
 }
 
 .backlink {
