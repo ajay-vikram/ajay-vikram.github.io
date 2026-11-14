@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oral Presentation Styles | Ajay Vikram P</title>
+    <meta name="robots" content="noindex">
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css?v=20">
+    <style>
+      .style-preview {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 84px 20px 48px;
+      }
+
+      .style-preview h1 {
+        margin: 18px 0 28px;
+        font-size: 24px;
+        font-weight: 400;
+      }
+
+      .style-preview h2 {
+        margin: 36px 0 16px;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .preview-back {
+        font-size: 14px;
+      }
+
+      .style-options {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(190px, 1fr));
+        gap: 12px;
+        overflow-x: auto;
+        padding: 3px 3px 14px;
+      }
+
+      .style-option {
+        min-width: 0;
+        padding: 16px 12px 20px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--bg);
+        color: var(--text);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .style-option:hover {
+        border-color: var(--border-hover);
+        background: var(--surface-soft);
+      }
+
+      .style-option[aria-pressed="true"] {
+        border-color: var(--link);
+        box-shadow: inset 0 0 0 1px var(--link);
+      }
+
+      .style-option:focus-visible {
+        outline: 2px solid var(--link);
+        outline-offset: 2px;
+      }
+
+      .option-name {
+        display: block;
+        margin-bottom: 20px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .venue-sample {
+        color: var(--accent);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .oral-label {
+        display: inline-block;
+        font-weight: 700;
+      }
+
+      [data-style="italic"] .oral-label {
+        font-style: italic;
+      }
+
+      [data-style="underline"] .oral-label {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      [data-style="highlight"] .oral-label {
+        padding: 2px 5px;
+        border-radius: 2px;
+        background: var(--surface-soft);
+        background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+      }
+
+      [data-style="solid"] .oral-label {
+        padding: 2px 6px;
+        border-radius: 3px;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 12px;
+      }
+
+      .publication-preview {
+        max-width: 970px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-text">Dark</span>
+    </button>
+
+    <main class="style-preview">
+      <a class="preview-back" href="index.html#publications">&larr; Publications</a>
+      <h1>Oral Presentation Styles</h1>
+
+      <div class="style-options" role="group" aria-label="Presentation styles">
+        <button type="button" class="style-option" data-style="bold" aria-pressed="true">
+          <span class="option-name">1. Bold text</span>
+          <span class="venue-sample">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></span>
+        </button>
+        <button type="button" class="style-option" data-style="italic" aria-pressed="false">
+          <span class="option-name">2. Bold italic</span>
+          <span class="venue-sample">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></span>
+        </button>
+        <button type="button" class="style-option" data-style="underline" aria-pressed="false">
+          <span class="option-name">3. Underlined</span>
+          <span class="venue-sample">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></span>
+        </button>
+        <button type="button" class="style-option" data-style="highlight" aria-pressed="false">
+          <span class="option-name">4. Soft highlight</span>
+          <span class="venue-sample">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></span>
+        </button>
+        <button type="button" class="style-option" data-style="solid" aria-pressed="false">
+          <span class="option-name">5. Filled label</span>
+          <span class="venue-sample">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></span>
+        </button>
+      </div>
+
+      <section class="publication-preview" aria-labelledby="preview-title">
+        <h2 id="preview-title">Publication Preview</h2>
+        <div class="pub">
+          <div class="pub-title">
+            <a href="https://ieeexplore.ieee.org/document/11460932" target="_blank" rel="noreferrer">Asynchronous High-Speed Tracking of Astronomical Objects using Neuromorphic Camera for Edge Computing</a>
+          </div>
+          <div class="pub-venue venue-sample" id="venue-preview" data-style="bold">ICASSP 2026 &middot; <strong class="oral-label">Oral</strong></div>
+          <div class="pub-authors">
+            Satyapreet Singh Yadav, Ajay Vikram P, Adithya M D, Chandra Sekhar Seelamantula, Chetan Singh Thakur
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/theme.js"></script>
+    <script>
+      const options = document.querySelectorAll(".style-option");
+      const preview = document.getElementById("venue-preview");
+
+      for (const option of options) {
+        option.addEventListener("click", () => {
+          for (const other of options) {
+            other.setAttribute("aria-pressed", String(other === option));
+          }
+          preview.dataset.style = option.dataset.style;
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -2,54 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Global Context Understanding for Autonomous Vehicles">
     <title>ViTFuser | Ajay Vikram P</title>
-    <script>
-      try {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css?v=4">
+    <script src="../assets/js/theme-init.js?v=main-1"></script>
+    <link rel="preload" href="../assets/fonts/Newsreader-Latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=main-1">
   </head>
-  <body>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <span class="theme-toggle-mark" aria-hidden="true"></span>
-      <span class="theme-toggle-text">Dark</span>
-    </button>
+  <body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-shell">
+      <nav class="site-nav project-nav" aria-label="Project navigation">
+        <a href="../index.html#projects" class="backlink"><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../index.html" class="nav-name">Ajay Vikram P</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+          <span class="theme-toggle-mark" aria-hidden="true"></span>
+        </button>
+      </nav>
+      <main id="main" class="project-content">
+        <article>
 
-    <div class="container">
-      <div class="backlink"><a href="../index.html">← Back to home</a></div>
-      <h1 class="project-page-title">ViTFuser</h1>
-      <div class="project-page-subtitle">Global Context Understanding for Autonomous Vehicles</div>
 
-      <div class="detail-section">
-        <h2>Overview</h2>
-        <p>
+<h1 class="project-page-title">ViTFuser</h1>
+<div class="project-page-subtitle">Global Context Understanding for Autonomous Vehicles</div>
+<section aria-labelledby="section-1" class="detail-section">
+<h2 id="section-1">Overview</h2>
+<p>
           ViTFuser <a href="#vit-ref-1">[1]</a> is an end-to-end autonomous-driving architecture
           that learns to navigate from front-camera images and LiDAR. Building on
-          <a href="https://arxiv.org/abs/2205.15997" target="_blank" rel="noreferrer">TransFuser</a>
-          <a href="#vit-ref-2">[2]</a>, it uses Vision Transformers
+          <a href="https://arxiv.org/abs/2205.15997" rel="noreferrer" target="_blank">TransFuser</a>
+<a href="#vit-ref-2">[2]</a>, it uses Vision Transformers
           <a href="#vit-ref-3">[3]</a> at multiple feature resolutions to preserve global scene
           context during sensor fusion. A Feature Pyramid Network (FPN)
           <a href="#vit-ref-4">[4]</a> strengthens multi-scale object detection, helping the
           driving policy avoid traffic violations.
         </p>
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/vitfuser-high-level.png"
-            alt="ViTFuser perception, decision, interpretation, and control pipeline"
-          >
-          <figcaption>
+<figure class="detail-figure">
+<img alt="ViTFuser perception, decision, interpretation, and control pipeline" height="540" src="../assets/project-details/vitfuser-high-level.png" width="1488"/>
+<figcaption>
             ViTFuser converts RGB and LiDAR observations into waypoints and interpretable
             auxiliary predictions used during training.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>Why It Matters</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-2" class="detail-section">
+<h2 id="section-2">Why It Matters</h2>
+<p>
           Cameras provide rich semantic information such as traffic lights and road appearance,
           while LiDAR provides geometry and depth. Effective driving requires both. In
           TransFuser, pixel-level transformer attention requires aggressive feature-map
@@ -57,203 +55,180 @@
           instead attends over image patches at four encoder stages, retaining more information
           while reducing computation.
         </p>
-        <blockquote class="detail-quote">
+<blockquote class="detail-quote">
           ViTFuser uses <strong>55.3 million parameters</strong>, about 67% fewer than
           TransFuser's 168 million, while reducing GPU memory use by 3x.
         </blockquote>
-      </div>
-
-      <div class="detail-section">
-        <h2>How It Works</h2>
-        <ol class="detail-ordered">
-          <li>
-            <strong>Multi-modal input.</strong> Three front-facing camera views are cropped and
+</section>
+<section aria-labelledby="section-3" class="detail-section">
+<h2 id="section-3">How It Works</h2>
+<ol class="detail-ordered">
+<li>
+<strong>Multi-modal input.</strong> Three front-facing camera views are cropped and
             stitched into a 704 x 160 image. LiDAR points are projected into a 256 x 256
             bird's-eye-view grid, with the navigation goal added as a third channel.
           </li>
-          <li>
-            <strong>Stage-wise fusion.</strong> Separate RegNet encoders
+<li>
+<strong>Stage-wise fusion.</strong> Separate RegNet encoders
             <a href="#vit-ref-5">[5]</a> process RGB and LiDAR. Four ViT blocks fuse their feature
             maps at progressively coarser resolutions, allowing global interactions without
             collapsing the scene into one very small feature map.
           </li>
-          <li>
-            <strong>Waypoint prediction.</strong> A GRU decoder predicts four target waypoints,
+<li>
+<strong>Waypoint prediction.</strong> A GRU decoder predicts four target waypoints,
             which a PID controller converts into steering and throttle commands.
           </li>
-          <li>
-            <strong>Interpretable supervision.</strong> Auxiliary decoders predict depth,
+<li>
+<strong>Interpretable supervision.</strong> Auxiliary decoders predict depth,
             semantic segmentation, HD maps, and vehicle bounding boxes. The FPN combines features
             across scales to improve the bounding-box head and reduce infractions.
           </li>
-        </ol>
-
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/vitfuser-inputs.png"
-            alt="Stitched front-camera image and LiDAR bird's-eye-view inputs"
-            loading="lazy"
-          >
-          <figcaption>
+</ol>
+<figure class="detail-figure">
+<img alt="Stitched front-camera image and LiDAR bird's-eye-view inputs" height="636" loading="lazy" src="../assets/project-details/vitfuser-inputs.png" width="1506"/>
+<figcaption>
             The model combines a wide front-camera view with a LiDAR bird's-eye-view
             representation.
           </figcaption>
-        </figure>
-
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/vitfuser-encoder.png"
-            alt="Dual-branch ViTFuser encoder with four Vision Transformers and an FPN"
-            loading="lazy"
-          >
-          <figcaption>
+</figure>
+<figure class="detail-figure">
+<img alt="Dual-branch ViTFuser encoder with four Vision Transformers and an FPN" height="1100" loading="lazy" src="../assets/project-details/vitfuser-encoder.png" width="1356"/>
+<figcaption>
             RGB and LiDAR features are fused by ViTs at four resolutions; the FPN aggregates
             multi-scale features for object detection.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>Evaluation</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-4" class="detail-section">
+<h2 id="section-4">Evaluation</h2>
+<p>
           We trained ViTFuser on the TransFuser dataset: approximately 230,000 frames from
           3,500 routes across all eight public CARLA towns <a href="#vit-ref-6">[6]</a>, covering
           varied weather and difficult scenarios such as junctions, roundabouts, cyclists, and
           pedestrians. We evaluated both ViTFuser variants on the Longest6 and Town05 benchmarks
           across three runs to account for simulator variability.
         </p>
-        <p>
+<p>
           Driving Score combines route completion with an infraction penalty, so a higher score
           rewards both progress and safe behavior. The table shows the mean Driving Score across
           the three runs.
         </p>
-        <div class="table-scroll">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th scope="col">Benchmark</th>
-                <th scope="col">TransFuser</th>
-                <th scope="col">ViTFuser</th>
-                <th scope="col">ViTFuser + FPN</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Longest6</td>
-                <td>43.48</td>
-                <td>51.96</td>
-                <td><strong>55.15</strong></td>
-              </tr>
-              <tr>
-                <td>Town05 Short</td>
-                <td>87.48</td>
-                <td>90.04</td>
-                <td><strong>91.07</strong></td>
-              </tr>
-              <tr>
-                <td>Town05 Long</td>
-                <td>67.85</td>
-                <td>74.82</td>
-                <td><strong>74.95</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <blockquote class="detail-quote">
+<div aria-label="Evaluation table" class="table-scroll" role="region" tabindex="0">
+<table class="data-table">
+<thead>
+<tr>
+<th scope="col">Benchmark</th>
+<th scope="col">TransFuser</th>
+<th scope="col">ViTFuser</th>
+<th scope="col">ViTFuser + FPN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longest6</td>
+<td>43.48</td>
+<td>51.96</td>
+<td><strong>55.15</strong></td>
+</tr>
+<tr>
+<td>Town05 Short</td>
+<td>87.48</td>
+<td>90.04</td>
+<td><strong>91.07</strong></td>
+</tr>
+<tr>
+<td>Town05 Long</td>
+<td>67.85</td>
+<td>74.82</td>
+<td><strong>74.95</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote class="detail-quote">
           On Longest6, ViTFuser + FPN improved Driving Score by 11.67 points over
           TransFuser and raised the Infraction Score from 0.60 to 0.69. On Town05 Long,
           it reached 94.90% route completion.
         </blockquote>
-      </div>
-
-      <div class="detail-section">
-        <h2>Takeaway</h2>
-        <p>
+</section>
+<section aria-labelledby="section-5" class="detail-section">
+<h2 id="section-5">Takeaway</h2>
+<p>
           The results separate the value of the two changes: multi-resolution ViT fusion provides
           the main gain over TransFuser, while the FPN adds a smaller but consistent improvement
           by strengthening object detection. The main limitation is that all training and
           evaluation were performed in CARLA using predefined urban scenarios and expert
           supervision, so performance does not establish real-world robustness.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>References</h2>
-        <ol class="detail-ordered">
-          <li id="vit-ref-1">
+</section>
+<section aria-labelledby="section-6" class="detail-section">
+<h2 id="section-6">References</h2>
+<ol class="detail-ordered">
+<li id="vit-ref-1">
             A. Chatterjee, P. Ajay Vikram, A. N. Bellala, T. Naga Tarun, B. Talawar, M. Vani,
             and J. Rajan,
             <cite>
-              <a
-                href="https://link.springer.com/chapter/10.1007/978-3-032-14531-4_11"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://link.springer.com/chapter/10.1007/978-3-032-14531-4_11" rel="noreferrer" target="_blank">
                 ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles
               </a>
-            </cite>,
+</cite>,
             MIND 2024, CCIS 2736, pp. 128-140, Springer, 2026.
           </li>
-          <li id="vit-ref-2">
+<li id="vit-ref-2">
             K. Chitta, A. Prakash, B. Jaeger, Z. Yu, K. Renz, and A. Geiger,
             <cite>
-              <a href="https://arxiv.org/abs/2205.15997" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/2205.15997" rel="noreferrer" target="_blank">
                 TransFuser: Imitation with Transformer-Based Sensor Fusion for Autonomous Driving
               </a>
-            </cite>,
+</cite>,
             2022.
           </li>
-          <li id="vit-ref-3">
+<li id="vit-ref-3">
             A. Dosovitskiy et al.,
             <cite>
-              <a href="https://arxiv.org/abs/2010.11929" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/2010.11929" rel="noreferrer" target="_blank">
                 An Image Is Worth 16x16 Words: Transformers for Image Recognition at Scale
               </a>
-            </cite>,
+</cite>,
             ICLR 2021.
           </li>
-          <li id="vit-ref-4">
+<li id="vit-ref-4">
             T.-Y. Lin, P. Dollar, R. Girshick, K. He, B. Hariharan, and S. Belongie,
             <cite>
-              <a
-                href="https://openaccess.thecvf.com/content_cvpr_2017/html/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.html"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://openaccess.thecvf.com/content_cvpr_2017/html/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.html" rel="noreferrer" target="_blank">
                 Feature Pyramid Networks for Object Detection
               </a>
-            </cite>,
+</cite>,
             CVPR 2017.
           </li>
-          <li id="vit-ref-5">
+<li id="vit-ref-5">
             I. Radosavovic, R. P. Kosaraju, R. Girshick, K. He, and P. Dollar,
             <cite>
-              <a
-                href="https://openaccess.thecvf.com/content_CVPR_2020/html/Radosavovic_Designing_Network_Design_Spaces_CVPR_2020_paper.html"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://openaccess.thecvf.com/content_CVPR_2020/html/Radosavovic_Designing_Network_Design_Spaces_CVPR_2020_paper.html" rel="noreferrer" target="_blank">
                 Designing Network Design Spaces
               </a>
-            </cite>,
+</cite>,
             CVPR 2020.
           </li>
-          <li id="vit-ref-6">
+<li id="vit-ref-6">
             A. Dosovitskiy, G. Ros, F. Codevilla, A. Lopez, and V. Koltun,
             <cite>
-              <a
-                href="https://proceedings.mlr.press/v78/dosovitskiy17a.html"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://proceedings.mlr.press/v78/dosovitskiy17a.html" rel="noreferrer" target="_blank">
                 CARLA: An Open Urban Driving Simulator
               </a>
-            </cite>,
+</cite>,
             CoRL 2017.
           </li>
-        </ol>
-      </div>
+</ol>
+</section>
+
+        </article>
+        <div class="project-end"><a href="../index.html#projects"><span aria-hidden="true">&larr;</span> All projects</a></div>
+      </main>
+      <footer class="site-footer">
+        <a href="../old/index.html">Original portfolio</a>
+      </footer>
     </div>
-    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/site.js?v=main-1"></script>
   </body>
 </html>

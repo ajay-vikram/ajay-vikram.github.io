@@ -2,32 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Multi-Agent Reinforcement Learning for Long-Horizon Deckbuilding">
     <title>Balatro RL | Ajay Vikram P</title>
-    <script>
-      try {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css?v=8">
+    <script src="../assets/js/theme-init.js?v=main-1"></script>
+    <link rel="preload" href="../assets/fonts/Newsreader-Latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=main-1">
   </head>
-  <body>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <span class="theme-toggle-mark" aria-hidden="true"></span>
-      <span class="theme-toggle-text">Dark</span>
-    </button>
+  <body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-shell">
+      <nav class="site-nav project-nav" aria-label="Project navigation">
+        <a href="../index.html#projects" class="backlink"><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../index.html" class="nav-name">Ajay Vikram P</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+          <span class="theme-toggle-mark" aria-hidden="true"></span>
+        </button>
+      </nav>
+      <main id="main" class="project-content">
+        <article>
 
-    <div class="container">
-      <div class="backlink"><a href="../index.html">&larr; Back to home</a></div>
-      <h1 class="project-page-title">Balatro RL</h1>
-      <div class="project-page-subtitle">
+
+<h1 class="project-page-title">Balatro RL</h1>
+<div class="project-page-subtitle">
         Multi-Agent Reinforcement Learning for Long-Horizon Deckbuilding
       </div>
-
-      <div class="detail-section">
-        <h2>Overview</h2>
-        <p>
+<section aria-labelledby="section-1" class="detail-section">
+<h2 id="section-1">Overview</h2>
+<p>
           Balatro <a href="#bal-ref-1">[1]</a> combines tactical poker-hand selection with
           long-horizon deckbuilding and economy management. We studied whether reinforcement
           learning could jointly learn these two timescales using a high-throughput Rust environment,
@@ -35,133 +37,102 @@
           phases of the game. The blind policy handles card play and discards; the shop policy handles purchases,
           packs, and blind selection. Both observe the full game state, but each receives rewards
           routed toward the decisions it controls. For more details,
-          <a href="../assets/docs/balatro-rl-report.pdf" target="_blank" rel="noreferrer">read the full report</a>.
+          <a href="../assets/docs/balatro-rl-report.pdf" rel="noreferrer" target="_blank">read the full report</a>.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>Why It Is Difficult</h2>
-        <ul class="detail-list">
-          <li>
-            <strong>Large state-dependent action space.</strong> The maximal environment interface
+</section>
+<section aria-labelledby="section-2" class="detail-section">
+<h2 id="section-2">Why It Is Difficult</h2>
+<ul class="detail-list">
+<li>
+<strong>Large state-dependent action space.</strong> The maximal environment interface
             exposes roughly 3,000 actions, but only a small and changing subset is legal at each
             step.
           </li>
-          <li>
-            <strong>Long credit horizon.</strong> A run spans eight antes and several hundred
+<li>
+<strong>Long credit horizon.</strong> A run spans eight antes and several hundred
             decisions. A shop purchase can affect scoring many blinds later.
           </li>
-          <li>
-            <strong>Pervasive stochasticity.</strong> Card draws, shops, packs, tags, and boss
+<li>
+<strong>Pervasive stochasticity.</strong> Card draws, shops, packs, tags, and boss
             effects vary by seed, making narrow strategies fragile.
           </li>
-        </ul>
-      </div>
-
-      <div class="detail-section">
-        <h2 class="section-title-long">High-Throughput Simulator</h2>
-        <p>
+</ul>
+</section>
+<section aria-labelledby="section-3" class="detail-section">
+<h2 class="section-title-long" id="section-3">High-Throughput Simulator</h2>
+<p>
           Training directly through the graphical game client was too slow for the millions of
           transitions required by PPO and did not support efficient parallel rollouts. We therefore
           built a headless simulator that could execute complete runs quickly while retaining the
           mechanics needed by the agents.
         </p>
-        <p>
+<p>
           The game engine is written in Rust and models hand detection, scoring, joker effects,
           shops, packs, economy, boss blinds, and seeded randomness. Python bindings expose it as a
           Gymnasium environment for RLlib training, while a WebAssembly build runs the same engine
           in the browser for direct inspection.
         </p>
-        <figure class="detail-figure">
-          <a
-            href="../assets/project-details/balatro-simulator.png"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="../assets/project-details/balatro-simulator.png"
-              alt="Browser view of the Balatro simulator showing the current blind, hand, deck, and game state"
-              loading="lazy"
-            >
-          </a>
-          <figcaption>
+<figure class="detail-figure">
+<a href="../assets/project-details/balatro-simulator.png" rel="noreferrer" target="_blank">
+<img alt="Browser view of the Balatro simulator showing the current blind, hand, deck, and game state" height="980" loading="lazy" src="../assets/project-details/balatro-simulator.png" width="1999"/>
+</a>
+<figcaption>
             Browser view of the Rust simulator through WebAssembly, exposing the hand, blind, deck,
             and current game state.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>RL Formulation</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-4" class="detail-section">
+<h2 id="section-4">RL Formulation</h2>
+<p>
           The complete environment can expose roughly 3,000 discrete actions and a
           20,000-dimensional observation. For these experiments, we condensed it to a fixed
           74-action interface and a 1,449-dimensional observation while retaining the state needed
           for blind, shop, pack, and progression decisions.
         </p>
-
-        <h3>Action Space</h3>
-        <p>
+<h3>Action Space</h3>
+<p>
           The 74 actions cover selecting and playing cards, discarding, using consumables, buying
           and selling items, rerolling or leaving shops, choosing or skipping blinds, opening packs,
           and reordering cards or jokers. A dynamic mask removes actions that are illegal,
           unaffordable, or unavailable in the current phase <a href="#bal-ref-3">[3]</a>.
         </p>
-        <figure class="detail-figure">
-          <a
-            href="../assets/project-details/balatro-action-space.png"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="../assets/project-details/balatro-action-space.png"
-              alt="Table mapping the 74 discrete actions used by the Balatro reinforcement learning environment"
-              loading="lazy"
-            >
-          </a>
-          <figcaption>
+<figure class="detail-figure">
+<a href="../assets/project-details/balatro-action-space.png" rel="noreferrer" target="_blank">
+<img alt="Table mapping the 74 discrete actions used by the Balatro reinforcement learning environment" height="780" loading="lazy" src="../assets/project-details/balatro-action-space.png" width="1000"/>
+</a>
+<figcaption>
             V1 action-space mapping used for training. Legal choices are selected from this fixed
             interface at every step.
           </figcaption>
-        </figure>
-
-        <h3>Observation Space</h3>
-        <p>
+</figure>
+<h3>Observation Space</h3>
+<p>
           The observation encodes the hand and full deck with card attributes, owned jokers and
           consumables, the current phase and blind, chips, hands, discards, money, hand levels,
           shop and pack contents, vouchers, tags, and boss-specific state. Both policies receive
           this shared global state.
         </p>
-        <figure class="detail-figure">
-          <a
-            href="../assets/project-details/balatro-observation-space.png"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="../assets/project-details/balatro-observation-space.png"
-              alt="Table mapping all 1,449 dimensions of the Balatro reinforcement learning observation"
-              loading="lazy"
-            >
-          </a>
-          <figcaption>
+<figure class="detail-figure">
+<a href="../assets/project-details/balatro-observation-space.png" rel="noreferrer" target="_blank">
+<img alt="Table mapping all 1,449 dimensions of the Balatro reinforcement learning observation" height="1000" loading="lazy" src="../assets/project-details/balatro-observation-space.png" width="1100"/>
+</a>
+<figcaption>
             V1 observation-space mapping. The two columns form one contiguous 1,449-dimensional
             vector.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>Two-Policy Architecture</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-5" class="detail-section">
+<h2 id="section-5">Two-Policy Architecture</h2>
+<p>
           Early single-policy experiments alternated between two failure modes: aggressive blind
           play that ignored the economy and shop behavior that hoarded money without building
           useful synergies. We separated these responsibilities while preserving a shared view of
           the game state.
         </p>
-
-        <h3>Blind Policy</h3>
-        <p>
+<h3>Blind Policy</h3>
+<p>
           A shared card encoder combines card identity, suit, rank, enhancement, edition, seal,
           and relational hand features. Self-attention summarizes the hand, while a separate joker
           summary and round context feed the actor and critic. An autoregressive action head first
@@ -169,9 +140,8 @@
           This choose-or-stop design represents card subsets without requiring a flat output for
           every possible combination.
         </p>
-
-        <h3>Shop Policy</h3>
-        <p>
+<h3>Shop Policy</h3>
+<p>
           Shop, pack, and owned items use the same card encoder with action and slot tags. A
           context token and multi-head attention let the policy evaluate each item against the
           current money, deck, jokers, and blind. Item-specific logits are combined with a second
@@ -179,257 +149,213 @@
           decisions separate from item actions was more stable than representing them as
           pseudo-items.
         </p>
-
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/balatro-marl-architecture.png"
-            alt="Architecture of the blind and shop reinforcement learning policies with shared state encoding and separate action and value heads"
-            loading="lazy"
-          >
-          <figcaption>
+<figure class="detail-figure">
+<img alt="Architecture of the blind and shop reinforcement learning policies with shared state encoding and separate action and value heads" height="3102" loading="lazy" src="../assets/project-details/balatro-marl-architecture.png" width="5820"/>
+<figcaption>
             Both policies receive the global state and action mask, then use phase-specific
             representations and heads for tactical blind play and strategic shop decisions.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>Reward Design</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-6" class="detail-section">
+<h2 id="section-6">Reward Design</h2>
+<p>
           The common environment reward is deliberately simple: clearing a blind gives +1; a
           nonterminal hand receives its scored chips divided by the blind target, capped at 1; and
           running out of hands gives a terminal -1. Shop actions, discards, rerolls, cash-outs, and
           reordering have zero core reward. Invalid actions carry a -1 safeguard, although action
           masking prevents them during training.
         </p>
-        <p>
+<p>
           We then route denser shaping signals <a href="#bal-ref-4">[4]</a> to the policy that can
           act on them:
         </p>
-        <ul class="detail-list">
-          <li>
-            <strong>Blind policy:</strong> hand-type quality, discard credit, urgency when hands
+<ul class="detail-list">
+<li>
+<strong>Blind policy:</strong> hand-type quality, discard credit, urgency when hands
             are running low, a graduated loss penalty, an ante-scaled clear bonus, and a
             hand-efficiency bonus.
           </li>
-          <li>
-            <strong>Shop policy:</strong> a penalty for unnecessarily crossing an interest tier
+<li>
+<strong>Shop policy:</strong> a penalty for unnecessarily crossing an interest tier
             and a bonus for growing the joker set.
           </li>
-          <li>
-            <strong>Cross-agent credit:</strong> cash and round-clear outcomes are routed back to
+<li>
+<strong>Cross-agent credit:</strong> cash and round-clear outcomes are routed back to
             the shop policy, and both policies receive a run-win bonus.
           </li>
-        </ul>
-      </div>
-
-      <div class="detail-section">
-        <h2>Training Setup</h2>
-        <ul class="detail-list">
-          <li>
-            <strong>Algorithm:</strong> multi-agent PPO <a href="#bal-ref-2">[2]</a>, implemented
+</ul>
+</section>
+<section aria-labelledby="section-7" class="detail-section">
+<h2 id="section-7">Training Setup</h2>
+<ul class="detail-list">
+<li>
+<strong>Algorithm:</strong> multi-agent PPO <a href="#bal-ref-2">[2]</a>, implemented
             with Ray RLlib
           </li>
-          <li><strong>Main run:</strong> 4,000 iterations and approximately 20.5 million environment steps</li>
-          <li><strong>Batching:</strong> 5,120 environment steps per iteration, four SGD epochs, minibatches of 512</li>
-          <li><strong>Optimization:</strong> learning rate 3 x 10<sup>-5</sup>, discount 0.99, PPO clip 0.15</li>
-          <li>
-            <strong>Exploration:</strong> blind entropy fixed at 0.001; shop entropy decayed from
+<li><strong>Main run:</strong> 4,000 iterations and approximately 20.5 million environment steps</li>
+<li><strong>Batching:</strong> 5,120 environment steps per iteration, four SGD epochs, minibatches of 512</li>
+<li><strong>Optimization:</strong> learning rate 3 x 10<sup>-5</sup>, discount 0.99, PPO clip 0.15</li>
+<li>
+<strong>Exploration:</strong> blind entropy fixed at 0.001; shop entropy decayed from
             0.02 to 0.006 by 1.5 million steps and to 0.001 by 4 million steps
           </li>
-          <li><strong>Compute:</strong> four environment runners and one NVIDIA RTX A5000</li>
-          <li><strong>Evaluation:</strong> 32 deterministic episodes per evaluation pass</li>
-        </ul>
-        <p>
+<li><strong>Compute:</strong> four environment runners and one NVIDIA RTX A5000</li>
+<li><strong>Evaluation:</strong> 32 deterministic episodes per evaluation pass</li>
+</ul>
+<p>
           The higher initial shop entropy encouraged exploration, while its decay prevented the
           policy from collapsing into repeatedly rerolling or immediately ending the shop.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>Results</h2>
-        <p>
+</section>
+<section aria-labelledby="section-8" class="detail-section">
+<h2 id="section-8">Results</h2>
+<p>
           The plots show on-policy training metrics over the first 1,000 PPO iterations, or about
           five million environment steps, smoothed with a 40-iteration trailing mean. The agents
           move through an initial failure regime, a sharp transition around iterations 150-400,
           and a later plateau.
         </p>
-
-        <div class="media-grid media-grid-two media-grid-results">
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/balatro-mean-return.png"
-              alt="Mean episode return rising sharply during multi-agent PPO training"
-              loading="lazy"
-            >
-            <figcaption>Mean episode return</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/balatro-first-blind-clear.png"
-              alt="First-blind clear rate converging near one during training"
-              loading="lazy"
-            >
-            <figcaption>First-blind clear rate</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/balatro-episode-length.png"
-              alt="Mean episode length increasing as the agents clear more blinds"
-              loading="lazy"
-            >
-            <figcaption>Mean episode length</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/balatro-terminal-money.png"
-              alt="Mean terminal money increasing after the blind policy begins reaching shops"
-              loading="lazy"
-            >
-            <figcaption>Mean terminal money</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/balatro-max-ante.png"
-              alt="Mean maximum ante reached increasing from one to approximately three"
-              loading="lazy"
-            >
-            <figcaption>Mean maximum ante reached</figcaption>
-          </figure>
-        </div>
-
-        <blockquote class="detail-quote">
+<div class="media-grid media-grid-two media-grid-results">
+<figure class="media-card">
+<img alt="Mean episode return rising sharply during multi-agent PPO training" height="637" loading="lazy" src="../assets/project-details/balatro-mean-return.png" width="1153"/>
+<figcaption>Mean episode return</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="First-blind clear rate converging near one during training" height="637" loading="lazy" src="../assets/project-details/balatro-first-blind-clear.png" width="1177"/>
+<figcaption>First-blind clear rate</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Mean episode length increasing as the agents clear more blinds" height="637" loading="lazy" src="../assets/project-details/balatro-episode-length.png" width="1185"/>
+<figcaption>Mean episode length</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Mean terminal money increasing after the blind policy begins reaching shops" height="637" loading="lazy" src="../assets/project-details/balatro-terminal-money.png" width="1169"/>
+<figcaption>Mean terminal money</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Mean maximum ante reached increasing from one to approximately three" height="637" loading="lazy" src="../assets/project-details/balatro-max-ante.png" width="1177"/>
+<figcaption>Mean maximum ante reached</figcaption>
+</figure>
+</div>
+<blockquote class="detail-quote">
           The first-blind clear rate crossed 99% by iteration 173. In the plateau regime, mean
           return settled near 7.6, episodes lasted roughly 170-200 steps, and mean maximum ante
           reached stabilized around 2.6-3.0 out of 8.
         </blockquote>
-        <p>
+<p>
           This establishes that the two-policy decomposition learns reliable tactical blind play
           and makes the full multi-phase loop trainable. It does not establish run-level mastery:
           the policies did not complete all eight antes, and the remaining bottleneck
           is long-horizon shop and deck-building strategy.
         </p>
-
-        <h3>Qualitative Analysis</h3>
-        <p>
+<h3>Qualitative Analysis</h3>
+<p>
           Trajectory inspection suggested that the blind policy converged on a narrow preference
           for easy hands such as pairs and two pairs, while using discards myopically rather than
           preserving them for later decisions. That behavior was sufficient for early blinds,
           especially when paired with favorable joker paths, but it did not create the hand
           diversity or resource conservation needed for later antes.
         </p>
-
-        <h3>Research Insights</h3>
-        <ul class="detail-list">
-          <li>
+<h3>Research Insights</h3>
+<ul class="detail-list">
+<li>
             Action masking and autoregressive card selection reduced the burden of a large,
             combinatorial action space while preserving structured decisions.
           </li>
-          <li>
+<li>
             Phase specialization created an implicit learning curriculum: the shop policy only
             began receiving useful experience once the blind policy could reliably clear the first
             blind.
           </li>
-          <li>
+<li>
             The plateau near ante 3 separates tactical competence from long-horizon strategy.
             Better early hand play alone did not solve deck construction, economy management, and
             delayed credit assignment.
           </li>
-        </ul>
-      </div>
-
-      <div class="detail-section">
-        <h2>Limitations and Next Steps</h2>
-        <p>
+</ul>
+</section>
+<section aria-labelledby="section-9" class="detail-section">
+<h2 id="section-9">Limitations and Next Steps</h2>
+<p>
           The V1 interface omits part of the full joker and voucher pool, caps dynamic slots, and
           was not evaluated on held-out seed distributions or through live-game deployment. The
           main result also comes from one full-length training run, and both policies act
           reactively without search.
         </p>
-        <p>
+<p>
           The next research step is stronger evaluation across held-out seeds, followed by better
           long-horizon shop and deck-building objectives. Search or planning is also a natural
           direction for purchases whose value may only become visible several blinds later.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>Initial Results</h2>
-        <p>
+</section>
+<section aria-labelledby="section-10" class="detail-section">
+<h2 id="section-10">Initial Results</h2>
+<p>
           These were some of our initial policy rollouts in the simulator. The policy was still
           inconsistent over a full run, but it had already begun to make coherent hand-selection
           decisions. In the first blind shown here, it assembles a full house at around 00:21.
         </p>
-        <figure class="detail-figure">
-          <video
-            controls
-            playsinline
-            preload="metadata"
-            poster="../assets/project-details/balatro-initial-rollout-poster.jpg"
-          >
-            <source
-              src="../assets/project-details/balatro-initial-rollout.mp4"
-              type="video/mp4"
-            >
+<figure class="detail-figure">
+<video controls="" height="528" playsinline="" poster="../assets/project-details/balatro-initial-rollout-poster.jpg" preload="metadata" width="960">
+<source src="../assets/project-details/balatro-initial-rollout.mp4" type="video/mp4"/>
             Your browser does not support embedded video.
           </video>
-          <figcaption>
+<figcaption>
             An early policy rollout at 5x simulator speed. The full house appears around 00:21.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>References</h2>
-        <ol class="detail-ordered">
-          <li id="bal-ref-1">
+</figure>
+</section>
+<section aria-labelledby="section-11" class="detail-section">
+<h2 id="section-11">References</h2>
+<ol class="detail-ordered">
+<li id="bal-ref-1">
             LocalThunk and Playstack,
             <cite>
-              <a
-                href="https://store.steampowered.com/app/2379780/Balatro/"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://store.steampowered.com/app/2379780/Balatro/" rel="noreferrer" target="_blank">
                 Balatro
               </a>
-            </cite>,
+</cite>,
             2024.
           </li>
-          <li id="bal-ref-2">
+<li id="bal-ref-2">
             J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov,
             <cite>
-              <a href="https://arxiv.org/abs/1707.06347" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/1707.06347" rel="noreferrer" target="_blank">
                 Proximal Policy Optimization Algorithms
               </a>
-            </cite>,
+</cite>,
             2017.
           </li>
-          <li id="bal-ref-3">
+<li id="bal-ref-3">
             S. Huang and S. Ontanon,
             <cite>
-              <a href="https://arxiv.org/abs/2006.14171" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/2006.14171" rel="noreferrer" target="_blank">
                 A Closer Look at Invalid Action Masking in Policy Gradient Algorithms
               </a>
-            </cite>,
+</cite>,
             FLAIRS 2022.
           </li>
-          <li id="bal-ref-4">
+<li id="bal-ref-4">
             A. Y. Ng, D. Harada, and S. Russell,
             <cite>
-              <a
-                href="https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
+<a href="https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf" rel="noreferrer" target="_blank">
                 Policy Invariance Under Reward Transformations: Theory and Application to Reward
                 Shaping
               </a>
-            </cite>,
+</cite>,
             ICML 1999.
           </li>
-        </ol>
-      </div>
+</ol>
+</section>
+
+        </article>
+        <div class="project-end"><a href="../index.html#projects"><span aria-hidden="true">&larr;</span> All projects</a></div>
+      </main>
+      <footer class="site-footer">
+        <a href="../old/index.html">Original portfolio</a>
+      </footer>
     </div>
-    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/site.js?v=main-1"></script>
   </body>
 </html>

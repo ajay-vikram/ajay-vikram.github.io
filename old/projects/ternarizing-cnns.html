@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ternarizing CNNs | Ajay Vikram P</title>
+    <script>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css?v=5">
+  </head>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-text">Dark</span>
+    </button>
+
+    <div class="container">
+      <div class="backlink"><a href="../index.html">← Back to home</a></div>
+      <h1 class="project-page-title">Ternarizing CNNs</h1>
+      <div class="project-page-subtitle">Efficient Human Activity Recognition</div>
+
+      <div class="detail-section">
+        <h2>Overview</h2>
+        <p>
+          We built a compact convolutional neural network to classify human activities from radar
+          spectrograms, then compressed it for integer-only inference. The model recognizes
+          jogging, jumping, sit-ups, waving, and other activity from single-channel
+          <code>64 × 64</code> inputs.
+        </p>
+        <p>
+          The compression pipeline combines ternary weights, quantized activations and biases,
+          pruning, batch-normalization folding, and quantization-aware training. The goal was to
+          preserve the full-precision model's accuracy while reducing its numerical precision and
+          reliance on floating-point operations.
+        </p>
+        <figure class="detail-figure">
+          <img
+            src="../../assets/project-details/har-spectrograms.png"
+            alt="Radar spectrogram examples for jogging, jumping, sit-ups, waving, and other activity"
+          >
+          <figcaption>
+            Representative spectrograms from each of the five activity classes.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Why It Matters</h2>
+        <p>
+          A full-precision model stores each weight with 32 bits. Restricting a weight to
+          <code>{−1, 0, +1}</code> allows it to be encoded with 2 bits, a 16× reduction in raw
+          weight storage before accounting for biases, scales, and other model data. The challenge
+          is retaining accuracy after introducing this low-precision constraint
+          <a href="#ref-1">[1]</a>.
+        </p>
+        <blockquote class="detail-quote">
+          The compressed model reached <strong>98.91% mean accuracy</strong>, compared with
+          <strong>99.42%</strong> for the FP32 baseline.
+        </blockquote>
+      </div>
+
+      <div class="detail-section">
+        <h2>How It Works</h2>
+        <ol class="detail-ordered">
+          <li>
+            <strong>Radar representation.</strong> Each sample is a
+            <code>64 × 64 × 1</code> spectrogram from a private radar dataset with five activity
+            classes.
+          </li>
+          <li>
+            <strong>Compact CNN.</strong> One 2D convolution is followed by two depthwise
+            separable convolution blocks, global average pooling, and a five-class output layer.
+            The network contains 3,029 parameters.
+          </li>
+          <li>
+            <strong>Quantization-aware training.</strong> A threshold maps weights to
+            <code>{−1, 0, +1}</code>, while fake quantization exposes the model to low-precision
+            arithmetic during training.
+          </li>
+          <li>
+            <strong>Integer inference.</strong> Activations use 8-bit precision and biases use
+            23-bit precision. We pruned the model to approximately 45% sparsity, folded batch
+            normalization into the convolution parameters, and used dyadic scale factors for
+            multiplication-and-bit-shift requantization.
+          </li>
+        </ol>
+
+        <figure class="detail-figure">
+          <img
+            src="../../assets/project-details/har-cnn.png"
+            alt="Compact CNN with an initial convolution, two depthwise separable blocks, global average pooling, and a classifier"
+          >
+          <figcaption>
+            The 3,029-parameter CNN uses depthwise separable convolutions to keep the architecture
+            compact.
+          </figcaption>
+        </figure>
+
+        <h3>Weight Ternarization</h3>
+        <p>
+          For each layer, a threshold determines whether a full-precision weight maps to
+          <code>−1</code>, <code>0</code>, or <code>+1</code>. A non-negative scale factor
+          <code>α</code> preserves the magnitude of the original weight distribution while the
+          ternary values provide a compact representation. The extracts below show corresponding
+          floating-point parameters and their ternarized weights and quantized biases.
+        </p>
+        <div class="media-grid media-grid-two media-grid-compact">
+          <figure class="media-card">
+            <img
+              src="../../assets/project-details/har-fp32weights.png"
+              alt="Floating-point CNN weights and biases before quantization"
+            >
+            <figcaption>Floating-point weights and biases</figcaption>
+          </figure>
+          <figure class="media-card">
+            <img
+              src="../../assets/project-details/har-ternaryweights.png"
+              alt="Ternarized CNN weights and quantized biases"
+            >
+            <figcaption>Ternarized weights and quantized biases</figcaption>
+          </figure>
+        </div>
+
+        <h3>Quantization-Aware Training</h3>
+        <p>
+          We used uniform affine quantization to approximate a real value <code>r</code> as
+          <code>q = round(r / scale) + zero_point</code>. During training, fake-quantization
+          modules simulate the rounding and clipping used at inference while the trainable
+          parameters remain in floating point. A straight-through estimator supplies gradients
+          through the non-differentiable rounding operation
+          <a href="#ref-2">[2]</a>, <a href="#ref-3">[3]</a>.
+        </p>
+        <figure class="detail-figure">
+          <img
+            src="../../assets/project-details/har-qat.png"
+            alt="Quantization-aware training with a straight-through estimator"
+          >
+          <figcaption>
+            During training, the forward pass simulates integer weights while full-precision
+            parameters receive gradient updates through the straight-through estimator.
+          </figcaption>
+        </figure>
+
+        <h3>Integer-Only Inference</h3>
+        <p>
+          After pruning to approximately 45% sparsity, we folded each batch-normalization layer
+          into the preceding convolution. Convolution, activation, and pooling then operate on
+          integer values. Dyadic scales of the form <code>s = a / 2ᵇ</code> replace general
+          division with integer multiplication and bit shifting during requantization
+          <a href="#ref-2">[2]</a>, <a href="#ref-4">[4]</a>.
+        </p>
+        <figure class="detail-figure">
+          <img
+            src="../../assets/project-details/har-int-inference.png"
+            alt="Integer multiply-accumulate and requantization pipeline"
+          >
+          <figcaption>
+            Integer weights and activations accumulate into a wider output before requantization
+            returns the activation to low precision.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="detail-section">
+        <h2>Evaluation</h2>
+        <p>
+          We evaluated the FP32 and compressed models using the same five cross-validation folds.
+          The compressed model remained within 1.09 percentage points of the baseline on every
+          fold and matched it on fold 5.
+        </p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Fold</th>
+                <th scope="col">FP32 accuracy</th>
+                <th scope="col">Compressed accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>99.27%</td><td>98.19%</td></tr>
+              <tr><td>2</td><td>100.00%</td><td>99.64%</td></tr>
+              <tr><td>3</td><td>99.27%</td><td>98.91%</td></tr>
+              <tr><td>4</td><td>98.55%</td><td>97.83%</td></tr>
+              <tr><td>5</td><td>100.00%</td><td>100.00%</td></tr>
+              <tr>
+                <td><strong>Mean</strong></td>
+                <td><strong>99.42%</strong></td>
+                <td><strong>98.91%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h2>Takeaway</h2>
+        <p>
+          Ternarization, quantization, and pruning reduced numerical precision while limiting the
+          mean accuracy change to 0.51 percentage points. The available evaluation measures
+          classification accuracy; hardware latency, memory use, and energy consumption were not
+          benchmarked.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h2>References</h2>
+        <ol class="detail-ordered">
+          <li id="ref-1">
+            F. Li, B. Liu, X. Wang, B. Zhang, and J. Yan,
+            <cite>
+              <a href="https://arxiv.org/abs/1605.04711" target="_blank" rel="noreferrer">
+                Ternary Weight Networks
+              </a>
+            </cite>,
+            2016.
+          </li>
+          <li id="ref-2">
+            B. Jacob, S. Kligys, B. Chen, M. Zhu, M. Tang, A. Howard, H. Adam, and
+            D. Kalenichenko,
+            <cite>
+              <a
+                href="https://openaccess.thecvf.com/content_cvpr_2018/html/Jacob_Quantization_and_Training_CVPR_2018_paper.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Quantization and Training of Neural Networks for Efficient
+                Integer-Arithmetic-Only Inference
+              </a>
+            </cite>,
+            CVPR 2018.
+          </li>
+          <li id="ref-3">
+            Y. Bengio, N. Léonard, and A. Courville,
+            <cite>
+              <a href="https://arxiv.org/abs/1308.3432" target="_blank" rel="noreferrer">
+                Estimating or Propagating Gradients Through Stochastic Neurons for Conditional
+                Computation
+              </a>
+            </cite>,
+            2013.
+          </li>
+          <li id="ref-4">
+            Z. Yao, Z. Dong, Z. Zheng, A. Gholami, J. Yu, E. Tan, L. Wang, Q. Huang, Y. Wang,
+            M. W. Mahoney, and K. Keutzer,
+            <cite>
+              <a
+                href="https://proceedings.mlr.press/v139/yao21a.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                HAWQ-V3: Dyadic Neural Network Quantization
+              </a>
+            </cite>,
+            ICML 2021.
+          </li>
+        </ol>
+      </div>
+    </div>
+    <script src="../assets/js/theme.js"></script>
+  </body>
+</html>

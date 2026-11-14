@@ -2,324 +2,261 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Self-Evolving Meta-Skill Learning for Humanoid Robots with Large Language Models">
     <title>SkillBlenderLC | Ajay Vikram P</title>
-    <script>
-      try {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css?v=6">
+    <script src="../assets/js/theme-init.js?v=main-1"></script>
+    <link rel="preload" href="../assets/fonts/Newsreader-Latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=main-1">
   </head>
-  <body>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <span class="theme-toggle-mark" aria-hidden="true"></span>
-      <span class="theme-toggle-text">Dark</span>
-    </button>
+  <body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-shell">
+      <nav class="site-nav project-nav" aria-label="Project navigation">
+        <a href="../index.html#projects" class="backlink"><span aria-hidden="true">&larr;</span> All projects</a>
+        <a href="../index.html" class="nav-name">Ajay Vikram P</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+          <span class="theme-toggle-mark" aria-hidden="true"></span>
+        </button>
+      </nav>
+      <main id="main" class="project-content">
+        <article>
 
-    <div class="container">
-      <div class="backlink"><a href="../index.html">← Back to home</a></div>
-      <h1 class="project-page-title">SkillBlenderLC</h1>
-      <div class="project-page-subtitle">
+
+<h1 class="project-page-title">SkillBlenderLC</h1>
+<div class="project-page-subtitle">
         Self-Evolving Meta-Skill Learning for Humanoid Robots with Large Language Models
       </div>
-
-      <div class="detail-section">
-        <h2>Overview</h2>
-        <p>
+<section aria-labelledby="section-1" class="detail-section">
+<h2 id="section-1">Overview</h2>
+<p>
           SkillBlenderLC extends
-          <a href="https://arxiv.org/abs/2506.09366" target="_blank" rel="noreferrer">
+          <a href="https://arxiv.org/abs/2506.09366" rel="noreferrer" target="_blank">
             SkillBlender
           </a>
-          <a href="#sb-ref-1">[1]</a>
+<a href="#sb-ref-1">[1]</a>
           with a language-guided path for expanding a humanoid robot's skill library. A large
           language model decomposes a high-level instruction, identifies the required motor skills,
           and generates executable reward code when a capability is missing.
         </p>
-        <p>
+<p>
           Each generated reward is evaluated by training a PPO policy in Isaac Gym. The system is
           designed to return policy-level metrics to the LLM for reward refinement and to add
           validated behaviors back to the reusable skill library.  For more details,
-          <a href="../assets/docs/skillblenderlc-report.pdf" target="_blank" rel="noreferrer">read the full report</a>.
+          <a href="../assets/docs/skillblenderlc-report.pdf" rel="noreferrer" target="_blank">read the full report</a>.
         </p>
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/skillblenderlc-plan.png"
-            alt="SkillBlenderLC pipeline connecting task planning, skill reuse, reward generation, reinforcement learning, and reward refinement"
-          >
-          <figcaption>
+<figure class="detail-figure">
+<img alt="SkillBlenderLC pipeline connecting task planning, skill reuse, reward generation, reinforcement learning, and reward refinement" height="1115" src="../assets/project-details/skillblenderlc-plan.png" width="2010"/>
+<figcaption>
             A task is decomposed against the current skill library. Missing skills trigger reward
             synthesis and RL training before they can be reused in future tasks.
           </figcaption>
-        </figure>
-      </div>
-
-      <div class="detail-section">
-        <h2>Why It Matters</h2>
-        <p>
+</figure>
+</section>
+<section aria-labelledby="section-2" class="detail-section">
+<h2 id="section-2">Why It Matters</h2>
+<p>
           Long-horizon humanoid tasks require both skill composition and new skill acquisition.
           Fixed libraries cannot cover every task, while manually writing and tuning a reward for
           each new behavior is expensive and brittle. One-shot LLM reward generation does not
           fully solve the problem: reward code can be structurally valid yet still produce an
           unstable or stationary policy after training.
         </p>
-        <blockquote class="detail-quote">
+<blockquote class="detail-quote">
           SkillBlenderLC connects language reasoning to policy performance, making downstream RL
           behavior the signal for deciding whether a generated reward is useful.
         </blockquote>
-      </div>
-
-      <div class="detail-section">
-        <h2>How It Works</h2>
-        <ol class="detail-ordered">
-          <li>
-            <strong>Plan the task.</strong> The LLM receives the natural-language goal and current
+</section>
+<section aria-labelledby="section-3" class="detail-section">
+<h2 id="section-3">How It Works</h2>
+<ol class="detail-ordered">
+<li>
+<strong>Plan the task.</strong> The LLM receives the natural-language goal and current
             skill library, then returns an ordered JSON decomposition of subtasks and required
             skills.
           </li>
-          <li>
-            <strong>Detect missing capabilities.</strong> Existing skills are scheduled for reuse;
+<li>
+<strong>Detect missing capabilities.</strong> Existing skills are scheduled for reuse;
             absent capabilities such as jumping, kicking, or pushing are routed to the reward
             generator.
           </li>
-          <li>
-            <strong>Generate executable rewards.</strong> The LLM uses existing reward templates,
+<li>
+<strong>Generate executable rewards.</strong> The LLM uses existing reward templates,
             available environment variables, and the requested subgoal to produce a Python reward
             class compatible with SkillBlender.
           </li>
-          <li>
-            <strong>Train and evaluate.</strong> PPO trains the skill in thousands of parallel
+<li>
+<strong>Train and evaluate.</strong> PPO trains the skill in thousands of parallel
             Isaac Gym environments. Stability, joint torque, energy, smoothness,
             distance-to-target, and success metrics characterize the resulting policy.
           </li>
-          <li>
-            <strong>Refine and reuse.</strong> The proposed feedback loop supplies the reward code
+<li>
+<strong>Refine and reuse.</strong> The proposed feedback loop supplies the reward code
             and measured performance to the LLM for revision. A validated skill is added to the
             library for later task composition.
           </li>
-        </ol>
-      </div>
-
-      <div class="detail-section">
-        <h2>Experimental Setup</h2>
-        <ul class="detail-list">
-          <li><strong>Robot:</strong> Unitree H1 humanoid with 19 actuated degrees of freedom</li>
-          <li>
-            <strong>Simulation:</strong> NVIDIA Isaac Gym with the PhysX physics engine
+</ol>
+</section>
+<section aria-labelledby="section-4" class="detail-section">
+<h2 id="section-4">Experimental Setup</h2>
+<ul class="detail-list">
+<li><strong>Robot:</strong> Unitree H1 humanoid with 19 actuated degrees of freedom</li>
+<li>
+<strong>Simulation:</strong> NVIDIA Isaac Gym with the PhysX physics engine
             <a href="#sb-ref-2">[2]</a>
-          </li>
-          <li>
-            <strong>Learning:</strong> PPO with 4,096 parallel environments
+</li>
+<li>
+<strong>Learning:</strong> PPO with 4,096 parallel environments
             <a href="#sb-ref-3">[3]</a>
-          </li>
-          <li><strong>Training budget:</strong> 15,000 episodes per policy</li>
-          <li><strong>Compute:</strong> eight NVIDIA L40S GPUs</li>
-          <li><strong>Typical primitive training time:</strong> 13–15 hours</li>
-        </ul>
-        <p>
+</li>
+<li><strong>Training budget:</strong> 15,000 episodes per policy</li>
+<li><strong>Compute:</strong> eight NVIDIA L40S GPUs</li>
+<li><strong>Typical primitive training time:</strong> 13–15 hours</li>
+</ul>
+<p>
           We prompted six models identically across skill selection and reward generation:
           GPT-4o, Claude 4.5 Sonnet, Gemini 2.5 Flash, LLaMA 3.3 70B, Mistral Large, and
           DeepSeek V3.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>Evaluation</h2>
-        <h3>Skill Selection</h3>
-        <p>
+</section>
+<section aria-labelledby="section-5" class="detail-section">
+<h2 id="section-5">Evaluation</h2>
+<h3>Skill Selection</h3>
+<p>
           We evaluated task decomposition on eight SkillBlender tasks. A prediction counted as
           correct only when the model identified the complete required skill set, making this a
           strict task-level measure rather than partial skill recall.
         </p>
-        <figure class="detail-figure">
-          <img
-            src="../assets/project-details/skillblenderlc-results.png"
-            alt="Skill-selection accuracy and per-task correctness for six language models"
-            loading="lazy"
-          >
-          <figcaption>
+<figure class="detail-figure">
+<img alt="Skill-selection accuracy and per-task correctness for six language models" height="1785" loading="lazy" src="../assets/project-details/skillblenderlc-results.png" width="1784"/>
+<figcaption>
             GPT-4o achieved 75% strict task accuracy; Claude 4.5 Sonnet and Gemini 2.5 Flash
             reached 62.5%.
           </figcaption>
-        </figure>
-        <p>
+</figure>
+<p>
           GPT-4o performed best, while every model failed on PackageCarry and all but GPT-4o
           missed at least one required skill for several contact-rich or multi-stage tasks. The
           primary failure mode was omission of secondary skills needed for stabilization,
           approach, or object interaction.
         </p>
-
-        <h3>Reward Generation for Existing Skills</h3>
-        <p>
+<h3>Reward Generation for Existing Skills</h3>
+<p>
           We tested generated reward values on squatting and button press, then trained a policy
           to convergence using each reward. Squatting measures whether the robot reaches a target
           torso height while remaining balanced. Button press is a composite task that requires
           walking toward a wall and reaching the button.
         </p>
-        <div class="table-scroll">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th scope="col">Model</th>
-                <th scope="col">Squat</th>
-                <th scope="col">Height error</th>
-                <th scope="col">Button press</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>GPT-4o</td><td>Failed</td><td>0.060 m</td><td>Failed</td></tr>
-              <tr><td>Claude 4.5</td><td>Success</td><td>0.051 m</td><td>Success</td></tr>
-              <tr><td>Gemini 2.5</td><td>Failed</td><td>0.158 m</td><td>Failed</td></tr>
-              <tr><td>LLaMA 3.3 70B</td><td>Failed</td><td>0.210 m</td><td>Failed</td></tr>
-              <tr><td>Mistral Large</td><td>Success</td><td>0.051 m</td><td>Failed</td></tr>
-              <tr><td>DeepSeek V3</td><td>Success</td><td>0.045 m</td><td>Failed</td></tr>
-              <tr>
-                <td><strong>Ground truth</strong></td>
-                <td><strong>Success</strong></td>
-                <td><strong>0.045 m</strong></td>
-                <td><strong>Success</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>
+<div aria-label="Reward Generation for Existing Skills table" class="table-scroll" role="region" tabindex="0">
+<table class="data-table">
+<thead>
+<tr>
+<th scope="col">Model</th>
+<th scope="col">Squat</th>
+<th scope="col">Height error</th>
+<th scope="col">Button press</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>GPT-4o</td><td>Failed</td><td>0.060 m</td><td>Failed</td></tr>
+<tr><td>Claude 4.5</td><td>Success</td><td>0.051 m</td><td>Success</td></tr>
+<tr><td>Gemini 2.5</td><td>Failed</td><td>0.158 m</td><td>Failed</td></tr>
+<tr><td>LLaMA 3.3 70B</td><td>Failed</td><td>0.210 m</td><td>Failed</td></tr>
+<tr><td>Mistral Large</td><td>Success</td><td>0.051 m</td><td>Failed</td></tr>
+<tr><td>DeepSeek V3</td><td>Success</td><td>0.045 m</td><td>Failed</td></tr>
+<tr>
+<td><strong>Ground truth</strong></td>
+<td><strong>Success</strong></td>
+<td><strong>0.045 m</strong></td>
+<td><strong>Success</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
           Claude, Mistral, and DeepSeek produced successful squatting policies; DeepSeek matched
           the ground-truth height error. Only Claude completed button press. These experiments used
           a single reward-generation round, so they do not measure convergence of the full
           refinement loop.
         </p>
-
-        <h3>Squatting Rollouts</h3>
-        <div class="media-grid">
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-gt.gif"
-              alt="Ground-truth squatting policy"
-              loading="lazy"
-            >
-            <figcaption>Ground-truth reward: success</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-gpt4o.gif"
-              alt="Squatting policy trained with the GPT-4o reward"
-              loading="lazy"
-            >
-            <figcaption>GPT-4o: failed</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-sonnet.gif"
-              alt="Squatting policy trained with the Claude 4.5 reward"
-              loading="lazy"
-            >
-            <figcaption>Claude 4.5: success</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-gemini.gif"
-              alt="Squatting policy trained with the Gemini 2.5 reward"
-              loading="lazy"
-            >
-            <figcaption>Gemini 2.5: failed</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-llama.gif"
-              alt="Squatting policy trained with the LLaMA 3.3 reward"
-              loading="lazy"
-            >
-            <figcaption>LLaMA 3.3: failed</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-deepseek.gif"
-              alt="Squatting policy trained with the DeepSeek V3 reward"
-              loading="lazy"
-            >
-            <figcaption>DeepSeek V3: success</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-squat-mistral.gif"
-              alt="Squatting policy trained with the Mistral Large reward"
-              loading="lazy"
-            >
-            <figcaption>Mistral Large: success</figcaption>
-          </figure>
-        </div>
-
-        <h3>Button-Press Rollouts</h3>
-        <div class="media-grid media-grid-two">
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-buttonpress-gt.gif"
-              alt="Ground-truth button-press policy"
-              loading="lazy"
-            >
-            <figcaption>Ground-truth reward</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-buttonpress.gif"
-              alt="Button-press policy trained with the Claude 4.5 reward"
-              loading="lazy"
-            >
-            <figcaption>Claude 4.5 reward</figcaption>
-          </figure>
-        </div>
-
-        <h3>Reward Generation for New Skills</h3>
-        <p>
+<h3>Squatting Rollouts</h3>
+<div class="media-grid">
+<figure class="media-card">
+<img alt="Ground-truth squatting policy" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-gt.gif" width="1268"/>
+<figcaption>Ground-truth reward: success</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the GPT-4o reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-gpt4o.gif" width="1268"/>
+<figcaption>GPT-4o: failed</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the Claude 4.5 reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-sonnet.gif" width="1268"/>
+<figcaption>Claude 4.5: success</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the Gemini 2.5 reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-gemini.gif" width="1268"/>
+<figcaption>Gemini 2.5: failed</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the LLaMA 3.3 reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-llama.gif" width="1268"/>
+<figcaption>LLaMA 3.3: failed</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the DeepSeek V3 reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-deepseek.gif" width="1268"/>
+<figcaption>DeepSeek V3: success</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Squatting policy trained with the Mistral Large reward" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-squat-mistral.gif" width="1268"/>
+<figcaption>Mistral Large: success</figcaption>
+</figure>
+</div>
+<h3>Button-Press Rollouts</h3>
+<div class="media-grid media-grid-two">
+<figure class="media-card">
+<img alt="Ground-truth button-press policy" height="778" loading="lazy" src="../assets/project-details/skillblenderlc-buttonpress-gt.gif" width="1076"/>
+<figcaption>Ground-truth reward</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Button-press policy trained with the Claude 4.5 reward" height="778" loading="lazy" src="../assets/project-details/skillblenderlc-buttonpress.gif" width="1076"/>
+<figcaption>Claude 4.5 reward</figcaption>
+</figure>
+</div>
+<h3>Reward Generation for New Skills</h3>
+<p>
           We used GPT-4o to generate rewards for eight behaviors absent from the initial setup:
           sway, punch, lie, jump, bend, wave, kick, and side-step. Bend and side-step were fully
           learned. Kick and jump were partially successful, while sway, punch, lie, and wave
           failed to produce the intended behavior.
         </p>
-        <div class="media-grid media-grid-three">
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-bend.gif"
-              alt="Successfully learned bend skill"
-              loading="lazy"
-            >
-            <figcaption>Bend: success</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-sidestep.gif"
-              alt="Successfully learned side-step skill"
-              loading="lazy"
-            >
-            <figcaption>Side-step: success</figcaption>
-          </figure>
-          <figure class="media-card">
-            <img
-              src="../assets/project-details/skillblenderlc-kick.gif"
-              alt="Partially successful kick skill with balance loss"
-              loading="lazy"
-            >
-            <figcaption>Kick: partial success</figcaption>
-          </figure>
-        </div>
-        <p>
+<div class="media-grid media-grid-three">
+<figure class="media-card">
+<img alt="Successfully learned bend skill" height="896" loading="lazy" src="../assets/project-details/skillblenderlc-bend.gif" width="1268"/>
+<figcaption>Bend: success</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Successfully learned side-step skill" height="618" loading="lazy" src="../assets/project-details/skillblenderlc-sidestep.gif" width="822"/>
+<figcaption>Side-step: success</figcaption>
+</figure>
+<figure class="media-card">
+<img alt="Partially successful kick skill with balance loss" height="565" loading="lazy" src="../assets/project-details/skillblenderlc-kick.gif" width="800"/>
+<figcaption>Kick: partial success</figcaption>
+</figure>
+</div>
+<p>
           The failed and partial policies expose the main limitation of text-only reward
           synthesis: multi-stage dynamics and balance constraints can be difficult to express
           through reward terms and scalar weights alone.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>Prompt Design</h2>
-        <p>
+</section>
+<section aria-labelledby="section-6" class="detail-section">
+<h2 id="section-6">Prompt Design</h2>
+<p>
           We design explicit, constrained prompts for each stage to ensure consistency,
           interpretability, and reproducibility.
         </p>
-
-        <details class="detail-disclosure">
-          <summary>Task decomposition prompt</summary>
-          <pre class="detail-code">You are a high-level humanoid motion planner and meta-skill developer.
+<details class="detail-disclosure">
+<summary>Task decomposition prompt</summary>
+<pre class="detail-code">You are a high-level humanoid motion planner and meta-skill developer.
 
 Your task is to decompose a long-horizon natural-language goal into a sequence of
 short, atomic subtasks. Each subtask must include a concise "subgoal" (one line of natural language)
@@ -352,11 +289,10 @@ Guidelines:
 - Keep skill names capitalized and concise
 - Keep subgoals to one line
 - Return only the JSON with no explanations or comments</pre>
-        </details>
-
-        <details class="detail-disclosure">
-          <summary>Reward generation prompt</summary>
-          <pre class="detail-code">You are a code-generation agent designing a new humanoid skill reward function.
+</details>
+<details class="detail-disclosure">
+<summary>Reward generation prompt</summary>
+<pre class="detail-code">You are a code-generation agent designing a new humanoid skill reward function.
 Return only valid Python code defining the reward class.
 Do not include explanations, markdown fences, comments, or introductory text.
 
@@ -383,11 +319,10 @@ Rules:
 3. Do NOT invent new variables or physics metrics
 4. Keep numerical scales realistic and consistent with reference rewards
 5. Return only valid Python code, with no explanations or comments</pre>
-        </details>
-
-        <details class="detail-disclosure">
-          <summary>Reward refinement prompt</summary>
-          <pre class="detail-code">You are a humanoid reward designer.
+</details>
+<details class="detail-disclosure">
+<summary>Reward refinement prompt</summary>
+<pre class="detail-code">You are a humanoid reward designer.
 The following reward function was trained in RL but performed poorly.
 
 Subgoal: {subgoal}
@@ -407,53 +342,58 @@ Based on these feedback metrics, rewrite the reward function to:
 
 Output only the corrected Python code starting with 'class rewards:'.
 Do NOT include explanations or markdown.</pre>
-        </details>
-      </div>
-
-      <div class="detail-section">
-        <h2>Takeaway</h2>
-        <p>
+</details>
+</section>
+<section aria-labelledby="section-7" class="detail-section">
+<h2 id="section-7">Takeaway</h2>
+<p>
           The experiments show that LLMs can produce executable, environment-consistent rewards,
           but code validity does not guarantee a learnable behavior. Numerical reward scaling,
           implicit contact requirements, balance, and multi-stage motion remain the main failure
           points.
         </p>
-      </div>
-
-      <div class="detail-section">
-        <h2>References</h2>
-        <ol class="detail-ordered">
-          <li id="sb-ref-1">
+</section>
+<section aria-labelledby="section-8" class="detail-section">
+<h2 id="section-8">References</h2>
+<ol class="detail-ordered">
+<li id="sb-ref-1">
             Y. Kuang et al.,
             <cite>
-              <a href="https://arxiv.org/abs/2506.09366" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/2506.09366" rel="noreferrer" target="_blank">
                 SkillBlender: Towards Versatile Humanoid Whole-Body Loco-Manipulation via Skill
                 Blending
               </a>
-            </cite>,
+</cite>,
             2025.
           </li>
-          <li id="sb-ref-2">
+<li id="sb-ref-2">
             V. Makoviychuk et al.,
             <cite>
-              <a href="https://arxiv.org/abs/2108.10470" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/2108.10470" rel="noreferrer" target="_blank">
                 Isaac Gym: High Performance GPU-Based Physics Simulation for Robot Learning
               </a>
-            </cite>,
+</cite>,
             2021.
           </li>
-          <li id="sb-ref-3">
+<li id="sb-ref-3">
             J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and O. Klimov,
             <cite>
-              <a href="https://arxiv.org/abs/1707.06347" target="_blank" rel="noreferrer">
+<a href="https://arxiv.org/abs/1707.06347" rel="noreferrer" target="_blank">
                 Proximal Policy Optimization Algorithms
               </a>
-            </cite>,
+</cite>,
             2017.
           </li>
-        </ol>
-      </div>
+</ol>
+</section>
+
+        </article>
+        <div class="project-end"><a href="../index.html#projects"><span aria-hidden="true">&larr;</span> All projects</a></div>
+      </main>
+      <footer class="site-footer">
+        <a href="../old/index.html">Original portfolio</a>
+      </footer>
     </div>
-    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/site.js?v=main-1"></script>
   </body>
 </html>

@@ -2,543 +2,431 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ajay Vikram P</title>
-    <script>
-      try {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css?v=27">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ajay Vikram P, master's student in Computer Science at Duke University. Research in embodied intelligence, visual reasoning, and efficient machine learning.">
+    <title>Ajay Vikram P | Research</title>
+    <script src="assets/js/theme-init.js?v=main-1"></script>
+    <link rel="preload" href="assets/fonts/Newsreader-Latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/css/styles.css?v=main-1">
   </head>
-  <body>
-    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">
-      <span class="theme-toggle-mark" aria-hidden="true"></span>
-      <span class="theme-toggle-text">Dark</span>
-    </button>
-
-    <div id="dhead" class="container">
-      <div class="row">
-        <div id="dpic">
-          <img src="assets/images/ajay-vikram.jpeg" class="ppic" alt="Ajay Vikram P">
+  <body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-shell">
+      <nav class="site-nav" aria-label="Page sections">
+        <div class="nav-links">
+          <a href="#research">Research</a>
+          <a href="#news">Updates</a>
+          <a href="#publications">Publications</a>
+          <a href="#projects" hidden>Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#service">Service</a>
         </div>
-        <div id="ddesc">
-          <h1>Ajay Vikram P</h1>
-          <h2>Machine Learning Researcher</h2>
-          <div id="dico">
-            <a href="https://github.com/ajay-vikram" target="_blank" rel="noreferrer" class="iico-text" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.72 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.9c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.95-2.34 4.82-4.57 5.07.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.22C22 6.58 17.52 2 12 2z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/ajay-vikram777/" target="_blank" rel="noreferrer" class="iico-text" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A2.03 2.03 0 1 0 5.3 7.06 2.03 2.03 0 0 0 5.25 3zm15.19 9.96c0-3.35-1.79-4.91-4.18-4.91-1.93 0-2.79 1.07-3.27 1.82V8.5H9.62c.05.91 0 11.5 0 11.5H13v-6.42c0-.34.02-.68.12-.93.27-.68.87-1.38 1.89-1.38 1.33 0 1.87 1.04 1.87 2.56V20h3.38l.18-7.04z"/></svg>
-            </a>
-            <a href="https://x.com/AjayVikram1622" target="_blank" rel="noreferrer" class="iico-text" aria-label="X">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.26l-4.9-7.41L5.56 22H2.44l7.24-8.27L1.8 2h6.42l4.43 6.76L18.9 2zm-1.1 18h1.73L7.2 3.9H5.34L17.8 20z"/></svg>
-            </a>
-            <a href="https://scholar.google.com/citations?user=SDa6yucAAAAJ&hl=en" target="_blank" rel="noreferrer" class="iico-text scholar-link" aria-label="Google Scholar">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3 2 8l10 5 8-4v6h2V8L12 3z"/>
-                <path d="M6 11.5V15c0 2.6 3.2 4 6 4s6-1.4 6-4v-3.5l-6 3-6-3z"/>
-              </svg>
-            </a>
-            <a href="assets/docs/AjayVikramCV.pdf" target="_blank" rel="noreferrer" class="iico-text cv-link" aria-label="Resume">CV</a>
-            <button type="button" class="iico-text" id="iemail" title="click to reveal" aria-label="Email">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 2v.51l9 6.43 9-6.43V7H3zm18 10V9.96l-8.42 6.01a1 1 0 0 1-1.16 0L3 9.96V17h18z"/></svg>
-            </button>
-          </div>
-          <div id="demail"></div>
-        </div>
-      </div>
-      <nav class="section-nav" aria-label="Page sections">
-        <a href="#history">Timeline</a>
-        <a href="#research">Research</a>
-        <a href="#news">Updates</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+          <span class="theme-toggle-mark" aria-hidden="true"></span>
+        </button>
       </nav>
-    </div>
-
-    <hr>
-
-    <div id="history" class="container">
-      <div class="entry row">
-        <div class="timespan">
-          Aug 2025 - Present
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/logos/duke.jpeg" alt="Duke University logo" class="logo-duke">
-        </div>
-        <div class="desc">
-          <div class="desc-title"><strong>Duke University</strong></div>
-          <div class="desc-subtitle">
-            M.S. in Computer Science (AI/ML). Advisor:
-            <a href="https://users.cs.duke.edu/~bdhingra/" target="_blank" rel="noreferrer">Dr. Bhuwan Dhingra</a>.
+      <main id="main">
+        <header class="profile">
+          <img class="portrait" src="assets/images/ajay-vikram.jpeg" alt="Ajay Vikram P" width="180" height="180" fetchpriority="high">
+          <div class="profile-copy">
+            <h1>Ajay Vikram P</h1>
+            <p>I am a master's student in Computer Science at Duke University, specializing in AI/ML and advised by
+              <a href="https://users.cs.duke.edu/~bdhingra/" target="_blank" rel="noreferrer">Dr. Bhuwan Dhingra</a>.</p>
+            <p>Previously, I obtained a B.Tech in Computer Science from
+              <a href="https://www.nitk.ac.in/" target="_blank" rel="noreferrer">NIT Karnataka</a>
+               with <a href="https://sites.google.com/site/jenyrajan/" target="_blank" rel="noreferrer">Dr. Jeny Rajan</a>. I also spent time as a research intern at
+              <a class="experience-link" href="https://labs.dese.iisc.ac.in/neuronics/people/" target="_blank" rel="noreferrer">IISc's NeuRonICS Lab</a>.</p>
+            <div class="profile-links" aria-label="Contact and profiles">
+              <a class="profile-link" href="mailto:ajayvikramp@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 2v.51l9 6.43 9-6.43V7H3zm18 10V9.96l-8.42 6.01a1 1 0 0 1-1.16 0L3 9.96V17h18z"/></svg>
+                Email
+              </a>
+              <a aria-label="GitHub" class="profile-link" href="https://github.com/ajay-vikram" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.72 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.9c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.95-2.34 4.82-4.57 5.07.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.22C22 6.58 17.52 2 12 2z"></path></svg>
+ GitHub</a>
+<a aria-label="LinkedIn" class="profile-link" href="https://www.linkedin.com/in/ajay-vikram777/" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A2.03 2.03 0 1 0 5.3 7.06 2.03 2.03 0 0 0 5.25 3zm15.19 9.96c0-3.35-1.79-4.91-4.18-4.91-1.93 0-2.79 1.07-3.27 1.82V8.5H9.62c.05.91 0 11.5 0 11.5H13v-6.42c0-.34.02-.68.12-.93.27-.68.87-1.38 1.89-1.38 1.33 0 1.87 1.04 1.87 2.56V20h3.38l.18-7.04z"></path></svg>
+ LinkedIn</a>
+<a aria-label="Twitter" class="profile-link" href="https://x.com/AjayVikram1622" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.26l-4.9-7.41L5.56 22H2.44l7.24-8.27L1.8 2h6.42l4.43 6.76L18.9 2zm-1.1 18h1.73L7.2 3.9H5.34L17.8 20z"></path></svg>
+ Twitter</a>
+<a aria-label="Google Scholar" class="profile-link" href="https://scholar.google.com/citations?user=SDa6yucAAAAJ&amp;hl=en" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24">
+<path d="M12 3 2 8l10 5 8-4v6h2V8L12 3z"></path>
+<path d="M6 11.5V15c0 2.6 3.2 4 6 4s6-1.4 6-4v-3.5l-6 3-6-3z"></path>
+</svg>
+ Google Scholar</a>
+<a aria-label="Curriculum vitae (PDF)" class="profile-link" href="assets/docs/AjayVikramCV.pdf" rel="noreferrer" target="_blank">CV</a>
+            </div>
           </div>
-          <div class="desc-summary">
-            At Duke, I work across a few different threads:
-            I study spatial reasoning in vision-language models with
-            <a href="https://nlplab.cs.duke.edu/" target="_blank" rel="noreferrer">DukeNLP</a>.
-            I work with the
-            <a href="https://robotdexteritylab.com/" target="_blank" rel="noreferrer">Robot Dexterity Lab</a>
-            on language-conditioned failure recovery for humanoid locomanipulation.
-            As a Research Assistant with
-            <a href="https://dibs.duke.edu/" target="_blank" rel="noreferrer">Duke Brain Sciences</a> under
-            <a href="https://dibs.duke.edu/profile/andrew-michael-phd/" target="_blank" rel="noreferrer">Dr. Andrew Michael</a>,
-            I develop deep learning methods for fMRI analysis.
-            I also served as a Teaching Assistant for Probabilistic Machine Learning.
-          </div>
-        </div>
-      </div>
+        </header>
 
-      <div class="entry row">
-        <div class="timespan">
-          May 2024 - Jul 2025
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/logos/iisc.svg" alt="Indian Institute of Science logo">
-        </div>
-        <div class="desc">
-          <div class="desc-title">
-            <strong>Indian Institute of Science</strong>
-          </div>
-          <div>
-            ML Research Intern (NeuRonICS Lab). Advisor:
-            <a href="https://labs.dese.iisc.ac.in/neuronics/people/" target="_blank" rel="noreferrer">Dr. Chetan Singh Thakur</a>.
-          </div>
-          <div class="desc-summary">
-            I worked on efficient machine learning for edge systems:
-            neuromorphic satellite/drone tracking, quantized/ternarized CNNs for radar-based human activity recognition,
-            model compression for embedded inference, and state-space models such as S4, Mamba,
-            LMU, and HiPPO across neural decoding and other sequence tasks. Along the way, our team
-            placed 5th in the IEEE BioCAS 2024 Grand Challenge and 17th in the EEG-AAD 2026
-            Challenge.
-          </div>
-        </div>
-      </div>
+        <section class="home-section" id="research" aria-labelledby="research-title">
+          <h2 id="research-title">Research</h2>
+          <p>My research interests are in <strong>embodied intelligence</strong>, with the goal of advancing robots to understand and interact with the physical world. My work in multimodal perception, state estimation, efficient inference, VLMs, robot autonomy and computational neuroscience has shaped my interests in:</p>
+          <ul class="research-questions">
+            <li><strong>Multimodal World Modeling:</strong> How can world models learn grounded physical dynamics
+              from exteroceptive observations (vision, audio, touch), proprioception, and language?</li>
+            <li><strong>Hierarchical Planning and Control:</strong> How can these grounded models
+              couple hierarchical reasoning and planning with closed-loop control for reliable
+              action, failure anticipation, and recovery on long-horizon tasks?</li>
+          </ul>
+        </section>
 
-      <div class="entry row">
-        <div class="timespan">
-          Mar 2024 - Apr 2024
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/logos/lamarr.jpeg" alt="Lamarr logo">
-        </div>
-        <div class="desc">
-          <div class="desc-title"><strong>Lamarr</strong></div>
-          <div>Machine Learning Intern.</div>
-          <div class="desc-summary">
-            I took on this short internship to get a closer look at applied AI in a product setting. I built AI automation tools, including a Draft Bot for generating template-based documents and a SalesGPT agent for scheduled service outreach. I also worked on model finetuning for business-specific workflows. 
+        <section class="home-section" id="news" aria-labelledby="news-title">
+          <h2 id="news-title">Updates</h2>
+          <div aria-labelledby="news-title" class="news-scroll" role="region" tabindex="0">
+<div class="news-item">
+<span class="news-date">Nov 2026</span>
+<span class="news-text">Won <strong>3rd place &amp; Most Inclusive Design Awards</strong> at the <a href="https://ncsuneurotech.org/?page=event-fall-hackathon" rel="noreferrer" target="_blank">Neurotech BCI Hackathon</a>.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Sept 2026</span>
+<span class="news-text">Presented a poster at IROS 2026.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Sept 2026</span>
+<span class="news-text">Presented 2 posters at the <a href="https://neurology.duke.edu/researchsymposium" rel="noreferrer" target="_blank">Duke Neurology Research Symposium</a>.</span>
+</div>
+<div class="news-item">
+<span class="news-date">May 2026</span>
+<span class="news-text">Participated in <a href="https://iid.duke.edu/project/structure-function-coupling-human-brain-and-links-behavior/" rel="noreferrer" target="_blank">Duke Data+</a> over the summer.</span>
+</div>
+<div class="news-item">
+<span class="news-date">May 2026</span>
+<span class="news-text">Our abstract on resting-state brain networks was accepted to EMBC 2026.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Apr 2026</span>
+<span class="news-text"><a href="https://neuromorphiccore.ai/eyes-that-never-blink-how-neuromorphic-cameras-are-rewriting-the-rules-of-space-tracking/" rel="noreferrer" target="_blank">NeuromorphicCore.ai</a> featured our ICASSP 2026 work.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Jan 2026</span>
+<span class="news-text">Our neuromorphic star-tracking work was accepted to ICASSP 2026.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Aug 2025</span>
+<span class="news-text">Joined Duke University as a Master's student in Computer Science.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Mar 2025</span>
+<span class="news-text">Presented our neuromorphic tracking work through a poster and live demo at IISc Open Day.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Jan 2025</span>
+<span class="news-text">Helped organize and participated in the <a href="https://bnewworkshop.com/bnew2025.html" rel="noreferrer" target="_blank">Bangalore Neuromorphic Engineering Workshop</a> at IISc.</span>
+</div>
+<div class="news-item">
+<span class="news-date">Oct 2024</span>
+<span class="news-text">Our team placed 5th in the IEEE BioCAS 2024 Grand Challenge on Neural Decoding.</span>
+</div>
+</div>
+        </section>
 
-          </div>
-        </div>
-      </div>
-
-      <div class="entry row">
-        <div class="timespan">
-          May 2023 - Jul 2023
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/logos/qualcomm.png" alt="Qualcomm logo">
-        </div>
-        <div class="desc">
-          <div class="desc-title"><strong>Qualcomm</strong></div>
-          <div>Software Intern.</div>
-          <div class="desc-summary">
-            I built a full-stack memory analysis platform for system-level debugging.
-            The project moved the workflow from manual log parsing to an automated cloud-native
-            visualization system, and ended up reducing analysis time by 85% and memory usage by
-            75%. I was offered a permanent role there, but by then I knew I wanted to move toward
-            ML research.
-          </div>
-        </div>
-      </div>
-
-      <div class="entry row">
-        <div class="timespan">
-          Dec 2020 - Apr 2024
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/logos/nitk.png" alt="National Institute of Technology Karnataka logo">
-        </div>
-        <div class="desc">
-          <div class="desc-title"><strong>National Institute of Technology Karnataka</strong></div>
-          <div>
-            B.Tech in Computer Science. Advisor:
-            <a href="https://sites.google.com/site/jenyrajan/" target="_blank" rel="noreferrer">Dr. Jeny Rajan</a>.
-          </div>
-          <div class="desc-summary">
-            At NITK, I built my foundation in computer science while working on early machine learning projects in breast cancer detection, and autonomous driving. These projects sparked my interest in ML and motivated me to study the field more deeply.
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="research" class="container">
-      <div class="ctitle">Research</div>
-      <div>
-        My research interests are in embodied intelligence, particularly in building systems that can understand their surroundings, learn from experience, and act reliably in the physical world. My work in humanoid robotics, vision-language reasoning, adaptive 3D environments, and brain representation learning is connected by a common question: how can models learn representations across modalities to support reasoning, planning, failure recovery, and generalization? My earlier work in neuromorphic vision and efficient inference also informs my interest in designing systems that can operate within the computational limits of real-world deployment.
-      </div>
-    </div>
-
-    <div id="news" class="container">
-      <div class="ctitle" id="news-title">Updates</div>
-
-      <div class="news-scroll" role="region" aria-labelledby="news-title" tabindex="0">
-        <div class="news-item">
-          <span class="news-date">Nov 2026</span>
-          <span class="news-text">Won 3rd place & Most Inclusive Design Awards at the <a href="https://ncsuneurotech.org/?page=event-fall-hackathon" target="_blank" rel="noreferrer" aria-label="">Neurotech BCI Hackathon</a>.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Sept 2026</span>
-          <span class="news-text">Presented a <a href="assets/posters/FRAMES_poster.pdf" target="_blank" rel="noreferrer" aria-label="FRAMES poster (PDF, opens in a new tab)">poster</a> at IROS 2026.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Sept 2026</span>
-          <span class="news-text">Presented 2 <a href="assets/posters/Data_poster.pdf" target="_blank" rel="noreferrer" aria-label="Duke Neurology Research Symposium posters (PDF, opens in a new tab)">posters</a> at the <a href="https://neurology.duke.edu/researchsymposium" target="_blank" rel="noreferrer">Duke Neurology Research Symposium</a>.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">May 2026</span>
-          <span class="news-text">Participated in <a href="https://iid.duke.edu/project/structure-function-coupling-human-brain-and-links-behavior/" target="_blank" rel="noreferrer">Duke Data+</a> over the summer.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">May 2026</span>
-          <span class="news-text">Our abstract on resting-state brain networks was accepted to EMBC 2026.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Apr 2026</span>
-          <span class="news-text"><a href="https://neuromorphiccore.ai/eyes-that-never-blink-how-neuromorphic-cameras-are-rewriting-the-rules-of-space-tracking/" target="_blank" rel="noreferrer">NeuromorphicCore.ai</a> featured our ICASSP 2026 work.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Jan 2026</span>
-          <span class="news-text">Our neuromorphic star-tracking work was accepted to ICASSP 2026.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Aug 2025</span>
-          <span class="news-text">Joined Duke University as a Master's student in Computer Science.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Mar 2025</span>
-          <span class="news-text">Presented our neuromorphic tracking work through a poster and live demo at IISc Open Day.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Jan 2025</span>
-          <span class="news-text">Helped organize and participated in the <a href="https://bnewworkshop.com/bnew2025.html" target="_blank" rel="noreferrer">Bangalore Neuromorphic Engineering Workshop</a> at IISc.</span>
-        </div>
-
-        <div class="news-item">
-          <span class="news-date">Oct 2024</span>
-          <span class="news-text">Our team placed 5th in the IEEE BioCAS 2024 Grand Challenge on Neural Decoding.</span>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="publications" class="container">
-      <div class="ctitle">Publications</div>
-
-
-      <div class="pub">
-        <div class="pub-title">
-          <span>
+        <section class="home-section" id="publications" aria-labelledby="publications-title">
+          <h2 id="publications-title">Publications</h2>
+          <article class="pub">
+<a class="pub-thumbnail" href="figures/fmri-dti.html" target="_blank" rel="noreferrer" title="View full-size figure" aria-label="View animated fMRI and DTI brain views (opens in a new tab)">
+  <span class="brain-montage" aria-hidden="true">
+    <span class="brain-fmri"><img src="assets/images/fmri.gif" alt="" width="1508" height="420" loading="lazy" decoding="async"></span>
+    <span class="brain-dti">
+      <span class="brain-panel brain-panel-left"><img src="assets/images/dti_l.gif" alt="" width="1916" height="593" loading="lazy" decoding="async"></span>
+      <span class="brain-panel brain-panel-middle"><img src="assets/images/dti_m.gif" alt="" width="1916" height="593" loading="lazy" decoding="async"></span>
+      <span class="brain-panel brain-panel-right"><img src="assets/images/dti_r.gif" alt="" width="1916" height="593" loading="lazy" decoding="async"></span>
+    </span>
+  </span>
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<span>
             Characterization of Resting-State fMRI in Gray and White Matter:
             Comparison of Signal Measures and Network Patterns
           </span>
-        </div>
-        <div class="pub-venue pub-status">
+</h3>
+<div class="pub-venue pub-status">
           Under review
         </div>
-        <div class="pub-authors">
-          <strong class="pub-author-self">Ajay Vikram P</strong>,
-          Bharat Kashyap Karri, Arnav Gupta, Tina Yuan,
+<div class="pub-authors">
+<strong class="pub-author-self">Ajay Vikram P</strong>,
+          Bharat Karri, Arnav Gupta, Tina Yuan,
           Leonard E. White, Andrew M. Michael
         </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://arxiv.org/abs/2610.39049v1" target="_blank" rel="noreferrer">
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/balatro.mp4" target="_blank" rel="noreferrer" title="View full-size video" aria-label="View Balatro gameplay video (opens in a new tab)">
+  <video src="assets/images/balatro.mp4" width="3008" height="1652" autoplay muted loop playsinline preload="metadata" data-playback-rate="2" aria-label="Balatro gameplay at twice normal speed"></video>
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://arxiv.org/abs/2610.39049v1" rel="noreferrer" target="_blank">
             Reinforcement Learning for the Game of Balatro: A Fast Simulator and Two-Policy Training Approach
           </a>
+</h3>
+<div class="pub-venue">
+          Experimental AI in Games (EXAG) Workshop, AAAI AIIDE 2026
         </div>
-
-        <div class="pub-venue">
-          Experimental AI in Games (EXAG) Workshop, AAAI Conference on Artificial Intelligence
-          and Interactive Digital Entertainment (AIIDE 2026)
+<div class="pub-authors">
+<strong class="pub-author-self">Ajay Vikram P</strong>, Anjaneya Gupta, Ethan Cheng, Ivan Rosales
         </div>
-
-        <div class="pub-authors">
-          <strong class="pub-author-self">Ajay Vikram P</strong>, Anjaneya Gupta, Ethan Cheng, Ivan Rosales
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://arxiv.org/abs/2609.22538" target="_blank" rel="noreferrer">
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail pub-thumbnail-frames" href="assets/images/frames.mp4" target="_blank" rel="noreferrer" title="View full-size video" aria-label="View FRAMES demonstration video (opens in a new tab)">
+  <video src="assets/images/frames.mp4" width="2400" height="1800" autoplay muted loop playsinline preload="metadata" data-playback-rate="2" aria-label="FRAMES demonstration at twice normal speed"></video>
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://arxiv.org/abs/2609.22538" rel="noreferrer" target="_blank">
             FRAMES: Failure Recovery And Monitoring of Embodied Skills for Humanoid Loco-Manipulation
           </a>
+</h3>
+<div class="pub-venue">
+          Full-Shift Robot Co-Workers Workshop, IROS 2026
         </div>
-        <div class="pub-venue">
-          Full-Shift Robot Co-Workers Workshop,
-          IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)
+<div class="pub-authors">
+<strong class="pub-author-self">Ajay Vikram P</strong>, Xinyuan Luo, Haoyu Li, Xianyi Cheng
         </div>
-        <div class="pub-authors">
-          <strong class="pub-author-self">Ajay Vikram P</strong>, Xinyuan Luo, Haoyu Li, Xianyi Cheng
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <span>
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/motion.png" target="_blank" rel="noreferrer" title="View full-size figure" aria-label="View fMRI motion-correction method (opens in a new tab)">
+  <img src="assets/images/motion.png" alt="3D U-Net pipeline for correcting head motion in fMRI volumes" width="4351" height="2451" loading="lazy" decoding="async">
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<span>
             A Novel Deep Learning Approach to Functional MRI Head Motion Correction without Motion Regressors
           </span>
+</h3>
+<div class="pub-venue pub-status">Under review</div>
+<div class="pub-authors">
+<strong class="pub-author-self">Ajay Vikram P</strong>, Bharat Karri, Andrew M. Michael
         </div>
-        <div class="pub-venue pub-status">Under review</div>
-        <div class="pub-authors">
-          <strong class="pub-author-self">Ajay Vikram P</strong>, Bharat Kashyap Karri, Andrew M. Michael
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://arxiv.org/abs/2605.11307" target="_blank" rel="noreferrer">
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/vision2code.png" target="_blank" rel="noreferrer" title="View full-size figure" aria-label="View Vision2Code benchmark examples (opens in a new tab)">
+  <img src="assets/images/vision2code.png" alt="Vision2Code examples covering charts, geometry, graphs, science, documents, and spatial scenes" width="3180" height="1256" loading="lazy" decoding="async">
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://arxiv.org/abs/2605.11307" rel="noreferrer" target="_blank">
             Vision2Code: A Multi-Domain Benchmark for Evaluating Image-to-Code Generation
           </a>
+</h3>
+<div class="pub-venue pub-status">Under review</div>
+<div class="pub-authors">
+<strong class="pub-author-self">Ajay Vikram P</strong>, Junlin Wang, Bhuwan Dhingra
         </div>
-        <div class="pub-venue pub-status">Under review</div>
-        <div class="pub-authors">
-          <strong class="pub-author-self">Ajay Vikram P</strong>, Junlin Wang, Bhuwan Dhingra
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://ieeexplore.ieee.org/document/11460932" target="_blank" rel="noreferrer">
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/neuromorphic.mp4" target="_blank" rel="noreferrer" title="View full-size video" aria-label="View neuromorphic tracking demonstration video (opens in a new tab)">
+  <video src="assets/images/neuromorphic.mp4" width="1000" height="620" autoplay muted loop playsinline preload="metadata" data-playback-rate="2" aria-label="Neuromorphic tracking demonstration at twice normal speed"></video>
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://ieeexplore.ieee.org/document/11460932" rel="noreferrer" target="_blank">
             Asynchronous High-Speed Tracking of Astronomical Objects using Neuromorphic Camera for
             Edge Computing
           </a>
-        </div>
-        <div class="pub-venue">
-          IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2026)
+</h3>
+<div class="pub-venue">
+          ICASSP 2026
           <strong class="pub-format">Oral</strong>
-        </div>
-        <div class="pub-authors">
-          Satyapreet Singh Yadav, <strong class="pub-author-self">Ajay Vikram P</strong>, Adithya M D, Chandra Sekhar Seelamantula, Chetan
+</div>
+<div class="pub-authors">
+          Satyapreet Singh Yadav, <strong class="pub-author-self">Ajay Vikram P</strong>, Adithya M D, Chandra Sekhar, Chetan
           Singh Thakur
         </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://arxiv.org/abs/2508.12637" target="_blank" rel="noreferrer">
+<div class="pub-coverage">
+  <a href="https://neuromorphiccore.ai/eyes-that-never-blink-how-neuromorphic-cameras-are-rewriting-the-rules-of-space-tracking/" target="_blank" rel="noreferrer">Featured in NeuromorphicCore</a>
+</div>
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/HOMI.png" target="_blank" rel="noreferrer" title="View full-size figure" aria-label="View HOMI event representations (opens in a new tab)">
+  <img src="assets/images/HOMI.png" alt="Comparison of event representations produced by the HOMI platform" width="1856" height="1102" loading="lazy" decoding="async">
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://arxiv.org/abs/2508.12637" rel="noreferrer" target="_blank">
             HOMI: Ultra-Fast EdgeAI platform for Event Cameras
           </a>
-        </div>
-        <div class="pub-venue pub-status">Under review</div>
-        <div class="pub-authors">
+</h3>
+<div class="pub-venue pub-status">Under review</div>
+<div class="pub-authors">
           Shankaranarayanan H, Satyapreet Singh Yadav, Adithya Krishna, <strong class="pub-author-self">Ajay Vikram P</strong>, Mahesh
           Mehendale, Chetan Singh Thakur
         </div>
-      </div>
-      
-
-      <div class="pub">
-        <div class="pub-title">
-          <a
-            href="https://link.springer.com/chapter/10.1007/978-3-032-14531-4_11"
-            target="_blank"
-            rel="noreferrer"
-          >
+</div>
+</article>
+<article class="pub">
+<a class="pub-thumbnail" href="assets/images/vitfuser.png" target="_blank" rel="noreferrer" title="View full-size figure" aria-label="View ViTFuser architecture (PDF, opens in a new tab)">
+  <img src="assets/images/vitfuser.png" alt="ViTFuser architecture combining RGB and LiDAR inputs for perception and waypoint prediction" width="1200" height="387" loading="lazy" decoding="async">
+</a>
+<div class="pub-body">
+<h3 class="pub-title">
+<a href="https://link.springer.com/chapter/10.1007/978-3-032-14531-4_11" rel="noreferrer" target="_blank">
             ViTFuser: Advancements in Global Context Understanding for Autonomous Vehicles
           </a>
-        </div>
-        <div class="pub-venue">
+</h3>
+<div class="pub-venue">
           International Conference on Machine Learning, Image Processing, Network Security and Data Sciences (MIND 2024)
         </div>
-        <div class="pub-authors">
-          Atanu Chatterjee, <strong class="pub-author-self">Ajay Vikram P</strong>, Aniketh Narayan Bellala, T Naga Tarun, Basavaraj
-          Talawar, Vani M, Jeny Rajan
+<div class="pub-authors">
+          Atanu Chatterjee, <strong class="pub-author-self">Ajay Vikram P</strong>, Aniketh, Naga Tarun, Basavaraj T, Vani M, Jeny Rajan
         </div>
-      </div>
-    </div>
+</div>
+</article>
+        </section>
 
-    <section id="projects">
-      <div class="container">
-        <div class="ctitle">Projects</div>
-      </div>
-
-      <div class="container">
-        <div class="project-grid">
-        <a
-          class="project-card"
-          href="projects/balatro-rl.html"
-          aria-label="View full details for Balatro RL"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="assets/project-thumbnails/balatro.png"
-              alt="Balatro title artwork with an ace of spades"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">Balatro RL</h3>
-            <p>
+        <section class="home-section" id="projects" aria-labelledby="projects-title" hidden>
+          <h2 id="projects-title">Projects</h2>
+          <div class="project-grid">
+<a aria-label="View full details for Balatro RL" class="project-card" href="projects/balatro-rl.html">
+<div class="project-thumbnail">
+<img alt="Balatro title artwork with an ace of spades" height="1080" loading="lazy" src="assets/project-thumbnails/balatro.png" width="1920"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">Balatro RL</h3>
+<p>
               A reinforcement-learning system for Balatro that uses separate PPO policies for hand
               play and shop decisions, trained in a verified Rust simulator.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="projects/skillblenderlc.html"
-          aria-label="View full details for SkillBlenderLC"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="assets/project-thumbnails/skillblenderlc.webp"
-              alt="Humanoid robot in the SkillBlenderLC simulation"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">SkillBlenderLC</h3>
-            <p>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+<a aria-label="View full details for SkillBlenderLC" class="project-card" href="projects/skillblenderlc.html">
+<div class="project-thumbnail">
+<img alt="Humanoid robot in the SkillBlenderLC simulation" height="282" loading="lazy" src="assets/project-thumbnails/skillblenderlc.webp" width="502"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">SkillBlenderLC</h3>
+<p>
               An LLM-guided humanoid learning framework that identifies missing skills, generates
               reward functions, and trains new behaviors with reinforcement learning.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="projects/vitfuser.html"
-          aria-label="View full details for ViTFuser"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="assets/project-thumbnails/vitfuser.webp"
-              alt="Autonomous driving scene from the CARLA simulator"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">ViTFuser</h3>
-            <p>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+<a aria-label="View full details for ViTFuser" class="project-card" href="projects/vitfuser.html">
+<div class="project-thumbnail">
+<img alt="Autonomous driving scene from the CARLA simulator" height="533" loading="lazy" src="assets/project-thumbnails/vitfuser.webp" width="900"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">ViTFuser</h3>
+<p>
               An autonomous-driving model that fuses RGB and LiDAR features with multi-stage vision
               transformers to predict navigation waypoints.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="projects/drone-tracking.html"
-          aria-label="View full details for Drone Tracking"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="assets/project-thumbnails/drone-tracking.webp"
-              alt="Event-camera drone recording beside its reconstructed tracked trajectory"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">Drone Tracking</h3>
-            <p>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+<a aria-label="View full details for Drone Tracking" class="project-card" href="projects/drone-tracking.html">
+<div class="project-thumbnail">
+<img alt="Event-camera drone recording beside its reconstructed tracked trajectory" height="675" loading="lazy" src="assets/project-thumbnails/drone-tracking.webp" width="1200"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">Drone Tracking</h3>
+<p>
               An event-camera pipeline that detects and tracks fast-moving drones using sparse
               clustering and motion association, with a buffered implementation for ARM Cortex
               edge hardware.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="projects/ternarizing-cnns.html"
-          aria-label="View full details for Ternarizing CNNs"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="assets/project-thumbnails/ternarizing-cnns.webp"
-              alt="Radar spectrograms used for human activity recognition"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">Ternarizing CNNs</h3>
-            <p>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+<a aria-label="View full details for Ternarizing CNNs" class="project-card" href="projects/ternarizing-cnns.html">
+<div class="project-thumbnail">
+<img alt="Neural network diagram" height="533" loading="lazy" src="assets/project-thumbnails/ternarizing-cnns.webp" width="900"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">Ternarizing CNNs</h3>
+<p>
               A radar-based activity-recognition CNN compressed with ternary weights, quantized
               activations, and integer-only inference for embedded deployment.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="projects/llm-post-training.html"
-          aria-label="View full details for Multi-Task LLM Post-Training"
-        >
-          <div class="project-thumbnail">
-            <img
-              src="/assets/project-thumbnails/llm.png"
-              alt="Post-training sequence and final instruction, mathematics, and code benchmark scores"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-card-body">
-            <h3 class="project-card-title">Multi-Task LLM Post-Training</h3>
-            <p>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+<a aria-label="View full details for Multi-Task LLM Post-Training" class="project-card" href="projects/llm-post-training.html">
+<div class="project-thumbnail">
+<img alt="Illustration of language-model fine-tuning" height="720" loading="lazy" src="assets/project-thumbnails/llm.png" width="1280"/>
+</div>
+<div class="project-card-body">
+<h3 class="project-card-title">Multi-Task LLM Post-Training</h3>
+<p>
               A post-training study of how supervised fine-tuning and verifier-based reinforcement
               learning affect instruction following, mathematical reasoning, and code generation.
             </p>
-            <span class="project-card-link">Read more <span aria-hidden="true">&rarr;</span></span>
+<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
+</div>
+</a>
+</div>
+        </section>
+
+        <section class="home-section" id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">Experience</h2>
+          <div class="record-list">
+            <div class="record record-with-logo">
+              <img class="record-logo record-logo-full" src="assets/logos/duke.jpeg" alt="" width="44" height="44" loading="lazy" decoding="async">
+              <div>
+                <h3><a href="https://dibs.duke.edu/" target="_blank" rel="noreferrer">Duke Institute for Brain Sciences</a>, Duke University</h3>
+                <p>Graduate Research Assistant</p>
+                <p class="record-mentor">Advisor: <a href="https://dibs.duke.edu/profile/andrew-michael-phd/" target="_blank" rel="noreferrer">Dr. Andrew M. Michael</a></p>
+              </div>
+              <span class="record-date">Sep 2025 &ndash; Present</span>
+            </div>
+            <div class="record record-with-logo">
+              <img class="record-logo" src="assets/logos/iisc.svg" alt="" width="44" height="44" loading="lazy" decoding="async">
+              <div>
+                <h3>Indian Institute of Science</h3>
+                <p>ML Research Intern, NeuRonICS Lab</p>
+                <p class="record-mentor">Advisor: <a href="https://labs.dese.iisc.ac.in/neuronics/people/" target="_blank" rel="noreferrer">Dr. Chetan Singh Thakur</a></p>
+              </div>
+              <span class="record-date">May 2024 &ndash; Jul 2025</span>
+            </div>
+            <div class="record record-with-logo">
+              <img class="record-logo record-logo-full" src="assets/logos/lamarr.jpeg" alt="" width="44" height="44" loading="lazy" decoding="async">
+              <div><h3>Lamarr</h3><p>Machine Learning Intern</p></div>
+              <span class="record-date">Mar &ndash; Apr 2024</span>
+            </div>
+            <div class="record record-with-logo">
+              <img class="record-logo" src="assets/logos/qualcomm.png" alt="" width="44" height="44" loading="lazy" decoding="async">
+              <div><h3>Qualcomm</h3><p>Software Intern</p></div>
+              <span class="record-date">May &ndash; Jul 2023</span>
+            </div>
           </div>
-        </a>
+        </section>
 
-        </div>
-      </div>
-    </section>
-
-    <footer class="container site-footer">
-      <div class="site-footer-rule"></div>
-      <div>
-        Inspired by <a href="https://karpathy.ai/" target="_blank" rel="noreferrer">Andrej Karpathy's homepage</a>.
-      </div>
-    </footer>
-
-    <script src="assets/js/theme.js"></script>
-    <script type="text/javascript">
-      const revealButton = document.getElementById("iemail");
-      const emailBox = document.getElementById("demail");
-      let isShown = false;
-
-      revealButton.addEventListener("click", function () {
-        emailBox.innerHTML = '<a href="mailto:ajayvikramp@gmail.com">ajayvikramp@gmail.com</a>';
-        emailBox.style.opacity = isShown ? 0 : 1;
-        isShown = !isShown;
-      });
-    </script>
+        <section class="home-section" id="service" aria-labelledby="service-title">
+          <h2 id="service-title">Service</h2>
+          <ul class="service-list" role="list">
+            <li class="service-item">
+              <span><strong>Graduate Teaching Assistant</strong>, Probabilistic Machine Learning, Duke University</span>
+              <span class="record-date">Jan &ndash; Apr 2026</span>
+            </li>
+            <li class="service-item">
+              <span><strong>Organizer &amp; Participant</strong>, <a href="https://bnewworkshop.com/bnew2025.html" target="_blank" rel="noreferrer">Bangalore Neuromorphic Engineering Workshop</a>, IISc</span>
+              <span class="record-date">Jan 2025</span>
+            </li>
+            <li class="service-item">
+              <span><strong>Placement Coordinator</strong>, Career Development Center, NITK</span>
+              <span class="record-date">Aug 2023 &ndash; Apr 2024</span>
+            </li>
+            <li class="service-item">
+              <span><strong>Volunteer Mentor</strong>, Leadership Development, Team Everest NGO</span>
+              <span class="record-date">Feb &ndash; Mar 2024</span>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <a href="old/index.html">Original portfolio</a>
+      </footer>
+    </div>
+    <script src="assets/js/site.js?v=main-1"></script>
   </body>
 </html>
