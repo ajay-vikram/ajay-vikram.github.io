@@ -376,6 +376,8 @@ h2 + .pub { padding-top: 0; }
   background: #ffffff;
 }
 .record-logo-full { padding: 0; }
+.record-logo-duke { padding: 0; overflow: hidden; }
+.record-logo-duke img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.23); }
 
 .service-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .service-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 24px; line-height: 1.4; }
