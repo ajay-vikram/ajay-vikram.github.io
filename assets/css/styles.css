@@ -331,6 +331,13 @@ h2 + .pub { padding-top: 0; }
   vertical-align: baseline;
 }
 
+.writing-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.writing-entry h3 { font-size: 17px; font-weight: 600; line-height: 1.4; }
+.writing-heading time { font-size: 15px; color: var(--muted); white-space: nowrap; }
+.writing-entry p { margin: 4px 0 0; font-size: 16px; line-height: 1.4; color: var(--ink-2); }
+
+.writing-list { display: grid; gap: 14px; }
+
 .project-grid { display: grid; gap: 24px; }
 .project-card {
   display: grid;

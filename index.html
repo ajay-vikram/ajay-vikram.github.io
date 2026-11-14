@@ -7,7 +7,7 @@
     <title>Ajay Vikram P</title>
     <script src="assets/js/theme-init.js?v=main-1"></script>
     <link rel="preload" href="assets/fonts/Newsreader-Latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/css/styles.css?v=main-3">
+    <link rel="stylesheet" href="assets/css/styles.css?v=main-6">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -17,9 +17,9 @@
           <a href="#research">Research</a>
           <a href="#news">Updates</a>
           <a href="#publications">Publications</a>
-          <a href="#projects" hidden>Projects</a>
           <a href="#experience">Experience</a>
           <a href="#service">Service</a>
+          <a href="#writing">Blogs</a>
         </div>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
           <span class="theme-toggle-mark" aria-hidden="true"></span>
@@ -282,91 +282,6 @@
 </article>
         </section>
 
-        <section class="home-section" id="projects" aria-labelledby="projects-title" hidden>
-          <h2 id="projects-title">Projects</h2>
-          <div class="project-grid">
-<a aria-label="View full details for Balatro RL" class="project-card" href="projects/balatro-rl.html">
-<div class="project-thumbnail">
-<img alt="Balatro title artwork with an ace of spades" height="1080" loading="lazy" src="assets/project-thumbnails/balatro.png" width="1920"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">Balatro RL</h3>
-<p>
-              A reinforcement-learning system for Balatro that uses separate PPO policies for hand
-              play and shop decisions, trained in a verified Rust simulator.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-<a aria-label="View full details for SkillBlenderLC" class="project-card" href="projects/skillblenderlc.html">
-<div class="project-thumbnail">
-<img alt="Humanoid robot in the SkillBlenderLC simulation" height="282" loading="lazy" src="assets/project-thumbnails/skillblenderlc.webp" width="502"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">SkillBlenderLC</h3>
-<p>
-              An LLM-guided humanoid learning framework that identifies missing skills, generates
-              reward functions, and trains new behaviors with reinforcement learning.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-<a aria-label="View full details for ViTFuser" class="project-card" href="projects/vitfuser.html">
-<div class="project-thumbnail">
-<img alt="Autonomous driving scene from the CARLA simulator" height="533" loading="lazy" src="assets/project-thumbnails/vitfuser.webp" width="900"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">ViTFuser</h3>
-<p>
-              An autonomous-driving model that fuses RGB and LiDAR features with multi-stage vision
-              transformers to predict navigation waypoints.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-<a aria-label="View full details for Drone Tracking" class="project-card" href="projects/drone-tracking.html">
-<div class="project-thumbnail">
-<img alt="Event-camera drone recording beside its reconstructed tracked trajectory" height="675" loading="lazy" src="assets/project-thumbnails/drone-tracking.webp" width="1200"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">Drone Tracking</h3>
-<p>
-              An event-camera pipeline that detects and tracks fast-moving drones using sparse
-              clustering and motion association, with a buffered implementation for ARM Cortex
-              edge hardware.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-<a aria-label="View full details for Ternarizing CNNs" class="project-card" href="projects/ternarizing-cnns.html">
-<div class="project-thumbnail">
-<img alt="Neural network diagram" height="533" loading="lazy" src="assets/project-thumbnails/ternarizing-cnns.webp" width="900"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">Ternarizing CNNs</h3>
-<p>
-              A radar-based activity-recognition CNN compressed with ternary weights, quantized
-              activations, and integer-only inference for embedded deployment.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-<a aria-label="View full details for Multi-Task LLM Post-Training" class="project-card" href="projects/llm-post-training.html">
-<div class="project-thumbnail">
-<img alt="Illustration of language-model fine-tuning" height="720" loading="lazy" src="assets/project-thumbnails/llm.png" width="1280"/>
-</div>
-<div class="project-card-body">
-<h3 class="project-card-title">Multi-Task LLM Post-Training</h3>
-<p>
-              A post-training study of how supervised fine-tuning and verifier-based reinforcement
-              learning affect instruction following, mathematical reasoning, and code generation.
-            </p>
-<span class="project-card-link">Read more <span aria-hidden="true">→</span></span>
-</div>
-</a>
-</div>
-        </section>
-
         <section class="home-section" id="experience" aria-labelledby="experience-title">
           <h2 id="experience-title">Experience</h2>
           <div class="record-list">
@@ -432,6 +347,39 @@
               <span class="record-date">Feb &ndash; Mar 2024</span>
             </li>
           </ul>
+        </section>
+        <section class="home-section" id="writing" aria-labelledby="writing-title">
+          <h2 id="writing-title">Blogs</h2>
+          <div class="writing-list" id="projects">
+          <article class="writing-entry">
+            <div class="writing-heading">
+              <h3><a href="projects/llm-post-training.html">Multi-Task LLM Post-Training</a></h3>
+              <time datetime="2026-05">May 2026</time>
+            </div>
+            <p>A study of how supervised fine-tuning and reinforcement learning with verifiable rewards affect instruction following, mathematical reasoning, and code generation.</p>
+          </article>
+          <article class="writing-entry">
+            <div class="writing-heading">
+              <h3><a href="projects/skillblenderlc.html">SkillBlenderLC</a></h3>
+              <time datetime="2025-12">December 2025</time>
+            </div>
+            <p>An LLM-guided humanoid learning framework that identifies missing skills, generates reward functions, and trains new behaviors with reinforcement learning.</p>
+          </article>
+          <article class="writing-entry">
+            <div class="writing-heading">
+              <h3><a href="https://medium.com/@ajayvikramp/ssms-for-efficient-long-range-memory-d6a78226c738" target="_blank" rel="noreferrer">SSMs for Efficient Long-Range Memory</a></h3>
+              <time datetime="2025-07-19">July 2025</time>
+            </div>
+            <p>An intuition-first introduction to state-space models, covering HiPPO, S4, LMUs, and Mamba.</p>
+          </article>
+          <article class="writing-entry">
+            <div class="writing-heading">
+              <h3><a href="projects/ternarizing-cnns.html">Ternarizing CNNs</a></h3>
+              <time datetime="2024-07">July 2024</time>
+            </div>
+            <p>A radar-based activity-recognition CNN compressed with ternary weights, quantized activations, and integer-only inference for embedded deployment.</p>
+          </article>
+          </div>
         </section>
       </main>
       <footer class="site-footer">

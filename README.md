@@ -19,7 +19,9 @@ pages and redirects are marked `noindex`; the current site is not.
 
 The current design retains its `portfolio-v2-theme` local-storage key so existing
 theme preferences continue to work independently of the archived site's theme.
-The Projects section remains hidden, but its detail pages are still available.
+Blogs features the SSM article and writeups on LLM post-training,
+SkillBlenderLC, and ternary CNNs.
+Other project detail pages remain available at their existing URLs.
 
 Poster PDFs are deliberately excluded from the published files. Newsreader is
 licensed under the SIL Open Font License; see `assets/fonts/OFL.txt`.
