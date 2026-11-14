@@ -233,6 +233,8 @@ img, video { display: block; max-width: 100%; height: auto; }
   background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
 .profile-link svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+/* Optically center Newsreader's glyphs beside the icons. */
+.profile-link-label { transform: translateY(2px); }
 
 .home-section {
   margin-top: 24px;
