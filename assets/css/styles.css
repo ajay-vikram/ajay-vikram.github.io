@@ -161,6 +161,15 @@ img, video { display: block; max-width: 100%; height: auto; }
 .site-nav a:hover,
 .site-nav a:focus-visible { color: var(--ink); }
 
+.site-nav .nav-monogram {
+  grid-column: 1;
+  justify-content: center;
+  width: 32px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .theme-toggle {
   display: inline-flex;
   flex: 0 0 32px;
@@ -474,8 +483,6 @@ code { overflow-wrap: anywhere; }
   body { font-size: 16.5px; }
   .nav-links { gap: 8px 18px; }
   .site-nav { align-items: start; padding: 14px 0 12px; }
-  .site-nav:has(.nav-links) { grid-template-columns: minmax(0, 1fr) 32px; }
-  .nav-links { grid-column: 1; }
   .profile { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 30px; }
   .portrait { width: 132px; height: 132px; }
   .profile h1 { margin-top: 0; }
