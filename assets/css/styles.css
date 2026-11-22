@@ -55,10 +55,14 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 20px);
 }
 
-body {
-  margin: 0;
+body,
+.site-nav {
   background-color: var(--bg);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
+
+body {
+  margin: 0;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 17px;
@@ -131,7 +135,6 @@ img, video { display: block; max-width: 100%; height: auto; }
   gap: 12px;
   padding: 18px 0 14px;
   border-bottom: 1px solid var(--line);
-  background: var(--bg);
   font-size: inherit;
   line-height: 1.5;
 }
