@@ -1,0 +1,97 @@
+{
+  "asOf": "2026-11",
+  "axisOrder": ["event-vision", "neuroscience", "multimodal-perception", "efficient-ai", "vision-language", "robotics"],
+  "modalities": [
+    { "id": "rgb", "label": "RGB-images", "color": "#3477b8" },
+    { "id": "depth", "label": "Depth maps", "color": "#15999f" },
+    { "id": "events", "label": "Neuromorphic events", "color": "#cf7a23" },
+    { "id": "lidar", "label": "LiDAR", "color": "#588e42" },
+    { "id": "radar", "label": "Radar", "color": "#c44d51" },
+    { "id": "audio", "label": "Audio", "color": "#8961b3" },
+    { "id": "eeg", "label": "EEG", "color": "#b45491" },
+    { "id": "emg", "label": "EMG", "color": "#788395" },
+    { "id": "fmri", "label": "fMRI", "color": "#2d8172" },
+    { "id": "dti", "label": "DTI", "color": "#969738" },
+    { "id": "language", "label": "Language", "color": "#9b7453" },
+    { "id": "touch", "label": "Touch", "color": "#d5899b" },
+    { "id": "proprioception", "label": "Robot proprioception", "color": "#c7a32d" }
+  ],
+  "domains": [
+    {
+      "id": "event-vision",
+      "label": "Neuromorphic Vision",
+      "modalities": ["events"],
+      "modalityBasis": "Event streams in drone tracking, astronomical tracking, and HOMI.",
+      "months": 7,
+      "projects": [
+        { "title": "Event-Based Drone Tracking", "href": "projects/drone-tracking.html" },
+        { "title": "Astronomical tracking", "href": "#publications" },
+        { "title": "HOMI", "href": "#publications" }
+      ],
+      "basis": "CV: drone tracking, Sep-Dec 2024 (4 months). Author estimate: astronomical tracking/HOMI, 3 additional, non-overlapping months."
+    },
+    {
+      "id": "multimodal-perception",
+      "label": "Multimodal Perception",
+      "modalities": ["rgb", "depth", "lidar"],
+      "modalityBasis": "ViTFuser uses RGB and LiDAR inputs; depth is auxiliary supervision, not an additional depth-camera input.",
+      "months": 6,
+      "projects": [
+        { "title": "ViTFuser: RGB-LiDAR fusion for autonomous driving", "href": "projects/vitfuser.html" }
+      ],
+      "basis": "CV: undergraduate research on ViTFuser, Oct 2023-Mar 2024 (6 calendar months)."
+    },
+    {
+      "id": "vision-language",
+      "label": "Language Models",
+      "modalities": ["rgb", "language", "touch", "proprioception"],
+      "modalityBasis": "Vision2Code uses images and language/code. General-purpose user simulation and LLM post-training involve language; post-training also includes code generation. FRAMES monitoring additionally uses robot proprioception and contact feedback; touch denotes contact feedback rather than tactile imaging.",
+      "months": 15,
+      "projects": [
+        { "title": "Vision2Code", "href": "#publications" },
+        { "title": "General-purpose user simulators", "months": 2 },
+        { "title": "LLM post-training with verifiable rewards", "href": "projects/llm-post-training.html", "months": 3 },
+        { "title": "VLM-based failure monitoring in FRAMES", "href": "#publications" }
+      ],
+      "basis": "CV-based approximation: DukeNLP, Sep 2025-Nov 2026 (15 calendar months). Author estimate: 2 months on general-purpose user simulators, treated as part of this DukeNLP period rather than additional months. LLM post-training, Feb-Apr 2026 (3 months), and FRAMES, May-Nov 2026, overlap and add no months."
+    },
+    {
+      "id": "robotics",
+      "label": "Robotics & RL",
+      "modalities": ["rgb", "language", "touch", "proprioception"],
+      "modalityBasis": "FRAMES uses multi-view visual observations, language, proprioception, and contact feedback. SkillBlenderLC uses language-conditioned humanoid control. Touch denotes contact feedback.",
+      "months": 14,
+      "projects": [
+        { "title": "SkillBlenderLC", "href": "projects/skillblenderlc.html" },
+        { "title": "FRAMES: humanoid failure monitoring and recovery", "href": "#publications" },
+        { "title": "Balatro RL", "href": "projects/balatro-rl.html" }
+      ],
+      "basis": "CV: SkillBlenderLC, Sep-Dec 2025 (4 months); Balatro, Feb-Apr 2026 (3 months); FRAMES, May-Nov 2026 (7 months). These project periods approximate RL involvement, not exclusive RL training time."
+    },
+    {
+      "id": "neuroscience",
+      "label": "Computational Neuroscience",
+      "modalities": ["fmri", "dti"],
+      "modalityBasis": "The neuroscience legend highlights fMRI and DTI. Per the author's preference, EEG, audio, and EMG are shown under Efficient ML instead.",
+      "months": 17,
+      "projects": [
+        { "title": "fMRI motion correction", "href": "#publications" },
+        { "title": "fMRI representation learning", "href": "#publications" },
+        { "title": "Structure-function coupling (Data+)", "href": "#experience" }
+      ],
+      "basis": "Author estimate: 2 neural-decoding months before Duke. CV: Duke Brain Sciences, Sep 2025-Nov 2026 (15 calendar months). Data+, May-Jul 2026, overlaps and adds no months."
+    },
+    {
+      "id": "efficient-ai",
+      "label": "Efficient ML",
+      "modalities": ["radar", "audio", "eeg", "emg"],
+      "modalityBasis": "Radar activity-recognition CNNs and efficient SSMs for auditory attention decoding documented in the CV. The author additionally confirmed EMG under Efficient ML; this does not change the duration estimate.",
+      "months": 6,
+      "projects": [
+        { "title": "Ternarizing CNNs", "href": "projects/ternarizing-cnns.html" },
+        { "title": "Quantizing CNNs and SSMs" }
+      ],
+      "basis": "Author estimate: 6 months total, including all 3 months of the Jun-Aug 2024 ternary CNN project listed in the CV. The separate 6-month SSM research estimate is not added because its overlap with compression and decoding is unspecified."
+    }
+  ]
+}
