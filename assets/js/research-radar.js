@@ -80,7 +80,7 @@ function buildLegend(modalities) {
   const list = element("ul");
   for (const modality of modalities) {
     const item = element("li");
-    item.append(modalityDot(modality), element("span", "", modality.label));
+    item.append(modalityDot(modality), element("span", "radar-legend-label", modality.label));
     list.append(item);
   }
   legend.append(heading, list);

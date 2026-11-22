@@ -227,6 +227,7 @@ img, video { display: block; max-width: 100%; height: auto; }
 .radar-legend h4 { margin: 0 0 10px; font-size: 16px; font-weight: 500; }
 .radar-legend ul { display: grid; gap: 6px; list-style: none; padding: 0; margin: 0; }
 .radar-legend li { display: flex; align-items: center; gap: 9px; color: var(--ink-2); font-size: 14px; line-height: 1.25; }
+.radar-legend-label { transform: translateY(2px); }
 .radar-modality-dot { display: inline-block; width: 9px; height: 9px; flex: 0 0 9px; border-radius: 50%; background: var(--modality-color); }
 :root[data-theme="dark"] .radar-modality-dot { background: color-mix(in srgb, var(--modality-color) 80%, white); }
 .radar-modality-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 6px; }
