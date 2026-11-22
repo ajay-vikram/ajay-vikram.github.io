@@ -277,7 +277,7 @@ export function renderRadar(root, data) {
   }
 
   const month = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${data.asOf}-01T00:00:00Z`));
-  root.querySelector(".radar-subtitle").textContent = `Approximate research months through ${month}.`;
+  root.querySelector(".radar-subtitle").textContent = `Time spent across research areas (in months), through ${month}`;
   root.querySelector(".radar-chart-column").prepend(stage);
   root.querySelector(".radar-layout").append(buildLegend(data.modalities));
   buildTable(data.domains, modalityLookup, content);

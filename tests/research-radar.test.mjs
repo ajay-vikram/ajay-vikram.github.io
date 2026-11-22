@@ -7,7 +7,7 @@ const data = JSON.parse(readFileSync(new URL('../assets/data/research-experience
 
 test('agreed research snapshot and totals', () => {
   validateData(data);
-  assert.equal(data.asOf, '2026-11');
+  assert.equal(data.asOf, '2026-12');
   assert.deepEqual(data.domains.map(d => d.months), [7, 6, 15, 14, 17, 6]);
   assert.deepEqual(data.domains.map(d => d.label), ['Neuromorphic Vision', 'Multimodal Perception',
     'Language Models', 'Robotics & RL', 'Computational Neuroscience', 'Efficient ML']);

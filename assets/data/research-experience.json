@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11",
+  "asOf": "2026-12",
   "axisOrder": ["event-vision", "neuroscience", "multimodal-perception", "efficient-ai", "vision-language", "robotics"],
   "modalities": [
     { "id": "rgb", "label": "RGB-images", "color": "#3477b8" },
